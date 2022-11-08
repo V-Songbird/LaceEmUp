@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 887498053625053282}
   - component: {fileID: 887498053625053283}
-  - component: {fileID: 887498053625053292}
   - component: {fileID: 887498053625053281}
   - component: {fileID: 887498053625053280}
+  - component: {fileID: 887498053625053292}
+  - component: {fileID: 5119943838766809563}
+  - component: {fileID: 1323646827527683689}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -89,25 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &887498053625053292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887498053625053295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0803e800535b9141b2ddf9caa035d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMovement: 4
-  jumpForce: 4
-  isGrounded: 0
-  whatisGround:
-    serializedVersion: 2
-    m_Bits: 64
-  jumps: 0
 --- !u!54 &887498053625053281
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,6 +121,52 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &887498053625053292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887498053625053295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0803e800535b9141b2ddf9caa035d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMovement: 4
+  jumpForce: 6.5
+  isGrounded: 0
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 64
+  jumps: 2
+--- !u!114 &5119943838766809563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887498053625053295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dedb30ea5abb7439ea5fc6ed20ca62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coins: 0
+  backpackInventory: []
+  actualShoes: 0
+--- !u!114 &1323646827527683689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887498053625053295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f23cf14cc3a804e96d08f40fe4962b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887498055146276641
 GameObject:
   m_ObjectHideFlags: 0
