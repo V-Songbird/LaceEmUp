@@ -12,8 +12,9 @@ namespace JamOff.Scripts.Managers
 
 
         #region vars
-        public AdditiveScenesControl AdditiveScenesControl { get; private set; }
-        public CommonUI CommonUI { get; private set; }
+        [HideInInspector] public AdditiveScenesControl AdditiveScenesControl { get; private set; }
+        [HideInInspector] public CommonUI CommonUI { get; private set; }
+        [HideInInspector] public Player_CutActions Player_CutActions { get; private set; }
 
         //Player
         [HideInInspector] public Player_MovementController Player_MovementController;
@@ -28,6 +29,7 @@ namespace JamOff.Scripts.Managers
 
             Player_MovementController = FindObjectOfType<Player_MovementController>();
             Player_Inventory = FindObjectOfType<Player_Inventory>();
+            Player_CutActions = FindObjectOfType<Player_CutActions>();
         }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JamOff.Scripts.Managers;
 
 
 public class GeneralUI : MonoBehaviour
@@ -16,10 +17,11 @@ public class GeneralUI : MonoBehaviour
         myCanvas = GetComponent<Canvas>();
     }
 
-    public void ShowUI()
+    public virtual void ShowUI()
     {
         if (canHide == false && onAnimation == false)
         {
+            GamePlayManager.Instance.Player_CutActions.BlockMovement();
             onAnimation = true;
             myCanvas.enabled = true;
 
@@ -34,7 +36,7 @@ public class GeneralUI : MonoBehaviour
         }
     }
 
-    public void HideUI()
+    public virtual void HideUI()
     {
         if (canHide == true && onAnimation == false)
         {
@@ -48,6 +50,7 @@ public class GeneralUI : MonoBehaviour
                 canHide = false;
                 onAnimation = false;
                 myCanvas.enabled = false;
+                GamePlayManager.Instance.Player_CutActions.GetBackMovement();
             });
         }
     }

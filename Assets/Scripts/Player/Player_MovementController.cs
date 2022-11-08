@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JamOff.Scripts.Managers;
 
 public class Player_MovementController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Player_MovementController : MonoBehaviour
     [SerializeField] int jumps;
     int resetJumps;
 
-    Rigidbody playerRb;
+    [HideInInspector] public Rigidbody playerRb;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class Player_MovementController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && GamePlayManager.Instance.Player_CutActions.canMove)
         {
             MakeJump();
         }
@@ -34,13 +35,17 @@ public class Player_MovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        playerRb.velocity = new Vector2(moveInput * speedMovement, playerRb.velocity.y);
-
-        if (needToFlip())
+        if (GamePlayManager.Instance.Player_CutActions.canMove)
         {
-            Flip();
+            moveInput = Input.GetAxis("Horizontal");
+            playerRb.velocity = new Vector2(moveInput * speedMovement, playerRb.velocity.y);
+
+            if (needToFlip())
+            {
+                Flip();
+            }
         }
+
     }
 
 
