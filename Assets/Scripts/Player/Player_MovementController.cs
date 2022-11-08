@@ -58,6 +58,7 @@ public class Player_MovementController : MonoBehaviour
     {
         isGrounded = true;
         jumps = resetJumps;
+        playerRb.mass = 1;
     }
 
 

@@ -7,7 +7,7 @@ namespace JamOff.Scripts.Managers
 
     public class ConstantsManager : MonoBehaviour
     {
-
+        public enum ShoesTypes { None, MarioBross, Portal, Minecraft }
     }
 
 }
