@@ -27,9 +27,22 @@ public class Player_MovementController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && GamePlayManager.Instance.Player_CutActions.canMove)
+        if (GamePlayManager.Instance.Player_CutActions.canMove)
         {
-            MakeJump();
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                MakeJump();
+            }
+
+            if (playerRb.velocity.y < 0)
+            {
+                playerRb.velocity += Vector3.up * Physics.gravity.y * 3f * Time.deltaTime;
+            }
+            else if (playerRb.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                playerRb.velocity += Vector3.up * Physics.gravity.y * 2f * Time.deltaTime;
+            }
         }
     }
 

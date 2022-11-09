@@ -17,4 +17,17 @@ public class Player_CutActions : MonoBehaviour
     {
         canMove = true;
     }
+
+    public void DisablePhysicsAndMovements()
+    {
+        BlockMovement();
+        GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = false;
+        GamePlayManager.Instance.Player.GetComponent<Rigidbody>().useGravity = false;
+    }
+    public void GetBackPhysicsAndMovement()
+    {
+        GetBackMovement();
+        GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = true;
+        GamePlayManager.Instance.Player.GetComponent<Rigidbody>().useGravity = true;
+    }
 }
