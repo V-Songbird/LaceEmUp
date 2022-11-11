@@ -6,6 +6,9 @@ using JamOff.Scripts.Managers;
 public class Player_OtherActions : MonoBehaviour
 {
     [HideInInspector] public InteractObject interactObject;
+
+    [SerializeField] GameObject BluePortal;
+    [SerializeField] GameObject RedPortal;
     // Update is called once per frame
     void Update()
     {
@@ -18,5 +21,54 @@ public class Player_OtherActions : MonoBehaviour
         {
             interactObject.MakeInteract();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            LeftClick();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            RightClick();
+        }
     }
+
+
+    void LeftClick()
+    {
+        switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
+        {
+
+            case ConstantsManager.ShoesTypes.None:
+
+                break;
+
+            case ConstantsManager.ShoesTypes.MarioBross:
+
+                break;
+
+            case ConstantsManager.ShoesTypes.Portal:
+                GamePlayManager.Instance.PortalsManager.MakePortal(true);
+                break;
+        }
+    }
+
+    void RightClick()
+    {
+        switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
+        {
+
+            case ConstantsManager.ShoesTypes.None:
+
+                break;
+
+            case ConstantsManager.ShoesTypes.MarioBross:
+
+                break;
+
+            case ConstantsManager.ShoesTypes.Portal:
+                GamePlayManager.Instance.PortalsManager.MakePortal(false);
+                break;
+        }
+    }
+
 }

@@ -49,6 +49,13 @@ public class InteractObject : MonoBehaviour
                 });
 
                 break;
+
+            case ConstantsManager.ShoesTypes.Portal:
+
+                GamePlayManager.Instance.Player_CutActions.DisablePhysicsAndMovements();
+                Vector3 newPos = new Vector3(targetPosition.transform.position.x, targetPosition.transform.position.y, targetPosition.transform.position.z - 0.2f);
+                GamePlayManager.Instance.CommonUI.TransitionUI.TransitionFromPortal(newPos);
+                break;
         }
     }
 }

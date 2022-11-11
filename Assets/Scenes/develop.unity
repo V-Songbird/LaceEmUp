@@ -898,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 5119943838766809563, guid: a42f0c1ac446a6d41811f823ea6a908c,
         type: 3}
       propertyPath: actualShoes
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a42f0c1ac446a6d41811f823ea6a908c, type: 3}

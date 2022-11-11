@@ -23,6 +23,9 @@ namespace JamOff.Scripts.Managers
         [HideInInspector] public Player_Inventory Player_Inventory;
         [HideInInspector] public Player_OtherActions Player_OtherActions;
 
+        [HideInInspector] public PortalsManager PortalsManager;
+
+
         #endregion
 
         private void Awake()
@@ -56,7 +59,12 @@ namespace JamOff.Scripts.Managers
         {
             AdditiveScenesControl = GetComponentInChildren<AdditiveScenesControl>();
             CommonUI = GetComponentInChildren<CommonUI>();
+            PortalsManager = GetComponentInChildren<PortalsManager>();
+
+
         }
+
+
     }
 }
 
