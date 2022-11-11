@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryUI: {fileID: 0}
+  TransitionUI: {fileID: 0}
 --- !u!1001 &1163343548557968537
 PrefabInstance:
   m_ObjectHideFlags: 0
