@@ -53,6 +53,11 @@ public class Player_MovementController : MonoBehaviour
             moveInput = Input.GetAxis("Horizontal");
             playerRb.velocity = new Vector2(moveInput * speedMovement, playerRb.velocity.y);
 
+            if (moveInput != 0)
+            {
+                GamePlayManager.Instance.Player_OtherActions.CancelAllActions();
+            }
+
             if (needToFlip())
             {
                 Flip();
@@ -66,6 +71,7 @@ public class Player_MovementController : MonoBehaviour
     {
         if (jumps > 0)
         {
+            GamePlayManager.Instance.Player_OtherActions.CancelAllActions();
             isGrounded = false;
             playerRb.velocity = Vector3.up * jumpForce;
             jumps--;
