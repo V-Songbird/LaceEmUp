@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c10fa2b91c6f714daf348c00a7ba8c1, type: 3}
-  m_Name: MarioBross
+  m_Name: Portal
   m_EditorClassIdentifier: 
-  shoesName: MarioBross
+  shoesName: Portal
   shoesImage: {fileID: 21300000, guid: ab9ced2b7e4cb7946984dfa114bc0191, type: 3}
-  myShoeType: 1
+  myShoeType: 2

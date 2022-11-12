@@ -14,6 +14,7 @@ namespace JamOff.Scripts.Managers
         #region vars
         [HideInInspector] public AdditiveScenesControl AdditiveScenesControl { get; private set; }
         [HideInInspector] public CommonUI CommonUI { get; private set; }
+        [HideInInspector] public WaterColliders WaterColliders { get; private set; }
 
 
         //Player
@@ -37,6 +38,12 @@ namespace JamOff.Scripts.Managers
             Player_Inventory = FindObjectOfType<Player_Inventory>();
             Player_CutActions = FindObjectOfType<Player_CutActions>();
             Player_OtherActions = FindObjectOfType<Player_OtherActions>();
+
+        }
+
+        private void Start()
+        {
+            WaterColliders = FindObjectOfType<WaterColliders>();
         }
 
 

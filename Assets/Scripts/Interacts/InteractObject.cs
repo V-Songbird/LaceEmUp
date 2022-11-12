@@ -28,7 +28,7 @@ public class InteractObject : MonoBehaviour
 
     void CheckForInteract()
     {
-        if (interactType == GamePlayManager.Instance.Player_Inventory.actualShoes)
+        if (interactType == GamePlayManager.Instance.Player_Inventory.actualShoes || interactType == ConstantsManager.ShoesTypes.Portal)
         {
             GamePlayManager.Instance.Player_OtherActions.interactObject = this;
             CanInteract = true;

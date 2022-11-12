@@ -155,8 +155,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coins: 0
-  backpackInventory: []
+  backpackInventory:
+  - {fileID: 11400000, guid: a465f5012327709408edde05df11ed59, type: 2}
+  - {fileID: 11400000, guid: ac7191fa69e3c7b439b4d3206f1d4dfc, type: 2}
+  - {fileID: 11400000, guid: 985ffe44db8aa714a8e661b63949b204, type: 2}
   actualShoes: 0
+  ChangeShoes: {fileID: 0}
 --- !u!114 &1323646827527683689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactObject: {fileID: 0}
+  BluePortal: {fileID: 0}
+  RedPortal: {fileID: 0}
+  timeToChangeShoes: 2
 --- !u!114 &1082877777606021330
 MonoBehaviour:
   m_ObjectHideFlags: 0
