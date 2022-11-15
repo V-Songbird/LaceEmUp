@@ -43,14 +43,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _CausticsQuantity: 0.5
     - _CausticsScale: 50
-    - _Depth: 4
+    - _CausticsSpeed: 0.581
+    - _Depth: 1.39
     - _EdgeLength: 15
+    - _EnableTransparency: 0
     - _EnvironmentReflections: 1
     - _Float3: 4.04
-    - _FoamScale: 150
+    - _FoamQuantity: 0.5
+    - _FoamScale: 100
     - _FoamWidth: 1
-    - _MidPoint: 0.5
+    - _MidPoint: 0.183
     - _NormalStrength: 0.05
     - _Opacity: 1
     - _QueueControl: 0
@@ -59,18 +63,19 @@ Material:
     - _RefractionIndex: 0.114
     - _RefractionStrenght: 2.08
     - _RefractionStrength: 1.5
-    - _Smoothness: 0.722
+    - _Smoothness: 0.79
     - _SpecularHighlights: 1
     - _TessPhongStrength: 0.5
     - _TessValue: 15
+    - _ToggleSwitch0: 0
     - _WaveIntensity: 0.5
     - _WaveSpeed: 100
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0, g: 0.33768168, b: 0.5849056, a: 1}
-    - _CausticsColor: {r: 0.740566, g: 0.99511987, b: 1, a: 1}
+    - _BottomColor: {r: 0.35604307, g: 0.47586215, b: 0.5943396, a: 1}
+    - _CausticsColor: {r: 0.7783019, g: 0.94791317, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor: {r: 0.8443396, g: 0.9533081, b: 1, a: 1}
     - _MidColor: {r: 0.17866677, g: 0.22435117, b: 0.51886785, a: 1}
     - _MiddleColor: {r: 0, g: 0.93149924, b: 1, a: 1}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
