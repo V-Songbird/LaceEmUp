@@ -9,8 +9,23 @@ namespace JamOff.Scripts.Managers
         private static GamePlayManager _instance = null;
         public static GamePlayManager Instance => _instance;
 
+
+
         #region vars
-        public AdditiveScenesControl AdditiveScenesControl { get; private set; }
+        [HideInInspector] public AdditiveScenesControl AdditiveScenesControl { get; private set; }
+        [HideInInspector] public CommonUI CommonUI { get; private set; }
+        [HideInInspector] public WaterColliders WaterColliders { get; private set; }
+
+
+        //Player
+        public GameObject Player;
+        [HideInInspector] public Player_CutActions Player_CutActions { get; private set; }
+        [HideInInspector] public Player_MovementController Player_MovementController;
+        [HideInInspector] public Player_Inventory Player_Inventory;
+        [HideInInspector] public Player_OtherActions Player_OtherActions;
+
+        [HideInInspector] public PortalsManager PortalsManager;
+
 
         #endregion
 
@@ -18,6 +33,17 @@ namespace JamOff.Scripts.Managers
         {
             MakeItSingleton();
             GetReferences();
+
+            Player_MovementController = FindObjectOfType<Player_MovementController>();
+            Player_Inventory = FindObjectOfType<Player_Inventory>();
+            Player_CutActions = FindObjectOfType<Player_CutActions>();
+            Player_OtherActions = FindObjectOfType<Player_OtherActions>();
+
+        }
+
+        private void Start()
+        {
+            WaterColliders = FindObjectOfType<WaterColliders>();
         }
 
 
@@ -39,7 +65,13 @@ namespace JamOff.Scripts.Managers
         void GetReferences()
         {
             AdditiveScenesControl = GetComponentInChildren<AdditiveScenesControl>();
+            CommonUI = GetComponentInChildren<CommonUI>();
+            PortalsManager = GetComponentInChildren<PortalsManager>();
+
+
         }
+
+
     }
 }
 
