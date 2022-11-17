@@ -58,8 +58,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				false:ExcludePass:DecalMeshForwardEmissive
 				false:HidePort:DecalScreenSpaceProjector:Emission
 			Option:Support LOD CrossFade:false,true:false
-				true:SetDefine:pragma multi_compile _ LOD_FADE_CROSSFADE
-				false:RemoveDefine:pragma multi_compile _ LOD_FADE_CROSSFADE
+				true:SetDefine:DBufferMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
+				true:SetDefine:DecalScreenSpaceMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
+				true:SetDefine:DecalGBufferMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
+				false:RemoveDefine:DBufferMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
+				false:RemoveDefine:DecalScreenSpaceMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
+				false:RemoveDefine:DecalGBufferMesh:pragma multi_compile _ LOD_FADE_CROSSFADE
 			Option:Angle Fade:false,true:false
 				true:SetDefine:DECAL_ANGLE_FADE 1
 				true:SetShaderProperty:_DecalAngleFadeSupported,[HideInInspector] _DecalAngleFadeSupported("Decal Angle Fade Supported", Float) = 1
@@ -76,52 +80,49 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
         }
 
 		HLSLINCLUDE
-
 		#pragma target 4.5
-		#pragma multi_compile_instancing
-
 		ENDHLSL
-	
+
 		/*ase_pass*/
         Pass
-        { 
+        {
 			/*ase_hide_pass*/
             Name "DBufferProjector"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DBufferProjector"
             }
-        
-			Cull Front
-			ZWrite Off
-			ZTest Greater
 
+			Cull Front
 			Blend 0 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
 			Blend 1 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
 			Blend 2 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 3 Zero OneMinusSrcColor
-
+			ZTest Greater
+			ZWrite Off
 			ColorMask RGBA
 			ColorMask RGBA 1
 			ColorMask RGBA 2
-			ColorMask RGBA 3
-        
+
             HLSLPROGRAM
 
 			#pragma vertex Vert
 			#pragma fragment Frag
-        
-            #pragma multi_compile _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
+			#pragma multi_compile_instancing
+			#pragma editor_sync_compilation
+
+			#pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
 
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 
             #define HAVE_MESH_MODIFICATION
-        
+
             #define SHADERPASS SHADERPASS_DBUFFER_PROJECTOR
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -134,7 +135,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
 
 			/*ase_pragma*/
-	
+
 			struct SurfaceDescription
 			{
 				float3 BaseColor;
@@ -182,7 +183,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				int _ObjectId;
 				int _PassValue;
             #endif
-	
+
 			/*ase_globals*/
 
 			/*ase_funcs*/
@@ -193,26 +194,26 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 half fadeFactor = clamp(normalToWorld[0][3], 0.0f, 1.0f) * angleFadeFactor;
                 float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
                 float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
-                #endif        
-        
+                #endif
+
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 #if defined(_MATERIAL_AFFECTS_NORMAL)
                     surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
                 #else
                     surfaceData.normalWS.xyz = normalToWorld[2].xyz;
                 #endif
-        
+
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
 
 				#if defined( _MATERIAL_AFFECTS_MAOS )
@@ -222,7 +223,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceData.MAOSAlpha = half(surfaceDescription.MAOSAlpha * fadeFactor);
 				#endif
             }
-        
+
 			#define DECAL_PROJECTOR
 			#define DECAL_DBUFFER
 
@@ -260,8 +261,8 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				/*ase_vert_code:inputMesh=Attributes;packedOutput=PackedVaryings*/
 
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(inputMesh.positionOS.xyz);
-    
-				float3 positionWS = TransformObjectToWorld(inputMesh.positionOS);			
+
+				float3 positionWS = TransformObjectToWorld(inputMesh.positionOS);
 				packedOutput.positionCS = TransformWorldToHClip(positionWS);
 
 				return packedOutput;
@@ -269,12 +270,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				OUTPUT_DBUFFER(outDBuffer)
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
 				UNITY_SETUP_INSTANCE_ID(packedInput);
-				
+
 				half angleFadeFactor = 1.0;
 
 				#if UNITY_REVERSED_Z
@@ -282,7 +283,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#else
 					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
 				#endif
-			
+
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
 						half3 normalWS = half3(ReconstructNormalTap9(packedInput.positionCS.xy));
@@ -328,7 +329,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					}
 				#endif
 
-				half3 viewDirectionWS = half3(1.0, 1.0, 1.0); 
+				half3 viewDirectionWS = half3(1.0, 1.0, 1.0);
 				DecalSurfaceData surfaceData;
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
@@ -339,7 +340,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				surfaceDescription.Alpha = /*ase_frag_out:Alpha;Float;1;-1;_Alpha*/1/*end*/;
 				surfaceDescription.NormalTS = /*ase_frag_out:Normal;Float3;2;-1;_NormalTS*/float3(0.0f, 0.0f, 1.0f)/*end*/;
 				surfaceDescription.NormalAlpha = /*ase_frag_out:Normal Alpha;Float;3;-1;_NormalAlpha*/1/*end*/;
-				
+
 				#if defined( _MATERIAL_AFFECTS_MAOS )
 					surfaceDescription.Metallic = /*ase_frag_out:Metallic;Float;4;-1;_Metallic*/0/*end*/;
 					surfaceDescription.Occlusion = /*ase_frag_out:Occlusion;Float;5;-1;_Occlusion*/1/*end*/;
@@ -348,38 +349,44 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#endif
 
 				GetSurfaceData(surfaceDescription, viewDirectionWS, (uint2)positionCS, angleFadeFactor, surfaceData);
-				ENCODE_INTO_DBUFFER(surfaceData, outDBuffer);			
-			}        
+				ENCODE_INTO_DBUFFER(surfaceData, outDBuffer);
+			}
             ENDHLSL
         }
 
 		/*ase_pass*/
         Pass
-        { 
+        {
 			/*ase_hide_pass*/
             Name "DecalProjectorForwardEmissive"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalProjectorForwardEmissive"
             }
-       
+
 			Cull Front
-			ZWrite Off
+			Blend 0 SrcAlpha One
 			ZTest Greater
-			Blend 0 SrcAlpha One    
+			ZWrite Off
 
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
-        
+			#pragma multi_compile_instancing
+			#pragma editor_sync_compilation
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"        
-            
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
+
             #define HAVE_MESH_MODIFICATION
-        
+
             #define SHADERPASS SHADERPASS_FORWARD_EMISSIVE_PROJECTOR
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -437,19 +444,19 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			/*ase_globals*/
 
-			/*ase_funcs*/ 
-        
+			/*ase_funcs*/
+
             void GetSurfaceData( SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionSS, float angleFadeFactor, out DecalSurfaceData surfaceData)
             {
                 half4x4 normalToWorld = UNITY_ACCESS_INSTANCED_PROP(Decal, _NormalToWorld);
                 half fadeFactor = clamp(normalToWorld[0][3], 0.0f, 1.0f) * angleFadeFactor;
                 float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
                 float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
@@ -457,14 +464,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 #endif
 
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
-                	surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);        
+                	surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
 
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
             }
 
 			#define DECAL_PROJECTOR
-			#define DECAL_FORWARD_EMISSIVE			
+			#define DECAL_FORWARD_EMISSIVE
 
 			#if ((!defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_ALBEDO)) || (defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_NORMAL_BLEND))) && (defined(DECAL_SCREEN_SPACE) || defined(DECAL_GBUFFER))
 				#define DECAL_RECONSTRUCT_NORMAL
@@ -508,7 +515,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out half4 outEmissive : SV_Target0
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
@@ -521,7 +528,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#else
 					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
 				#endif
-			
+
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
 						half3 normalWS = half3(ReconstructNormalTap9(packedInput.positionCS.xy));
@@ -542,19 +549,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				positionDS = positionDS * float3(1.0, -1.0, 1.0);
 
 				float clipValue = 0.5 - Max3(abs(positionDS).x, abs(positionDS).y, abs(positionDS).z);
-				clip(clipValue);				
-				
+				clip(clipValue);
+
 				float2 texCoord = positionDS.xz + float2(0.5, 0.5);
 
 				float4x4 normalToWorld = UNITY_ACCESS_INSTANCED_PROP(Decal, _NormalToWorld);
 				float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
 				float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
 				texCoord.xy = texCoord.xy * scale + offset;
-			
-				/*ase_local_var:uv0*/float2 texCoord0 = texCoord;
-				/*ase_local_var:uv1*/float2 texCoord1 = texCoord;
-				/*ase_local_var:uv2*/float2 texCoord2 = texCoord;
-				/*ase_local_var:uv3*/float2 texCoord3 = texCoord;
 
 				#ifdef DECAL_ANGLE_FADE
 					half2 angleFade = half2(normalToWorld[1][3], normalToWorld[2][3]);
@@ -571,11 +573,16 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				DecalSurfaceData surfaceData;
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				
+
+				/*ase_local_var:uv0*/float2 texCoord0 = texCoord;
+				/*ase_local_var:uv1*/float2 texCoord1 = texCoord;
+				/*ase_local_var:uv2*/float2 texCoord2 = texCoord;
+				/*ase_local_var:uv3*/float2 texCoord3 = texCoord;
+
 				/*ase_frag_code:packedInput=PackedVaryings*/
 
 				surfaceDescription.Alpha = /*ase_frag_out:Alpha;Float;0;-1;_Alpha*/1/*end*/;
-				
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceDescription.Emission = /*ase_frag_out:Emission;Float3;1;-1;_Emission*/float3(0, 0, 0)/*end*/;
 				#endif
@@ -584,45 +591,43 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				outEmissive.rgb = surfaceData.emissive;
 				outEmissive.a = surfaceData.baseColor.a;
-			}        
+			}
             ENDHLSL
         }
 
 		/*ase_pass*/
         Pass
-        { 
+        {
 			/*ase_main_pass*/
             Name "DecalScreenSpaceProjector"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalScreenSpaceProjector"
             }
-        
-            Cull Front
+
+			Cull Front
 			Blend SrcAlpha OneMinusSrcAlpha
 			ZTest Greater
 			ZWrite Off
 
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
+			#pragma multi_compile_instancing
 			#pragma multi_compile_fog
-        
+			#pragma editor_sync_compilation
+
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-			#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
-			#pragma multi_compile _ _SHADOWS_SOFT
+			#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
+			#pragma multi_compile_fragment _ _SHADOWS_SOFT
 			#pragma multi_compile _ _CLUSTERED_RENDERING
 			#pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
 
-			#pragma multi_compile _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
-
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-        
+
             #define ATTRIBUTES_NEED_NORMAL
             #define VARYINGS_NEED_NORMAL_WS
             #define VARYINGS_NEED_VIEWDIRECTION_WS
@@ -630,11 +635,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_SH
             #define VARYINGS_NEED_STATIC_LIGHTMAP_UV
             #define VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV
-            
-            #define HAVE_MESH_MODIFICATION        
-        
+
+            #define HAVE_MESH_MODIFICATION
+
             #define SHADERPASS SHADERPASS_DECAL_SCREEN_SPACE_PROJECTOR
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -644,9 +653,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DecalInput.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderVariablesDecal.hlsl"
-        
+
 			/*ase_pragma*/
-	
+
 			struct SurfaceDescription
 			{
 				float3 BaseColor;
@@ -680,7 +689,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				/*ase_interp(6,):sp=sp;wn=tc0;wvd=tc1*/
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -712,24 +721,24 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 half fadeFactor = clamp(normalToWorld[0][3], 0.0f, 1.0f) * angleFadeFactor;
                 float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
                 float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
                 	surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
 
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 #if defined(_MATERIAL_AFFECTS_NORMAL)
                     surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
                 #else
@@ -737,7 +746,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 #endif
 
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
-				
+
 				#if defined( _MATERIAL_AFFECTS_MAOS )
 					surfaceData.metallic = half(surfaceDescription.Metallic);
 					surfaceData.occlusion = half(surfaceDescription.Occlusion);
@@ -779,9 +788,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.normalWS = normalWS;
 				inputData.viewDirectionWS = viewDirectionWS;
 				inputData.shadowCoord = float4(0, 0, 0, 0);
-			
+
 				inputData.fogCoord = half(input.fogFactorAndVertexLight.x);
-				inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);			
+				inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
 
 				#if defined(VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV) && defined(DYNAMICLIGHTMAP_ON)
 					inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, half3(input.sh), normalWS);
@@ -835,7 +844,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float3 positionWS = TransformObjectToWorld(inputMesh.positionOS);
 
 				float3 normalWS = TransformObjectToWorldNormal(inputMesh.normalOS);
-				
+
 				packedOutput.positionCS = TransformWorldToHClip(positionWS);
 
 				half fogFactor = 0;
@@ -847,15 +856,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				packedOutput.normalWS.xyz =  normalWS;
 				packedOutput.viewDirectionWS.xyz =  GetWorldSpaceViewDir(positionWS);
-				
+
 				#if defined(LIGHTMAP_ON)
 					OUTPUT_LIGHTMAP_UV(inputMesh.uv1, unity_LightmapST, packedOutput.staticLightmapUV);
 				#endif
-				
+
 				#if defined(DYNAMICLIGHTMAP_ON)
 					packedOutput.dynamicLightmapUV.xy = inputMesh.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 				#endif
-				
+
 				#if !defined(LIGHTMAP_ON)
 					packedOutput.sh.xyz =  float3(SampleSHVertex(half3(normalWS)));
 				#endif
@@ -865,7 +874,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out half4 outColor : SV_Target0
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
@@ -902,12 +911,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip(clipValue);
 
 				float2 texCoord = positionDS.xz + float2(0.5, 0.5);
-			
+
 				float4x4 normalToWorld = UNITY_ACCESS_INSTANCED_PROP(Decal, _NormalToWorld);
 				float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
 				float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
 				texCoord.xy = texCoord.xy * scale + offset;
-			
+
 				/*ase_local_var:uv0*/float2 texCoord0 = texCoord;
 				/*ase_local_var:uv1*/float2 texCoord1 = texCoord;
 				/*ase_local_var:uv2*/float2 texCoord2 = texCoord;
@@ -923,9 +932,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 						angleFadeFactor = saturate(angleFade.x + angleFade.y * (dotAngle * (dotAngle - 2.0)));
 					}
 				#endif
-			
+
 				half3 viewDirectionWS = half3(packedInput.viewDirectionWS);
-	
+
 				DecalSurfaceData surfaceData;
 
 				/*ase_frag_code:packedInput=PackedVaryings*/
@@ -942,7 +951,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceDescription.Smoothness = /*ase_frag_out:Smoothness;Float;6;-1;_Smoothness*/0.5/*end*/;
 					surfaceDescription.MAOSAlpha = /*ase_frag_out:MAOS Alpha;Float;7;-1;_MAOSAlpha*/1/*end*/;
 				#endif
-				
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceDescription.Emission = /*ase_frag_out:Emission;Float3;8;-1;_Emission*/float3(0, 0, 0)/*end*/;
 				#endif
@@ -968,44 +977,39 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "DecalGBufferProjector"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalGBufferProjector"
             }
-        
+
 			Cull Front
-			ZWrite Off
+			Blend 0 SrcAlpha OneMinusSrcAlpha
+			Blend 1 SrcAlpha OneMinusSrcAlpha
+			Blend 2 SrcAlpha OneMinusSrcAlpha
+			Blend 3 SrcAlpha OneMinusSrcAlpha
 			ZTest Greater
+			ZWrite Off
+			ColorMask RGB
+			ColorMask 0 1
+			ColorMask RGB 2
+			ColorMask RGB 3
 
-			Blend 0 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 1 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 2 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 3 Zero OneMinusSrcColor
-
-			ColorMask RGBA
-			ColorMask RGBA 1
-			ColorMask RGBA 2
-			ColorMask RGBA 3
-        
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
+			#pragma multi_compile_instancing
 			#pragma multi_compile_fog
-        
+			#pragma editor_sync_compilation
+
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
-			#pragma multi_compile _ _SHADOWS_SOFT
-
+			#pragma multi_compile_fragment _ _SHADOWS_SOFT
 			#pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
-			#pragma multi_compile _ _GBUFFER_NORMALS_OCT
+			#pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT
 
-			#pragma multi_compile _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
-        
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 
@@ -1015,11 +1019,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_SH
             #define VARYINGS_NEED_STATIC_LIGHTMAP_UV
             #define VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV
-            
-            #define HAVE_MESH_MODIFICATION        
-        
+
+            #define HAVE_MESH_MODIFICATION
+
             #define SHADERPASS SHADERPASS_DECAL_GBUFFER_PROJECTOR
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -1032,7 +1040,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderVariablesDecal.hlsl"
 
 			/*ase_pragma*/
-	    
+
 			struct SurfaceDescription
 			{
 				float3 BaseColor;
@@ -1045,8 +1053,8 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float MAOSAlpha;
 				float3 Emission;
 			};
-        
-            struct Attributes
+
+			struct Attributes
 			{
 				float3 positionOS : POSITION;
 				float3 normalOS : NORMAL;
@@ -1066,7 +1074,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -1087,10 +1095,10 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				int _ObjectId;
 				int _PassValue;
             #endif
-	
+
 			/*ase_globals*/
-	
-			/*ase_funcs*/             
+
+			/*ase_funcs*/
 
             void GetSurfaceData(SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionCS, float angleFadeFactor, out DecalSurfaceData surfaceData)
             {
@@ -1102,20 +1110,20 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
 
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 #if defined(_MATERIAL_AFFECTS_NORMAL)
                     surfaceData.normalWS.xyz = mul((half3x3)normalToWorld, surfaceDescription.NormalTS.xyz);
                 #else
@@ -1131,9 +1139,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceData.MAOSAlpha = half(surfaceDescription.MAOSAlpha * fadeFactor);
 				#endif
             }
-        
+
 			#define DECAL_PROJECTOR
-			#define DECAL_GBUFFER			
+			#define DECAL_GBUFFER
 
 			#if ((!defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_ALBEDO)) || (defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_NORMAL_BLEND))) && (defined(DECAL_SCREEN_SPACE) || defined(DECAL_GBUFFER))
 				#define DECAL_RECONSTRUCT_NORMAL
@@ -1166,7 +1174,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.viewDirectionWS = viewDirectionWS;
 
 				inputData.shadowCoord = float4(0, 0, 0, 0);
-			
+
 				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
 					inputData.fogCoord = float4(input.fogFactorAndVertexLight.x);
 					inputData.vertexLighting = half3(input.fogFactorAndVertexLight.yzw);
@@ -1244,11 +1252,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out FragmentOutput fragmentOutput
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
-				UNITY_SETUP_INSTANCE_ID(packedInput);	
+				UNITY_SETUP_INSTANCE_ID(packedInput);
 
 				half angleFadeFactor = 1.0;
 
@@ -1257,7 +1265,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#else
 					float depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, LoadSceneDepth(packedInput.positionCS.xy));
 				#endif
-			
+
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
 					#if defined(_DECAL_NORMAL_BLEND_HIGH)
 						half3 normalWS = half3(ReconstructNormalTap9(packedInput.positionCS.xy));
@@ -1281,12 +1289,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				clip(clipValue);
 
 				float2 texCoord = positionDS.xz + float2(0.5, 0.5);
-			
+
 				float4x4 normalToWorld = UNITY_ACCESS_INSTANCED_PROP(Decal, _NormalToWorld);
 				float2 scale = float2(normalToWorld[3][0], normalToWorld[3][1]);
 				float2 offset = float2(normalToWorld[3][2], normalToWorld[3][3]);
 				texCoord.xy = texCoord.xy * scale + offset;
-			
+
 				/*ase_local_var:uv0*/float2 texCoord0 = texCoord;
 				/*ase_local_var:uv1*/float2 texCoord1 = texCoord;
 				/*ase_local_var:uv2*/float2 texCoord2 = texCoord;
@@ -1321,7 +1329,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceDescription.Smoothness = /*ase_frag_out:Smoothness;Float;6;-1;_Smoothness*/0.5/*end*/;
 					surfaceDescription.MAOSAlpha = /*ase_frag_out:MAOS Alpha;Float;7;-1;_MAOSAlpha*/1/*end*/;
 				#endif
-				
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceDescription.Emission = /*ase_frag_out:Emission;Float;8;-1;_Emission*/float3(0, 0, 0)/*end*/;
 				#endif
@@ -1364,39 +1372,35 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "DBufferMesh"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DBufferMesh"
             }
-        
-			ZWrite Off
-			ZTest Greater
 
 			Blend 0 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
 			Blend 1 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
 			Blend 2 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 3 Zero OneMinusSrcColor
-
+			ZTest LEqual
+			ZWrite Off
 			ColorMask RGBA
 			ColorMask RGBA 1
 			ColorMask RGBA 2
-			ColorMask RGBA 3
-        
+
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
-        
-			#pragma multi_compile _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
+			#pragma multi_compile_instancing
+			#pragma editor_sync_compilation
+
+			#pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
 
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-        
+
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
@@ -1406,11 +1410,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_NORMAL_WS
             #define VARYINGS_NEED_TANGENT_WS
             #define VARYINGS_NEED_TEXCOORD0
-            
-            #define HAVE_MESH_MODIFICATION        
-        
-            #define SHADERPASS SHADERPASS_DBUFFER_MESH        
-        
+
+            #define HAVE_MESH_MODIFICATION
+
+            #define SHADERPASS SHADERPASS_DBUFFER_MESH
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -1459,7 +1467,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -1480,49 +1488,49 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				int _ObjectId;
 				int _PassValue;
             #endif
-	
+
 			/*ase_globals*/
-	
+
 			/*ase_funcs*/
-        
+
             uint2 ComputeFadeMaskSeed(uint2 positionCS)
             {
                 uint2 fadeMaskSeed;
                 fadeMaskSeed = positionCS;
                 return fadeMaskSeed;
             }
-        
+
             void GetSurfaceData(PackedVaryings input, SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionCS, float angleFadeFactor, out DecalSurfaceData surfaceData)
             {
                 #ifdef LOD_FADE_CROSSFADE
                     LODDitheringTransition(ComputeFadeMaskSeed(positionCS), unity_LODFade.x);
                 #endif
-        
+
                 half fadeFactor = half(1.0);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 #if defined(_MATERIAL_AFFECTS_NORMAL)
                     float sgn = input.tangentWS.w;
                     float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
                     half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
-        
+
                     surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
                 #else
                     surfaceData.normalWS.xyz = half3(input.normalWS);
-                #endif                
-        
+                #endif
+
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
 
 				#if defined( _MATERIAL_AFFECTS_MAOS )
@@ -1532,9 +1540,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceData.MAOSAlpha = half(surfaceDescription.MAOSAlpha * fadeFactor);
 				#endif
             }
-       
+
 			#define DECAL_MESH
-			#define DECAL_DBUFFER			
+			#define DECAL_DBUFFER
 
 			#if ((!defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_ALBEDO)) || (defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_NORMAL_BLEND))) && (defined(DECAL_SCREEN_SPACE) || defined(DECAL_GBUFFER))
 				#define DECAL_RECONSTRUCT_NORMAL
@@ -1588,7 +1596,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				float3 normalWS = TransformObjectToWorldNormal(inputMesh.normalOS);
 				float4 tangentWS = float4(TransformObjectToWorldDir(inputMesh.tangentOS.xyz), inputMesh.tangentOS.w);
-		
+
 				packedOutput.positionWS.xyz =  positionWS;
 				packedOutput.normalWS.xyz =  normalWS;
 				packedOutput.tangentWS.xyzw =  tangentWS;
@@ -1605,12 +1613,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				OUTPUT_DBUFFER(outDBuffer)
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
 				UNITY_SETUP_INSTANCE_ID(packedInput);
-				
+
 				half angleFadeFactor = 1.0;
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
@@ -1627,7 +1635,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				float2 positionCS = packedInput.positionCS.xy * _ScreenSize.zw;
 				float3 positionWS = packedInput.positionWS.xyz;
-				half3 viewDirectionWS = half3(1.0, 1.0, 1.0); 
+				half3 viewDirectionWS = half3(1.0, 1.0, 1.0);
 				DecalSurfaceData surfaceData;
 
 				SurfaceDescription surfaceDescription;
@@ -1655,26 +1663,28 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "DecalMeshForwardEmissive"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalMeshForwardEmissive"
             }
 
-            Blend 0 SrcAlpha One
+			Blend 0 SrcAlpha One
 			ZTest LEqual
 			ZWrite Off
 
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
-        
+			#pragma multi_compile_instancing
+			#pragma editor_sync_compilation
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-        
+
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
@@ -1684,11 +1694,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_NORMAL_WS
             #define VARYINGS_NEED_TANGENT_WS
             #define VARYINGS_NEED_TEXCOORD0
-            
-            #define HAVE_MESH_MODIFICATION        
-        
+
+            #define HAVE_MESH_MODIFICATION
+
             #define SHADERPASS SHADERPASS_FORWARD_EMISSIVE_MESH
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -1764,39 +1778,39 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			/*ase_globals*/
 
 			/*ase_funcs*/
-       
+
             uint2 ComputeFadeMaskSeed(uint2 positionCS)
             {
                 uint2 fadeMaskSeed;
                 fadeMaskSeed = positionCS;
                 return fadeMaskSeed;
             }
-        
+
             void GetSurfaceData(SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionCS, float angleFadeFactor, out DecalSurfaceData surfaceData)
             {
                 #ifdef LOD_FADE_CROSSFADE
                     LODDitheringTransition(ComputeFadeMaskSeed(positionCS), unity_LODFade.x);
                 #endif
-        
+
                 half fadeFactor = half(1.0);
 
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
-        
+
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
 
 				#if defined( _MATERIAL_AFFECTS_MAOS )
@@ -1806,7 +1820,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceData.MAOSAlpha = half(surfaceDescription.MAOSAlpha * fadeFactor);
 				#endif
             }
-        
+
 			#define DECAL_MESH
 			#define DECAL_FORWARD_EMISSIVE
 
@@ -1848,7 +1862,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					float3 viewDirectionOS = GetObjectSpaceNormalizeViewDir(inputMesh.positionOS);
 					inputMesh.positionOS += viewDirectionOS * (_DecalMeshViewBias);
 				}
-				
+
 				PackedVaryings packedOutput;
 				ZERO_INITIALIZE(PackedVaryings, packedOutput);
 
@@ -1881,12 +1895,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out half4 outEmissive : SV_Target0
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
 				UNITY_SETUP_INSTANCE_ID(packedInput);
-				
+
 				half angleFadeFactor = 1.0;
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
@@ -1903,9 +1917,9 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				float2 positionCS = packedInput.positionCS.xy * _ScreenSize.zw;
 				float3 positionWS = packedInput.positionWS.xyz;
-			
+
 				half3 viewDirectionWS = half3(1.0, 1.0, 1.0);
-			
+
 				DecalSurfaceData surfaceData;
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
@@ -1929,7 +1943,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#endif
 
 				GetSurfaceData(surfaceDescription, viewDirectionWS, (uint2)positionCS, angleFadeFactor, surfaceData);
-			
+
 				outEmissive.rgb = surfaceData.emissive;
 				outEmissive.a = surfaceData.baseColor.a;
 			}
@@ -1938,44 +1952,41 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "DecalScreenSpaceMesh"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalScreenSpaceMesh"
             }
-        
-            Blend SrcAlpha OneMinusSrcAlpha
+
+			Blend SrcAlpha OneMinusSrcAlpha
 			ZTest LEqual
 			ZWrite Off
-        
+
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
-
+			#pragma multi_compile_instancing
 			#pragma multi_compile_fog
-        
-            #pragma multi_compile _ LIGHTMAP_ON
+			#pragma editor_sync_compilation
+
+			#pragma multi_compile _ LIGHTMAP_ON
 			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
 			#pragma multi_compile _ DIRLIGHTMAP_COMBINED
 			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 			#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
-			#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
-			#pragma multi_compile _ _SHADOWS_SOFT
-
+			#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
+			#pragma multi_compile_fragment _ _SHADOWS_SOFT
 			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
 			#pragma multi_compile _ SHADOWS_SHADOWMASK
 			#pragma multi_compile _ _CLUSTERED_RENDERING
-
 			#pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
 
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-        
+
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
@@ -1990,11 +2001,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_SH
             #define VARYINGS_NEED_STATIC_LIGHTMAP_UV
             #define VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV
-            
-            #define HAVE_MESH_MODIFICATION        
-        
+
+            #define HAVE_MESH_MODIFICATION
+
             #define SHADERPASS SHADERPASS_DECAL_SCREEN_SPACE_MESH
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -2048,7 +2063,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -2073,32 +2088,32 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			/*ase_globals*/
 
 			/*ase_funcs*/
-			
+
             uint2 ComputeFadeMaskSeed(uint2 positionCS)
             {
                 uint2 fadeMaskSeed;
                 fadeMaskSeed = positionCS;
                 return fadeMaskSeed;
             }
-        
+
             void GetSurfaceData( PackedVaryings input, SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionCS, float angleFadeFactor, out DecalSurfaceData surfaceData)
             {
                 #ifdef LOD_FADE_CROSSFADE
                     LODDitheringTransition(ComputeFadeMaskSeed(positionCS), unity_LODFade.x);
                 #endif
-        
+
                 half fadeFactor = half(1.0);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
@@ -2110,12 +2125,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
                     float sgn = input.tangentWS.w;
                     float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
                     half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
-        
+
                     surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
                 #else
                     surfaceData.normalWS.xyz = half3(input.normalWS);
-                #endif                
-        
+                #endif
+
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
 
 				#if defined( _MATERIAL_AFFECTS_MAOS )
@@ -2125,7 +2140,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceData.MAOSAlpha = half(surfaceDescription.MAOSAlpha * fadeFactor);
 				#endif
             }
-        
+
 
 			#define DECAL_MESH
 			#define DECAL_SCREEN_SPACE
@@ -2169,7 +2184,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				inputData.normalWS = normalWS;
 				inputData.viewDirectionWS = viewDirectionWS;
 
-				inputData.shadowCoord = float4(0, 0, 0, 0);			
+				inputData.shadowCoord = float4(0, 0, 0, 0);
 
 				#ifdef VARYINGS_NEED_FOG_AND_VERTEX_LIGHT
 					inputData.fogCoord = half(input.fogFactorAndVertexLight.x);
@@ -2220,7 +2235,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					float3 viewDirectionOS = GetObjectSpaceNormalizeViewDir(inputMesh.positionOS);
 					inputMesh.positionOS += viewDirectionOS * (_DecalMeshViewBias);
 				}
-				
+
 				PackedVaryings packedOutput;
 				ZERO_INITIALIZE(PackedVaryings, packedOutput);
 
@@ -2267,18 +2282,18 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				#if !defined(LIGHTMAP_ON)
 					packedOutput.sh = float3(SampleSHVertex(half3(normalWS)));
 				#endif
-				
+
 				return packedOutput;
 			}
 
 			void Frag(PackedVaryings packedInput,
 						out half4 outColor : SV_Target0
-						/*ase_frag_input*/ 
+						/*ase_frag_input*/
 					)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
 				UNITY_SETUP_INSTANCE_ID(packedInput);
-			
+
 				half angleFadeFactor = 1.0;
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
@@ -2334,58 +2349,51 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				half4 color = UniversalFragmentPBR(inputData, surface);
 				color.rgb = MixFog(color.rgb, inputData.fogCoord);
 				outColor = color;
-			}        
+			}
             ENDHLSL
         }
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "DecalGBufferMesh"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "DecalGBufferMesh"
             }
-        
+
+			Blend 0 SrcAlpha OneMinusSrcAlpha
+			Blend 1 SrcAlpha OneMinusSrcAlpha
+			Blend 2 SrcAlpha OneMinusSrcAlpha
+			Blend 3 SrcAlpha OneMinusSrcAlpha
 			ZWrite Off
-			ZTest Greater
-
-			Blend 0 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 1 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 2 SrcAlpha OneMinusSrcAlpha, Zero OneMinusSrcAlpha
-			Blend 3 Zero OneMinusSrcColor
-
-			ColorMask RGBA
-			ColorMask RGBA 1
-			ColorMask RGBA 2
-			ColorMask RGBA 3
+			ColorMask RGB
+			ColorMask 0 1
+			ColorMask RGB 2
+			ColorMask RGB 3
 
 			HLSLPROGRAM
-        
+
 			#pragma vertex Vert
 			#pragma fragment Frag
+			#pragma multi_compile_instancing
 			#pragma multi_compile_fog
+			#pragma editor_sync_compilation
 
-			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
-			#pragma multi_compile _ _SHADOWS_SOFT
-            #pragma multi_compile _ LIGHTMAP_ON
+			#pragma multi_compile _ LIGHTMAP_ON
 			#pragma multi_compile _ DYNAMICLIGHTMAP_ON
 			#pragma multi_compile _ DIRLIGHTMAP_COMBINED
-
+			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+			#pragma multi_compile_fragment _ _SHADOWS_SOFT
 			#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
 			#pragma multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE
+			#pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
+			#pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT
 
-            #pragma multi_compile _DECAL_NORMAL_BLEND_LOW _DECAL_NORMAL_BLEND_MEDIUM _DECAL_NORMAL_BLEND_HIGH
-			#pragma multi_compile _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-			#pragma multi_compile_fragment DECALS_3RT DECALS_4RT
-			#pragma multi_compile_fragment _ DECAL_SURFACE_GRADIENT
-
-            #pragma multi_compile _ _GBUFFER_NORMALS_OCT
-        
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
-        
+
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define ATTRIBUTES_NEED_TEXCOORD0
@@ -2400,11 +2408,15 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
             #define VARYINGS_NEED_SH
             #define VARYINGS_NEED_STATIC_LIGHTMAP_UV
             #define VARYINGS_NEED_DYNAMIC_LIGHTMAP_UV
-            
+
             #define HAVE_MESH_MODIFICATION
-        
+
             #define SHADERPASS SHADERPASS_DECAL_GBUFFER_MESH
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -2417,7 +2429,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderVariablesDecal.hlsl"
 
 			/*ase_pragma*/
-            
+
 			struct SurfaceDescription
 			{
 				float3 BaseColor;
@@ -2459,7 +2471,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -2484,49 +2496,49 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			/*ase_globals*/
 
 			/*ase_funcs*/
-			
+
             uint2 ComputeFadeMaskSeed(uint2 positionCS)
             {
                 uint2 fadeMaskSeed;
                 fadeMaskSeed = positionCS;
                 return fadeMaskSeed;
             }
-        
+
             void GetSurfaceData(PackedVaryings input, SurfaceDescription surfaceDescription, half3 viewDirectioWS, uint2 positionCS, float angleFadeFactor, out DecalSurfaceData surfaceData)
-            {                
+            {
 				#ifdef LOD_FADE_CROSSFADE
                     LODDitheringTransition(ComputeFadeMaskSeed(positionCS), unity_LODFade.x);
                 #endif
 
                 half fadeFactor = half(1.0);
-        
+
                 ZERO_INITIALIZE(DecalSurfaceData, surfaceData);
                 surfaceData.occlusion = half(1.0);
                 surfaceData.smoothness = half(0);
-        
+
                 #ifdef _MATERIAL_AFFECTS_NORMAL
                     surfaceData.normalWS.w = half(1.0);
                 #else
                     surfaceData.normalWS.w = half(0.0);
                 #endif
-        
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceData.emissive.rgb = half3(surfaceDescription.Emission.rgb * fadeFactor);
 				#endif
 
                 surfaceData.baseColor.xyz = half3(surfaceDescription.BaseColor);
                 surfaceData.baseColor.w = half(surfaceDescription.Alpha * fadeFactor);
-        
+
                 #if defined(_MATERIAL_AFFECTS_NORMAL)
                     float sgn = input.tangentWS.w;
                     float3 bitangent = sgn * cross(input.normalWS.xyz, input.tangentWS.xyz);
                     half3x3 tangentToWorld = half3x3(input.tangentWS.xyz, bitangent.xyz, input.normalWS.xyz);
-        
+
                     surfaceData.normalWS.xyz = normalize(TransformTangentToWorld(surfaceDescription.NormalTS, tangentToWorld));
                 #else
                     surfaceData.normalWS.xyz = half3(input.normalWS);
-                #endif                
-        
+                #endif
+
                 surfaceData.normalWS.w = surfaceDescription.NormalAlpha * fadeFactor;
 
 				#if defined( _MATERIAL_AFFECTS_MAOS )
@@ -2539,7 +2551,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			#define DECAL_MESH
 			#define DECAL_GBUFFER
-			
+
 			#if ((!defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_ALBEDO)) || (defined(_MATERIAL_AFFECTS_NORMAL) && defined(_MATERIAL_AFFECTS_NORMAL_BLEND))) && (defined(DECAL_SCREEN_SPACE) || defined(DECAL_GBUFFER))
 				#define DECAL_RECONSTRUCT_NORMAL
 			#elif defined(DECAL_ANGLE_FADE)
@@ -2682,12 +2694,12 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out FragmentOutput fragmentOutput
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(packedInput);
 				UNITY_SETUP_INSTANCE_ID(packedInput);
-				
+
 				half angleFadeFactor = 1.0;
 
 				#if defined(DECAL_RECONSTRUCT_NORMAL)
@@ -2704,11 +2716,11 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				float2 positionCS = packedInput.positionCS.xy * _ScreenSize.zw;
 				float3 positionWS = packedInput.positionWS.xyz;
-			
+
 				half3 viewDirectionWS = half3(packedInput.viewDirectionWS);
 
 				DecalSurfaceData surfaceData;
-				
+
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
 				/*ase_frag_code:packedInput=PackedVaryings*/
@@ -2724,7 +2736,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 					surfaceDescription.Smoothness = /*ase_frag_out:Smoothness;Float;6;-1;_Smoothness*/0.5/*end*/;
 					surfaceDescription.MAOSAlpha = /*ase_frag_out:MAOS Alpha;Float;7;-1;_ColorP*/1/*end*/;
 				#endif
-				
+
 				#if defined( _MATERIAL_AFFECTS_EMISSION )
 					surfaceDescription.Emission = /*ase_frag_out:Emission;Float3;8;-1;_Emission*/float3(0, 0, 0)/*end*/;
 				#endif
@@ -2739,7 +2751,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				BRDFData brdfData;
 				InitializeBRDFData(surface.albedo, surface.metallic, 0, surface.smoothness, surface.alpha, brdfData);
-				
+
 				#ifdef _MATERIAL_AFFECTS_ALBEDO
 					#ifdef DECAL_RECONSTRUCT_NORMAL
 						half3 normalGI = normalize(lerp(normalWS.xyz, surfaceData.normalWS.xyz, surfaceData.normalWS.w));
@@ -2760,7 +2772,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 				#if OUTPUT_SHADOWMASK
 					fragmentOutput.GBuffer4 = inputData.shadowMask;
-				#endif			
+				#endif
 			}
 
             ENDHLSL
@@ -2768,29 +2780,35 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 		/*ase_pass*/
         Pass
-        { 
+        {
             /*ase_hide_pass*/
 			Name "ScenePickingPass"
-            Tags 
-            { 
+            Tags
+            {
                 "LightMode" = "Picking"
             }
-        
+
             Cull Back
 
 			HLSLPROGRAM
-        
+
+			#pragma multi_compile_instancing
+			#pragma editor_sync_compilation
 			#pragma vertex Vert
 			#pragma fragment Frag
-        
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"        
-            
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
+
             #define HAVE_MESH_MODIFICATION
-        
+
             #define SHADERPASS SHADERPASS_DEPTHONLY
 			#define SCENEPICKINGPASS 1
-        
+
+			#ifdef SCENEPICKINGPASS
+			float4 _SelectionID;
+			#endif
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -2817,7 +2835,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
             CBUFFER_START(UnityPerMaterial)
 			float _DrawOrder;
 			float _DecalMeshBiasType;
@@ -2827,17 +2845,6 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 				float _DecalAngleFadeSupported;
 			#endif
 			CBUFFER_END
-
-			// Property used by ScenePickingPass
-            #ifdef SCENEPICKINGPASS
-				float4 _SelectionID;
-            #endif
-
-			// Properties used by SceneSelectionPass
-            #ifdef SCENESELECTIONPASS
-				int _ObjectId;
-				int _PassValue;
-            #endif
 
 			/*ase_globals*/
 
@@ -2869,14 +2876,14 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			{
 				PackedVaryings packedOutput;
 				ZERO_INITIALIZE(PackedVaryings, packedOutput);
-				
+
 				UNITY_SETUP_INSTANCE_ID(inputMesh);
 				UNITY_TRANSFER_INSTANCE_ID(inputMesh, packedOutput);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(packedOutput);
 
 				/*ase_vert_code:inputMesh=Attributes;packedOutput=PackedVaryings*/
 
-				float3 positionWS = TransformObjectToWorld(inputMesh.positionOS);				
+				float3 positionWS = TransformObjectToWorld(inputMesh.positionOS);
 				packedOutput.positionCS = TransformWorldToHClip(positionWS);
 
 				return packedOutput;
@@ -2884,7 +2891,7 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 
 			void Frag(PackedVaryings packedInput,
 				out float4 outColor : SV_Target0
-				/*ase_frag_input*/ 
+				/*ase_frag_input*/
 			)
 			{
 				/*ase_frag_code:packedInput=PackedVaryings*/
@@ -2896,6 +2903,6 @@ Shader  /*ase_name*/"Hidden/Universal/Decal"/*end*/
 			ENDHLSL
         }
     }
-    CustomEditor "UnityEditor.Rendering.Universal.DecalShaderGraphGUI"
+	CustomEditor "UnityEditor.Rendering.Universal.DecalShaderGraphGUI"
     FallBack "Hidden/Shader Graph/FallbackError"
 }
