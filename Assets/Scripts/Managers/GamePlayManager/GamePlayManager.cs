@@ -72,8 +72,6 @@ namespace JamOff.Scripts.Managers
             CommonUI = GetComponentInChildren<CommonUI>();
             PortalsManager = GetComponentInChildren<PortalsManager>();
             PoolSystem = GetComponentInChildren<PoolSystem>();
-
-
         }
 
 

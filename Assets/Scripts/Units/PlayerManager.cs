@@ -20,16 +20,6 @@ namespace LaceEmUp.Units
             attackLayerMask = LayerMask.GetMask("Enemy");
         }
 
-        private void OnEnable()
-        {
-            Player_OtherActions.OnMouse0 += onMouse0Callback;
-        }
-
-        private void OnDisable()
-        {
-            Player_OtherActions.OnMouse0 += onMouse0Callback;
-        }
-
         private void onMouse0Callback()
         {
             if (canAttack)
@@ -38,7 +28,7 @@ namespace LaceEmUp.Units
             }
         }
 
-        protected override void Attack()
+        public override void Attack()
         {
             base.Attack();
             StartCoroutine(doAttack());

@@ -350,6 +350,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 9162279647190085424, guid: b95e070dd3dee9946b540c2e125ff458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95e070dd3dee9946b540c2e125ff458, type: 3}
 --- !u!1001 &74206519
@@ -1342,11 +1347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 887498053625053283, guid: a42f0c1ac446a6d41811f823ea6a908c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 887498053625053295, guid: a42f0c1ac446a6d41811f823ea6a908c,
         type: 3}
       propertyPath: m_Name
@@ -1362,15 +1362,15 @@ PrefabInstance:
       propertyPath: currentCamera
       value: 
       objectReference: {fileID: 1833532890}
-    - target: {fileID: 5119943838766809563, guid: a42f0c1ac446a6d41811f823ea6a908c,
-        type: 3}
-      propertyPath: actualShoes
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7717220629419975453, guid: a42f0c1ac446a6d41811f823ea6a908c,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860307645656517778, guid: a42f0c1ac446a6d41811f823ea6a908c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a42f0c1ac446a6d41811f823ea6a908c, type: 3}
