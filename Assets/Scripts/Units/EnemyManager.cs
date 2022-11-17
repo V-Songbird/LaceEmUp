@@ -70,11 +70,6 @@ namespace LaceEmUp.Units
             Animator.SetFloat("movement_speed", Rigidbody.velocity.magnitude);
         }
 
-        protected override void Attack()
-        {
-            base.Attack();
-        }
-
         protected override void Die()
         {
             Destroy(gameObject);

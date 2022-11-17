@@ -15,8 +15,6 @@ public class Player_OtherActions : MonoBehaviour
 
     [SerializeField] float timeToChangeShoes;
     bool ChangingShoes = false;
-
-    public static System.Action OnMouse0;
     
     void Update()
     {
@@ -32,7 +30,6 @@ public class Player_OtherActions : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            OnMouse0?.Invoke();
             LeftClick();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -66,7 +63,7 @@ public class Player_OtherActions : MonoBehaviour
         {
 
             case ConstantsManager.ShoesTypes.None:
-
+                GamePlayManager.Instance.PlayerManager.Attack();
                 break;
 
             case ConstantsManager.ShoesTypes.MarioBross:

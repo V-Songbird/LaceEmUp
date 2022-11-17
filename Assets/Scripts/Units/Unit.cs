@@ -95,7 +95,7 @@ namespace LaceEmUp.Units
             Heal(healAmount);
         }
 
-        protected virtual void Attack()
+        public virtual void Attack()
         {
 
         }
