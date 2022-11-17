@@ -12,7 +12,7 @@ public class GroundChecker : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (player_MovementController.whatisGround == (player_MovementController.whatisGround | (1 << other.gameObject.layer)))
+        if (player_MovementController.whatIsGround == (player_MovementController.whatIsGround | (1 << other.gameObject.layer)))
         {
             player_MovementController.ResetJumps();
         }

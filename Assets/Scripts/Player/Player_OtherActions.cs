@@ -15,7 +15,9 @@ public class Player_OtherActions : MonoBehaviour
 
     [SerializeField] float timeToChangeShoes;
     bool ChangingShoes = false;
-    // Update is called once per frame
+
+    public static System.Action OnMouse0;
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -30,6 +32,7 @@ public class Player_OtherActions : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            OnMouse0?.Invoke();
             LeftClick();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -58,6 +61,7 @@ public class Player_OtherActions : MonoBehaviour
 
     void LeftClick()
     {
+        
         switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
         {
 

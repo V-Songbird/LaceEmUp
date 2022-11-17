@@ -1,27 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using JamOff.Scripts.Managers;
+using DG.Tweening;
 
 public class Player_MovementController : MonoBehaviour
 {
-    [SerializeField] float speedMovement;
+    [SerializeField] private LaceEmUp.Units.Unit player;
     [SerializeField] float jumpForce;
     float moveInput;
     bool facingRight = true;
 
-
-
     public bool isGrounded;
-    public LayerMask whatisGround;
+    public LayerMask whatIsGround;
     [SerializeField] int jumps;
     int resetJumps;
 
-    [HideInInspector] public Rigidbody playerRb;
-
     private void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
         resetJumps = jumps;
     }
 
@@ -35,13 +29,13 @@ public class Player_MovementController : MonoBehaviour
                 MakeJump();
             }
 
-            if (playerRb.velocity.y < 0)
+            if (player.Rigidbody.velocity.y < 0)
             {
-                playerRb.velocity += Vector3.up * Physics.gravity.y * 3f * Time.deltaTime;
+                player.Rigidbody.velocity += Vector3.up * Physics.gravity.y * 3f * Time.deltaTime;
             }
-            else if (playerRb.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (player.Rigidbody.velocity.y > 0 && !Input.GetButton("Jump"))
             {
-                playerRb.velocity += Vector3.up * Physics.gravity.y * 2f * Time.deltaTime;
+                player.Rigidbody.velocity += Vector3.up * Physics.gravity.y * 2f * Time.deltaTime;
             }
         }
     }
@@ -51,21 +45,19 @@ public class Player_MovementController : MonoBehaviour
         if (GamePlayManager.Instance.Player_CutActions.canMove)
         {
             moveInput = Input.GetAxis("Horizontal");
-            playerRb.velocity = new Vector2(moveInput * speedMovement, playerRb.velocity.y);
+            player.Rigidbody.velocity = new Vector2(moveInput * player.MovementSpeed, player.Rigidbody.velocity.y);
 
             if (moveInput != 0)
             {
                 GamePlayManager.Instance.Player_OtherActions.CancelAllActions();
             }
 
-            if (needToFlip())
+            if (needToFlip() && !player.IsDead)
             {
                 Flip();
             }
         }
-
     }
-
 
     void MakeJump()
     {
@@ -73,23 +65,22 @@ public class Player_MovementController : MonoBehaviour
         {
             GamePlayManager.Instance.Player_OtherActions.CancelAllActions();
             isGrounded = false;
-            playerRb.velocity = Vector3.up * jumpForce;
+            player.Rigidbody.velocity = Vector3.up * jumpForce;
             jumps--;
+
+            player.GFX.DOComplete();
+            player.GFX.DOPunchScale(Vector3.up * 0.25f, 0.15f);
         }
     }
 
     public void ResetJumps()
     {
+        player.GFX.DOComplete();
+        player.GFX.DOPunchScale(new Vector3(0.3f, -0.3f), 0.20f);
         isGrounded = true;
         jumps = resetJumps;
-        playerRb.mass = 1;
+        player.Rigidbody.mass = 1;
     }
-
-
-
-
-
-
 
     bool needToFlip()
     {
@@ -106,8 +97,8 @@ public class Player_MovementController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        float flipScaleX = facingRight ? 1 : -1;
+        player.GFX.DOComplete();
+        player.GFX.DOScaleX(flipScaleX, 0.25f);
     }
 }
