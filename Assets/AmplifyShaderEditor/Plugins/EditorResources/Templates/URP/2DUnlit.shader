@@ -34,10 +34,8 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 		Cull Off
 		HLSLINCLUDE
 		#pragma target 2.0
-		
 		#pragma prefer_hlslcc gles
-		#pragma exclude_renderers d3d11_9x
-
+		#pragma exclude_renderers d3d9 // ensure rendering platforms toggle list is visible
 		ENDHLSL
 
 		/*ase_pass*/
@@ -57,7 +55,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 			/*ase_stencil*/
 
 			HLSLPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -169,7 +167,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 					return debugColor;
 				}
 				#endif
-				
+
 				Color *= IN.color * _RendererColor;
 				return Color;
 			}
@@ -194,7 +192,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 			/*ase_stencil*/
 
 			HLSLPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -292,7 +290,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 					Color.a = lerp( Color.a, alpha.r, _EnableAlphaTexture );
 				#endif
 
-				
+
 				#if defined(DEBUG_DISPLAY)
 				SurfaceData2D surfaceData;
 				InitializeSurfaceData(Color.rgb, Color.a, surfaceData);
@@ -323,24 +321,22 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
             {
                 "LightMode" = "SceneSelectionPass"
             }
-        
+
             Cull Off
-        
+
             HLSLPROGRAM
-        
-            #pragma target 2.0
-			#pragma exclude_renderers d3d11_9x
+
 			#pragma vertex vert
 			#pragma fragment frag
-        
+
             #define _SURFACE_TYPE_TRANSPARENT 1
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define FEATURES_GRAPH_VERTEX
             #define SHADERPASS SHADERPASS_DEPTHONLY
 			#define SCENESELECTIONPASS 1
-        
-        
+
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -348,7 +344,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-        
+
 			/*ase_pragma*/
 
 			/*ase_globals*/
@@ -368,11 +364,11 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 				/*ase_interp(0,):sp=sp*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
-        
-            
+
+
             int _ObjectId;
             int _PassValue;
-            
+
 			/*ase_funcs*/
 
 			VertexOutput vert(VertexInput v /*ase_vert_input*/)
@@ -381,7 +377,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 				UNITY_SETUP_INSTANCE_ID(v);
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
-				
+
 				/*ase_vert_code:v=VertexInput;o=VertexOutput*/
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
@@ -398,7 +394,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(v.vertex.xyz);
 				float3 positionWS = TransformObjectToWorld(v.vertex);
 				o.clipPos = TransformWorldToHClip(positionWS);
-		
+
 				return o;
 			}
 
@@ -423,24 +419,22 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
             {
                 "LightMode" = "Picking"
             }
-        
+
             Cull Back
-        
+
             HLSLPROGRAM
-        
-            #pragma target 2.0
-			#pragma exclude_renderers d3d11_9x
+
 			#pragma vertex vert
 			#pragma fragment frag
-        
+
             #define _SURFACE_TYPE_TRANSPARENT 1
             #define ATTRIBUTES_NEED_NORMAL
             #define ATTRIBUTES_NEED_TANGENT
             #define FEATURES_GRAPH_VERTEX
             #define SHADERPASS SHADERPASS_DEPTHONLY
 			#define SCENEPICKINGPASS 1
-        
-        
+
+
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -448,7 +442,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-        
+
         	/*ase_pragma*/
 
 			/*ase_globals*/
@@ -468,9 +462,9 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 				/*ase_interp(0,):sp=sp*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
-        
+
             float4 _SelectionID;
-        
+
 			/*ase_funcs*/
 
 			VertexOutput vert(VertexInput v /*ase_vert_input*/ )
@@ -496,7 +490,7 @@ Shader /*ase_name*/ "Hidden/Universal/2D Unlit" /*end*/
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(v.vertex.xyz);
 				float3 positionWS = TransformObjectToWorld(v.vertex);
 				o.clipPos = TransformWorldToHClip(positionWS);
-		
+
 				return o;
 			}
 

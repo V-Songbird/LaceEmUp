@@ -56,12 +56,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			Option:  Refraction Model:None,Legacy:None
 				None,disable:HidePort:Forward:Refraction Index
 				None,disable:HidePort:Forward:Refraction Color
-				None,disable:RemoveDefine:_REFRACTION_ASE 1
+				None,disable:RemoveDefine:ASE_REFRACTION 1
 				None,disable:RemoveDefine:REQUIRE_OPAQUE_TEXTURE 1
 				None,disable:RemoveDefine:ASE_NEEDS_FRAG_SCREEN_POSITION
 				Legacy:ShowPort:Forward:Refraction Index
 				Legacy:ShowPort:Forward:Refraction Color
-				Legacy:SetDefine:_REFRACTION_ASE 1
+				Legacy:SetDefine:ASE_REFRACTION 1
 				Legacy:SetDefine:REQUIRE_OPAQUE_TEXTURE 1
 				Legacy:SetDefine:ASE_NEEDS_FRAG_SCREEN_POSITION
 			Option:  Blend:Alpha,Premultiply,Additive,Multiply:Alpha
@@ -97,10 +97,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				true:SetOption:Forward Only,1
 				true:ExcludePass:GBuffer
 				false,disable:IncludePass:GBuffer
-				false:RemoveDefine:_TRANSMISSION_ASE 1
+				false:RemoveDefine:ASE_TRANSMISSION 1
 				false:HidePort:Forward:Transmission
 				false:HideOption:  Transmission Shadow
-				true:SetDefine:_TRANSMISSION_ASE 1
+				true:SetDefine:ASE_TRANSMISSION 1
 				true:ShowPort:Forward:Transmission
 				true:ShowOption:  Transmission Shadow
 			Field:  Transmission Shadow:Float:0.5:0:1:_TransmissionShadow
@@ -111,7 +111,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				true:SetOption:Forward Only,1
 				true:ExcludePass:GBuffer
 				false,disable:IncludePass:GBuffer
-				false:RemoveDefine:_TRANSLUCENCY_ASE 1
+				false:RemoveDefine:ASE_TRANSLUCENCY 1
 				false:HidePort:Forward:Translucency
 				false:HideOption:  Translucency Strength
 				false:HideOption:  Normal Distortion
@@ -119,7 +119,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				false:HideOption:  Direct
 				false:HideOption:  Ambient
 				false:HideOption:  Shadow
-				true:SetDefine:_TRANSLUCENCY_ASE 1
+				true:SetDefine:ASE_TRANSLUCENCY 1
 				true:ShowPort:Forward:Translucency
 				true:ShowOption:  Translucency Strength
 				true:ShowOption:  Normal Distortion
@@ -165,16 +165,28 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				true:RemoveDefine:_RECEIVE_SHADOWS_OFF 1
 				false:SetDefine:_RECEIVE_SHADOWS_OFF 1
 			Option:GPU Instancing:false,true:true
-				true:SetDefine:pragma multi_compile_instancing
-				true:SetDefine:pragma instancing_options renderinglayer
-				false:RemoveDefine:pragma multi_compile_instancing
-				false:RemoveDefine:pragma instancing_options renderinglayer
+				true:SetDefine:Forward:pragma multi_compile_instancing
+				true:SetDefine:GBuffer:pragma multi_compile_instancing
+				true:SetDefine:ShadowCaster:pragma multi_compile_instancing
+				true:SetDefine:DepthOnly:pragma multi_compile_instancing
+				true:SetDefine:DepthNormals:pragma multi_compile_instancing
+				false:RemoveDefine:Forward:pragma multi_compile_instancing
+				false:RemoveDefine:GBuffer:pragma multi_compile_instancing
+				false:RemoveDefine:ShadowCaster:pragma multi_compile_instancing
+				false:RemoveDefine:DepthOnly:pragma multi_compile_instancing
+				false:RemoveDefine:DepthNormals:pragma multi_compile_instancing
+				true:SetDefine:Forward:pragma instancing_options renderinglayer
+				true:SetDefine:GBuffer:pragma instancing_options renderinglayer
+				false:RemoveDefine:Forward:pragma instancing_options renderinglayer
+				false:RemoveDefine:GBuffer:pragma instancing_options renderinglayer
 			Option:LOD CrossFade:false,true:true
 				true:SetDefine:pragma multi_compile _ LOD_FADE_CROSSFADE
 				false:RemoveDefine:pragma multi_compile _ LOD_FADE_CROSSFADE
 			Option:Built-in Fog:false,true:true
-				true:SetDefine:pragma multi_compile_fog
-				false:RemoveDefine:pragma multi_compile_fog
+				true:SetDefine:Forward:pragma multi_compile_fog
+				true:SetDefine:GBuffer:pragma multi_compile_fog
+				false:RemoveDefine:Forward:pragma multi_compile_fog
+				false:RemoveDefine:GBuffer:pragma multi_compile_fog
 				true:SetDefine:ASE_FOG 1
 				false:RemoveDefine:ASE_FOG 1
 			Option,_FinalColorxAlpha:Final Color x Alpha:true,false:false
@@ -190,16 +202,24 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				true:IncludePass:ExtraPrePass
 				false,disable:ExcludePass:ExtraPrePass
 			Option:DOTS Instancing:false,true:false
-				true:SetDefine:pragma multi_compile _ DOTS_INSTANCING_ON
-				false:RemoveDefine:pragma multi_compile _ DOTS_INSTANCING_ON
+				true:SetDefine:Forward:pragma multi_compile _ DOTS_INSTANCING_ON
+				true:SetDefine:GBuffer:pragma multi_compile _ DOTS_INSTANCING_ON
+				true:SetDefine:ShadowCaster:pragma multi_compile _ DOTS_INSTANCING_ON
+				true:SetDefine:DepthOnly:pragma multi_compile _ DOTS_INSTANCING_ON
+				true:SetDefine:DepthNormals:pragma multi_compile _ DOTS_INSTANCING_ON
+				false:RemoveDefine:Forward:pragma multi_compile _ DOTS_INSTANCING_ON
+				false:RemoveDefine:GBuffer:pragma multi_compile _ DOTS_INSTANCING_ON
+				false:RemoveDefine:ShadowCaster:pragma multi_compile _ DOTS_INSTANCING_ON
+				false:RemoveDefine:DepthOnly:pragma multi_compile _ DOTS_INSTANCING_ON
+				false:RemoveDefine:DepthNormals:pragma multi_compile _ DOTS_INSTANCING_ON
 			Option:Tessellation:false,true:false
-				true:SetDefine:TESSELLATION_ON 1
+				true:SetDefine:ASE_TESSELLATION 1
 				true:SetDefine:pragma require tessellation tessHW
 				true:SetDefine:pragma hull HullFunction
 				true:SetDefine:pragma domain DomainFunction
 				true:ShowOption:  Phong
 				true:ShowOption:  Type
-				false,disable:RemoveDefine:TESSELLATION_ON 1
+				false,disable:RemoveDefine:ASE_TESSELLATION 1
 				false,disable:RemoveDefine:pragma require tessellation tessHW
 				false,disable:RemoveDefine:pragma hull HullFunction
 				false,disable:RemoveDefine:pragma domain DomainFunction
@@ -285,7 +305,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			Port:Forward:Emission
 				On:SetDefine:_EMISSION
 			Port:Forward:Baked GI
-				On:SetDefine:_ASE_BAKEDGI 1
+				On:SetDefine:ASE_BAKEDGI 1
 			Port:Forward:Alpha Clip Threshold
 				On:SetDefine:_ALPHATEST_ON 1
 			Port:Forward:Alpha Clip Threshold Shadow
@@ -298,7 +318,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 		{
 			"RenderPipeline" = "UniversalPipeline"
 			"RenderType"="Opaque"
-			"Queue"="Geometry+0" 
+			"Queue"="Geometry+0"
 		}
 
 		Cull Back
@@ -310,11 +330,9 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 		/*ase_stencil*/
 
 		HLSLINCLUDE
-
 		#pragma target 4.5
-
 		#pragma prefer_hlslcc gles
-		#pragma exclude_renderers d3d11_9x
+		#pragma exclude_renderers d3d9 // ensure rendering platforms toggle list is visible
 
 		#ifndef ASE_TESS_FUNCS
 		#define ASE_TESS_FUNCS
@@ -322,7 +340,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 		{
 			return tessValue;
 		}
-		
+
 		float CalcDistanceTessFactor (float4 vertex, float minDist, float maxDist, float tess, float4x4 o2w, float3 cameraPos )
 		{
 			float3 wpos = mul(o2w,vertex).xyz;
@@ -417,7 +435,6 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			return tess;
 		}
 		#endif //ASE_TESS_FUNCS
-
 		ENDHLSL
 
 		/*ase_pass*/
@@ -425,7 +442,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 		{
 			Name "ExtraPrePass"
 			Tags{ }
-			
+
 			Blend One Zero
 			Cull Back
 			ZWrite On
@@ -473,10 +490,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -484,7 +501,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -557,7 +574,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -684,7 +701,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			/*ase_main_pass*/
 			Name "Forward"
 			Tags { "LightMode" = "UniversalForward" }
-		
+
 			Blend One Zero
 			ZWrite On
 			ZTest LEqual
@@ -736,7 +753,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#if defined(UNITY_INSTANCING_ENABLED) && defined(_TERRAIN_INSTANCED_PERPIXEL_NORMAL)
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
-			
+
 			/*ase_pragma*/
 
 			struct VertexInput
@@ -774,10 +791,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -785,7 +802,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -877,14 +894,14 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#endif
 
 				o.fogFactorAndVertexLight = half4(fogFactor, vertexLight);
-				
+
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					VertexPositionInputs vertexInput = (VertexPositionInputs)0;
 					vertexInput.positionWS = positionWS;
 					vertexInput.positionCS = positionCS;
 					o.shadowCoord = GetShadowCoord( vertexInput );
 				#endif
-				
+
 				o.clipPos = positionCS;
 
 				#if defined(ASE_NEEDS_FRAG_SCREEN_POSITION)
@@ -893,8 +910,8 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 
 				return o;
 			}
-			
-			#if defined(TESSELLATION_ON)
+
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -986,12 +1003,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#endif
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual  
+				#define ASE_SV_DEPTH SV_DepthLessEqual
 			#else
 				#define ASE_SV_DEPTH SV_Depth
 			#endif
 
-			half4 frag ( VertexOutput IN 
+			half4 frag ( VertexOutput IN
 						#ifdef ASE_DEPTH_WRITE_ON
 						,out float outputDepth : ASE_SV_DEPTH
 						#endif
@@ -1022,13 +1039,14 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#if defined(ASE_NEEDS_FRAG_SCREEN_POSITION)
 					/*ase_local_var:spu*/float4 ScreenPos = IN.screenPos;
 				#endif
+				/*ase_local_var:spn*/float2 NormalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.clipPos);
 
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					ShadowCoords = IN.shadowCoord;
 				#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
 					ShadowCoords = TransformWorldToShadowCoord( WorldPosition );
 				#endif
-	
+
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
 				/*ase_frag_code:IN=VertexOutput*/
@@ -1052,7 +1070,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#ifdef ASE_DEPTH_WRITE_ON
 					float DepthValue = /*ase_frag_out:Depth Value;Float;17;-1;_DepthValue*/0/*end*/;
 				#endif
-				
+
 				#ifdef _CLEARCOAT
 					float CoatMask = /*ase_frag_out:Coat Mask;Float;18;-1;_CoatMask*/0/*end*/;
 					float CoatSmoothness = /*ase_frag_out:Coat Smoothness;Float;19;-1;_DepthValue*/0/*end*/;
@@ -1104,11 +1122,11 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 					inputData.bakedGI = SAMPLE_GI(IN.lightmapUVOrVertexSH.xy, SH, inputData.normalWS);
 				#endif
 
-				#ifdef _ASE_BAKEDGI
+				#ifdef ASE_BAKEDGI
 					inputData.bakedGI = BakedGI;
 				#endif
 
-				inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.clipPos);
+				inputData.normalizedScreenSpaceUV = NormalizedScreenSpaceUV;
 				inputData.shadowMask = SAMPLE_SHADOWMASK(IN.lightmapUVOrVertexSH.xy);
 
 				#if defined(DEBUG_DISPLAY)
@@ -1145,7 +1163,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 
 				half4 color = UniversalFragmentPBR( inputData, surfaceData);
 
-				#ifdef _TRANSMISSION_ASE
+				#ifdef ASE_TRANSMISSION
 				{
 					float shadow = /*ase_inline_begin*/_TransmissionShadow/*ase_inline_end*/;
 
@@ -1170,7 +1188,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				}
 				#endif
 
-				#ifdef _TRANSLUCENCY_ASE
+				#ifdef ASE_TRANSLUCENCY
 				{
 					float shadow = /*ase_inline_begin*/_TransShadow/*ase_inline_end*/;
 					float normal = /*ase_inline_begin*/_TransNormal/*ase_inline_end*/;
@@ -1205,7 +1223,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				}
 				#endif
 
-				#ifdef _REFRACTION_ASE
+				#ifdef ASE_REFRACTION
 					float4 projScreenPos = ScreenPos / ScreenPos.w;
 					float3 refractionOffset = ( RefractionIndex - 1.0 ) * mul( UNITY_MATRIX_V, float4( WorldNormal,0 ) ).xyz * ( 1.0 - dot( WorldNormal, WorldViewDirection ) );
 					projScreenPos.xy += refractionOffset.xy;
@@ -1249,7 +1267,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			ColorMask 0
 
 			HLSLPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -1265,7 +1283,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-			
+
 			/*ase_pragma*/
 
 			struct VertexInput
@@ -1291,10 +1309,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -1302,7 +1320,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1395,7 +1413,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -1475,12 +1493,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#endif
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual  
+				#define ASE_SV_DEPTH SV_DepthLessEqual
 			#else
 				#define ASE_SV_DEPTH SV_Depth
 			#endif
 
-			half4 frag(	VertexOutput IN 
+			half4 frag(	VertexOutput IN
 						#ifdef ASE_DEPTH_WRITE_ON
 						,out float outputDepth : ASE_SV_DEPTH
 						#endif
@@ -1488,7 +1506,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			{
 				UNITY_SETUP_INSTANCE_ID( IN );
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX( IN );
-				
+
 				#if defined(ASE_NEEDS_FRAG_WORLD_POSITION)
 					/*ase_local_var:wp*/float3 WorldPosition = IN.worldPos;
 				#endif
@@ -1546,7 +1564,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			AlphaToMask Off
 
 			HLSLPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -1560,7 +1578,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-			
+
 			/*ase_pragma*/
 
 			struct VertexInput
@@ -1586,10 +1604,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -1597,7 +1615,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1672,7 +1690,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -1752,12 +1770,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#endif
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual  
+				#define ASE_SV_DEPTH SV_DepthLessEqual
 			#else
 				#define ASE_SV_DEPTH SV_Depth
 			#endif
 
-			half4 frag(	VertexOutput IN 
+			half4 frag(	VertexOutput IN
 						#ifdef ASE_DEPTH_WRITE_ON
 						,out float outputDepth : ASE_SV_DEPTH
 						#endif
@@ -1832,7 +1850,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-			
+
 			/*ase_pragma*/
 
 			struct VertexInput
@@ -1865,10 +1883,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -1876,7 +1894,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -1916,7 +1934,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
 				/*ase_vert_code:v=VertexInput;o=VertexOutput*/
-				
+
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
 				#else
@@ -1959,7 +1977,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -2067,7 +2085,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#endif
 
 				/*ase_frag_code:IN=VertexOutput*/
-				
+
 				float3 BaseColor = /*ase_frag_out:Base Color;Float3;0;-1;_BaseColor*/float3(0.5, 0.5, 0.5)/*end*/;
 				float3 Emission = /*ase_frag_out:Emission;Float3;1;-1;_Emission*/0/*end*/;
 				float Alpha = /*ase_frag_out:Alpha;Float;2;-1;_Alpha*/1/*end*/;
@@ -2084,7 +2102,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				//metaInput.VizUV = IN.VizUV.xy;
 				//metaInput.LightCoord = IN.LightCoord;
 				//#endif
-				
+
 				MetaInput metaInput = (MetaInput)0;
 				metaInput.Albedo = BaseColor;
 				metaInput.Emission = Emission;
@@ -2113,12 +2131,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			ColorMask RGBA
 
 			HLSLPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 
 			#define SHADERPASS SHADERPASS_2D
-        
+
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -2153,10 +2171,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -2164,7 +2182,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -2204,7 +2222,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
 				/*ase_vert_code:v=VertexInput;o=VertexOutput*/
-				
+
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = v.vertex.xyz;
 				#else
@@ -2240,7 +2258,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -2339,7 +2357,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#endif
 
 				/*ase_frag_code:IN=VertexOutput*/
-				
+
 				float3 BaseColor = /*ase_frag_out:Base Color;Float3;0;-1;_BaseColor*/float3(0.5, 0.5, 0.5)/*end*/;
 				float Alpha = /*ase_frag_out:Alpha;Float;1;-1;_Alpha*/1/*end*/;
 				float AlphaClipThreshold = /*ase_frag_out:Alpha Clip Threshold;Float;2;-1;_AlphaClip*/0.5/*end*/;
@@ -2382,7 +2400,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/TextureStack.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-			
+
 			/*ase_pragma*/
 
 			struct VertexInput
@@ -2411,10 +2429,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -2422,7 +2440,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -2501,7 +2519,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -2584,12 +2602,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#endif
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual  
+				#define ASE_SV_DEPTH SV_DepthLessEqual
 			#else
 				#define ASE_SV_DEPTH SV_Depth
 			#endif
 
-			half4 frag(	VertexOutput IN 
+			half4 frag(	VertexOutput IN
 						#ifdef ASE_DEPTH_WRITE_ON
 						,out float outputDepth : ASE_SV_DEPTH
 						#endif
@@ -2630,17 +2648,17 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#ifdef LOD_FADE_CROSSFADE
 					LODDitheringTransition( IN.clipPos.xyz, unity_LODFade.x );
 				#endif
-				
+
 				#ifdef ASE_DEPTH_WRITE_ON
 					outputDepth = DepthValue;
 				#endif
-				
+
 				#if defined(_GBUFFER_NORMALS_OCT)
 					float2 octNormalWS = PackNormalOctQuadEncode(WorldNormal);
 					float2 remappedOctNormalWS = saturate(octNormalWS * 0.5 + 0.5);
 					half3 packedNormalWS = PackFloat2To888(remappedOctNormalWS);
 					return half4(packedNormalWS, 0.0);
-				#else					
+				#else
 					#if defined(_NORMALMAP)
 						#if _NORMAL_DROPOFF_TS
 							float crossSign = (WorldTangent.w > 0.0 ? 1.0 : -1.0) * GetOddNegativeScale();
@@ -2666,7 +2684,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			/*ase_hide_pass:SyncP*/
 			Name "GBuffer"
 			Tags { "LightMode" = "UniversalGBuffer" }
-			
+
 			Blend One Zero
 			ZWrite On
 			ZTest LEqual
@@ -2751,10 +2769,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -2762,7 +2780,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -2845,14 +2863,14 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				half3 vertexLight = VertexLighting( positionWS, normalInput.normalWS );
 
 				o.fogFactorAndVertexLight = half4(0, vertexLight);
-				
+
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					VertexPositionInputs vertexInput = (VertexPositionInputs)0;
 					vertexInput.positionWS = positionWS;
 					vertexInput.positionCS = positionCS;
 					o.shadowCoord = GetShadowCoord( vertexInput );
 				#endif
-				
+
 					o.clipPos = positionCS;
 
 				#if defined(ASE_NEEDS_FRAG_SCREEN_POSITION)
@@ -2861,8 +2879,8 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 
 				return o;
 			}
-			
-			#if defined(TESSELLATION_ON)
+
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -2954,12 +2972,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#endif
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual  
+				#define ASE_SV_DEPTH SV_DepthLessEqual
 			#else
 				#define ASE_SV_DEPTH SV_Depth
 			#endif
 
-			FragmentOutput frag ( VertexOutput IN 
+			FragmentOutput frag ( VertexOutput IN
 								#ifdef ASE_DEPTH_WRITE_ON
 								,out float outputDepth : ASE_SV_DEPTH
 								#endif
@@ -2990,6 +3008,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#if defined(ASE_NEEDS_FRAG_SCREEN_POSITION)
 					/*ase_local_var:spu*/float4 ScreenPos = IN.screenPos;
 				#endif
+				/*ase_local_var:spn*/float2 NormalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.clipPos);
 
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					ShadowCoords = IN.shadowCoord;
@@ -2998,7 +3017,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				#else
 					ShadowCoords = float4(0, 0, 0, 0);
 				#endif
-	
+
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
 				/*ase_frag_code:IN=VertexOutput*/
@@ -3042,7 +3061,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 					#endif
 				#else
 					inputData.normalWS = WorldNormal;
-				#endif	
+				#endif
 
 				inputData.normalWS = NormalizeNormalPerPixel(inputData.normalWS);
 				inputData.viewDirectionWS = SafeNormalize( WorldViewDirection );
@@ -3053,9 +3072,9 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 					float3 SH = SampleSH(inputData.normalWS.xyz);
 				#else
 					float3 SH = IN.lightmapUVOrVertexSH.xyz;
-				#endif		
+				#endif
 
-				#ifdef _ASE_BAKEDGI
+				#ifdef ASE_BAKEDGI
 					inputData.bakedGI = BakedGI;
 				#else
 					#if defined(DYNAMICLIGHTMAP_ON)
@@ -3065,7 +3084,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 					#endif
 				#endif
 
-				inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.clipPos);
+				inputData.normalizedScreenSpaceUV = NormalizedScreenSpaceUV;
 				inputData.shadowMask = SAMPLE_SHADOWMASK(IN.lightmapUVOrVertexSH.xy);
 
 				#if defined(DEBUG_DISPLAY)
@@ -3098,15 +3117,15 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, inputData.shadowMask);
 				color.rgb = GlobalIllumination(brdfData, inputData.bakedGI, Occlusion, inputData.positionWS, inputData.normalWS, inputData.viewDirectionWS);
 				color.a = Alpha;
-	
+
 				#ifdef ASE_FINAL_COLOR_ALPHA_MULTIPLY
 					color.rgb *= color.a;
 				#endif
-				
+
 				#ifdef ASE_DEPTH_WRITE_ON
 					outputDepth = DepthValue;
 				#endif
-				
+
 				return BRDFDataToGbuffer(brdfData, inputData, Smoothness, Emission + color.rgb);
 			}
 
@@ -3119,12 +3138,11 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			/*ase_hide_pass*/
 			Name "SceneSelectionPass"
 			Tags { "LightMode" = "SceneSelectionPass" }
-        
+
 			Cull Off
 
 			HLSLPROGRAM
-        
-			#pragma only_renderers gles gles3 glcore d3d11
+
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -3160,12 +3178,12 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
-        
+
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -3173,7 +3191,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -3210,7 +3228,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float Alpha;
 				float AlphaClipThreshold;
 			};
-        
+
 			VertexOutput VertexFunction(VertexInput v /*ase_vert_input*/ )
 			{
 				VertexOutput o;
@@ -3245,7 +3263,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -3364,7 +3382,6 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 
 			HLSLPROGRAM
 
-			#pragma only_renderers gles gles3 glcore d3d11
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -3373,7 +3390,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			#define ATTRIBUTES_NEED_NORMAL
 			#define ATTRIBUTES_NEED_TANGENT
 			#define SHADERPASS SHADERPASS_DEPTHONLY
-			       
+
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Texture.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -3402,10 +3419,10 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			#ifdef _TRANSMISSION_ASE
+			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
-			#ifdef _TRANSLUCENCY_ASE
+			#ifdef ASE_TRANSLUCENCY
 				float _TransStrength;
 				float _TransNormal;
 				float _TransScattering;
@@ -3413,7 +3430,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float _TransAmbient;
 				float _TransShadow;
 			#endif
-			#ifdef TESSELLATION_ON
+			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
 				float _TessMin;
@@ -3450,7 +3467,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				float Alpha;
 				float AlphaClipThreshold;
 			};
-        
+
 			VertexOutput VertexFunction(VertexInput v /*ase_vert_input*/ )
 			{
 				VertexOutput o;
@@ -3484,7 +3501,7 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 				return o;
 			}
 
-			#if defined(TESSELLATION_ON)
+			#if defined(ASE_TESSELLATION)
 			struct VertexControl
 			{
 				float4 vertex : INTERNALTESSPOS;
@@ -3597,5 +3614,5 @@ Shader /*ase_name*/ "Hidden/Universal/Lit" /*end*/
 	}
 	/*ase_lod*/
 	CustomEditor "UnityEditor.ShaderGraphLitGUI"
-	FallBack "Hidden/InternalErrorShader"
+	FallBack "Hidden/Shader Graph/FallbackError"
 }
