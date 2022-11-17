@@ -11,6 +11,8 @@ public class Player_OtherActions : MonoBehaviour
     [SerializeField] GameObject BluePortal;
     [SerializeField] GameObject RedPortal;
 
+    [SerializeField] Transform BulletSpawn;
+
     [SerializeField] float timeToChangeShoes;
     bool ChangingShoes = false;
 
@@ -30,6 +32,7 @@ public class Player_OtherActions : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            OnMouse0?.Invoke();
             LeftClick();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -58,23 +61,22 @@ public class Player_OtherActions : MonoBehaviour
 
     void LeftClick()
     {
+        
+        switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
+        {
 
-        OnMouse0?.Invoke();
-        //switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
-        //{
+            case ConstantsManager.ShoesTypes.None:
 
-        //    case ConstantsManager.ShoesTypes.None:
-                
-        //        break;
+                break;
 
-        //    case ConstantsManager.ShoesTypes.MarioBross:
+            case ConstantsManager.ShoesTypes.MarioBross:
+                GamePlayManager.Instance.PoolSystem.SpawnFromPool("Pool.MaroShoots", BulletSpawn.position, Quaternion.identity, new Vector3(0.35f, 0.35f, 1));
+                break;
 
-        //        break;
-
-        //    case ConstantsManager.ShoesTypes.Portal:
-        //        GamePlayManager.Instance.PortalsManager.MakePortal(true);
-        //        break;
-        //}
+            case ConstantsManager.ShoesTypes.Portal:
+                GamePlayManager.Instance.PortalsManager.MakePortal(true);
+                break;
+        }
     }
 
     void RightClick()
