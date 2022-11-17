@@ -11,6 +11,8 @@ public class Player_OtherActions : MonoBehaviour
     [SerializeField] GameObject BluePortal;
     [SerializeField] GameObject RedPortal;
 
+    [SerializeField] Transform BulletSpawn;
+
     [SerializeField] float timeToChangeShoes;
     bool ChangingShoes = false;
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class Player_OtherActions : MonoBehaviour
                 break;
 
             case ConstantsManager.ShoesTypes.MarioBross:
-
+                GamePlayManager.Instance.PoolSystem.SpawnFromPool("Pool.MaroShoots", BulletSpawn.position, Quaternion.identity, new Vector3(0.35f, 0.35f, 1));
                 break;
 
             case ConstantsManager.ShoesTypes.Portal:

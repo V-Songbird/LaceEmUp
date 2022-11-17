@@ -26,6 +26,10 @@ namespace JamOff.Scripts.Managers
 
         [HideInInspector] public PortalsManager PortalsManager;
 
+        //Others
+
+        [HideInInspector] public PoolSystem PoolSystem;
+
 
         #endregion
 
@@ -67,6 +71,7 @@ namespace JamOff.Scripts.Managers
             AdditiveScenesControl = GetComponentInChildren<AdditiveScenesControl>();
             CommonUI = GetComponentInChildren<CommonUI>();
             PortalsManager = GetComponentInChildren<PortalsManager>();
+            PoolSystem = GetComponentInChildren<PoolSystem>();
 
 
         }
