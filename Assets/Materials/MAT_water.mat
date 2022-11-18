@@ -10,10 +10,11 @@ Material:
   m_Name: MAT_water
   m_Shader: {fileID: 4800000, guid: 21ec47f2ba2f0d043ad030773a1361a2, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_InvalidKeywords:
+  - _ENABLETRANSPARENCY_ON
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -46,16 +47,16 @@ Material:
     - _CausticsQuantity: 0.5
     - _CausticsScale: 50
     - _CausticsSpeed: 0.581
-    - _Depth: 1.39
+    - _Depth: 6.03
     - _EdgeLength: 15
-    - _EnableTransparency: 0
+    - _EnableTransparency: 1
     - _EnvironmentReflections: 1
     - _Float3: 4.04
     - _FoamQuantity: 0.5
     - _FoamScale: 100
-    - _FoamWidth: 1
-    - _MidPoint: 0.183
-    - _NormalStrength: 0.05
+    - _FoamWidth: 0.61
+    - _MidPoint: 0.22
+    - _NormalStrength: 0.111
     - _Opacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -63,21 +64,22 @@ Material:
     - _RefractionIndex: 0.114
     - _RefractionStrenght: 2.08
     - _RefractionStrength: 1.5
-    - _Smoothness: 0.79
+    - _Smoothness: 0.851
     - _SpecularHighlights: 1
     - _TessPhongStrength: 0.5
     - _TessValue: 15
     - _ToggleSwitch0: 0
-    - _WaveIntensity: 0.5
+    - _WaterTiling: 0.05
+    - _WaveIntensity: 0
     - _WaveSpeed: 100
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0.35604307, g: 0.47586215, b: 0.5943396, a: 1}
-    - _CausticsColor: {r: 0.7783019, g: 0.94791317, b: 1, a: 1}
+    - _BottomColor: {r: 0.10746703, g: 0.15141669, b: 0.19811317, a: 1}
+    - _CausticsColor: {r: 0.4199893, g: 0.582111, b: 0.62264144, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 0.8443396, g: 0.9533081, b: 1, a: 1}
+    - _FoamColor: {r: 0.6269579, g: 0.6886792, b: 0.6821294, a: 0.45490196}
     - _MidColor: {r: 0.17866677, g: 0.22435117, b: 0.51886785, a: 1}
-    - _MiddleColor: {r: 0, g: 0.93149924, b: 1, a: 1}
+    - _MiddleColor: {r: 0.49603945, g: 0.6350569, b: 0.6698113, a: 1}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
     - _WaveDirection: {r: 1, g: 1, b: 0, a: 0}
     - _WaveTiling: {r: 1, g: 1, b: 0, a: 0}
