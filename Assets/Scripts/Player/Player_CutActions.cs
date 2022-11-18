@@ -10,7 +10,7 @@ public class Player_CutActions : MonoBehaviour
     public void BlockMovement()
     {
         canMove = false;
-        GamePlayManager.Instance.Player_MovementController.playerRb.velocity = Vector3.zero;
+        GamePlayManager.Instance.PlayerManager.Rigidbody.velocity = Vector3.zero;
     }
 
     public void GetBackMovement()
@@ -22,12 +22,12 @@ public class Player_CutActions : MonoBehaviour
     {
         BlockMovement();
         GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = false;
-        GamePlayManager.Instance.Player.GetComponent<Rigidbody>().useGravity = false;
+        GamePlayManager.Instance.PlayerManager.Rigidbody.useGravity = false;
     }
     public void GetBackPhysicsAndMovement()
     {
         GetBackMovement();
         GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = true;
-        GamePlayManager.Instance.Player.GetComponent<Rigidbody>().useGravity = true;
+        GamePlayManager.Instance.PlayerManager.Rigidbody.useGravity = true;
     }
 }

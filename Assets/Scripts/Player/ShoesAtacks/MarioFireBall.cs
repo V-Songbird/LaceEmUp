@@ -22,7 +22,7 @@ public class MarioFireBall : ObjPooled
 
     private void OnCollisionEnter(Collision other)
     {
-        if (GamePlayManager.Instance.Player_MovementController.whatisGround == (GamePlayManager.Instance.Player_MovementController.whatisGround | (1 << other.gameObject.layer)))
+        if (GamePlayManager.Instance.Player_MovementController.whatIsGround == (GamePlayManager.Instance.Player_MovementController.whatIsGround | (1 << other.gameObject.layer)))
         {
             CheckForDisable();
         }

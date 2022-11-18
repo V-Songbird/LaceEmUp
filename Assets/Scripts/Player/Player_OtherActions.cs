@@ -15,7 +15,7 @@ public class Player_OtherActions : MonoBehaviour
 
     [SerializeField] float timeToChangeShoes;
     bool ChangingShoes = false;
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -58,11 +58,12 @@ public class Player_OtherActions : MonoBehaviour
 
     void LeftClick()
     {
+        
         switch (GamePlayManager.Instance.Player_Inventory.actualShoes)
         {
 
             case ConstantsManager.ShoesTypes.None:
-
+                GamePlayManager.Instance.PlayerManager.Attack();
                 break;
 
             case ConstantsManager.ShoesTypes.MarioBross:
