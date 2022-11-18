@@ -11,9 +11,9 @@ Material:
   m_Shader: {fileID: 4800000, guid: 51d54378e34105648b27c7796ce45c9e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -21,7 +21,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _FoliageTexture:
-        m_Texture: {fileID: 2800000, guid: 23b8596f8376e984495b927401b89138, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f10547068fa55841a1775b0ac0721ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SDF:
+        m_Texture: {fileID: 2800000, guid: 2357cc4b41bf4db489e9123c652ba518, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindNoise:
@@ -47,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _AlphaThreshold: 0.707
+    - _AlphaThreshold: 0.831
     - _EnvironmentReflections: 1
     - _FluffyScale: 0.39
     - _NoiseScale: 1
@@ -56,12 +64,12 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SSSSize: 0.042
-    - _Smoothness: 0
+    - _Smoothness: 0.2
     - _SpecularHighlights: 1
     m_Colors:
-    - _AlbedoTint: {r: 1, g: 0.97208744, b: 0.015686274, a: 0}
+    - _AlbedoTint: {r: 1, g: 0.9351388, b: 0.015686274, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SSSColor: {r: 0.46165642, g: 0.5568628, b: 0.074509814, a: 1}
+    - _SSSColor: {r: 0.46165633, g: 0.5568628, b: 0.07450975, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _m: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

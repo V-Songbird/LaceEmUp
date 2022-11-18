@@ -16,7 +16,7 @@ MonoBehaviour:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
   - Assets/Models/Environment/bush02.fbx
   - Assets/Models/Environment/bush01.fbx
-  modifiedAssetPaddingHash: aaf8cc2ea35031ee0cf43a06
+  modifiedAssetPaddingHash: aaf8cc2ea35031eeea37ed04
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -405,7 +405,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - bush01
-    padding: 5a000000
+    padding: 7e000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -417,7 +417,15 @@ MonoBehaviour:
   - Assets/Models/Cave/rock01.fbx
   - Assets/Models/Cave/rockArc.fbx
   - Assets/Models/Cave/cave_block_4x2x3_b.fbx
-  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000000000000000000000000000
+  - Assets/Models/Cave/rock_pillar.fbx
+  - Assets/Models/Cave/big_rock_1.fbx
+  - Assets/Models/Cave/big_rock_2.fbx
+  - Assets/Models/Cave/medium_rock_1.fbx
+  - Assets/Models/Cave/big_rock_3.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_1.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
+  - Assets/Models/Cave/cave_block_2x2x3.fbx
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3060
@@ -503,5 +511,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 5a000000
+  modifiedMeshPaddingArray: 7e000000
   modifiedMeshUnwrapperArray: 00000000

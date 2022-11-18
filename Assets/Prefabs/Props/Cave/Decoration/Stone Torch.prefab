@@ -4860,7 +4860,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 5
-  m_Range: 5
+  m_Range: 6
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -4923,7 +4923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 0
+  m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -4961,11 +4961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UID: -1253837753
+  UID: -869268197
   color: {r: 1, g: 1, b: 1, a: 1}
   intensity: 5
   shadowSpread: 0.05
-  cutoff: 5
+  cutoff: 6
   realisticFalloff: 1
   samples: 8
   projMode: 0
@@ -4976,8 +4976,8 @@ MonoBehaviour:
   iesFile: {fileID: 0}
   bitmask: 1
   bakeToIndirect: 0
-  shadowmask: 0
-  indirectIntensity: 0
+  shadowmask: 1
+  indirectIntensity: 1
   falloffMinRadius: 0.01
   shadowmaskGroupID: 0
   directionMode: 0

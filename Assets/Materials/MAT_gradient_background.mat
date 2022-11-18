@@ -43,8 +43,8 @@ Material:
     - _ReceiveShadows: 1
     - _SpecularHighlights: 1
     m_Colors:
-    - _BottomColor: {r: 0.37894583, g: 0, b: 1, a: 0.03529412}
+    - _BottomColor: {r: 0.3789458, g: 0, b: 1, a: 0.03529412}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MiddleColor: {r: 0.5377358, g: 0.3735849, b: 0, a: 0.03529412}
-    - _TopColor: {r: 0, g: 0.5943396, b: 0.4148724, a: 0.007843138}
+    - _MiddleColor: {r: 0.53773576, g: 0.37358487, b: 0, a: 0.03529412}
+    - _TopColor: {r: 0, g: 0.5943396, b: 0.41487238, a: 0.007843138}
   m_BuildTextureStacks: []

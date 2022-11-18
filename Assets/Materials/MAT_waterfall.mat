@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_waterfall
+  m_Shader: {fileID: 4800000, guid: 62c308943abb2f5479ce91d82481bfe6, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 5930c4aec391f67429ef878b5d5e668b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 5930c4aec391f67429ef878b5d5e668b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 60907ba74f12f2844a516468e3dc42d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterfallFoam:
+        m_Texture: {fileID: 2800000, guid: 60907ba74f12f2844a516468e3dc42d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _CausticsNormalStrength: 0.3
+    - _CausticsQuantity: 0.4
+    - _CausticsRefractionStrength: 0.3
+    - _CausticsScale: 0.9
+    - _CausticsSpeed: 1
+    - _CausticsTiling: 0.84
+    - _Depth: 2
+    - _EnvironmentReflections: 1
+    - _Float3: 0.97
+    - _Float4: 0.48
+    - _Float5: 0
+    - _Float6: 1
+    - _FoamScale: 4
+    - _FoamWidth: 0.72
+    - _Metallic: 0
+    - _MidPoint: 1
+    - _NormalStrength: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _RefractionStrength: 0.08
+    - _Smoothness: 0.723
+    - _SpecularHighlights: 1
+    - _WaterfallFoamPosterization: 156.06
+    - _WaterfallFoamScale: 1
+    - _WaterfallNormalSpeed: 0.4
+    - _WaterfallNormalStrength: 0.122
+    - _WaterfallRefractionStrenght: 0.531
+    - _WaterfallRefractionStrength: 0.5
+    - _WaterfallSpeed: 1
+    - _WaveSpeed: 0.3
+    m_Colors:
+    - _BottomColor: {r: 0, g: 0.72492695, b: 1, a: 0.14117648}
+    - _CausticsColor: {r: 1, g: 0.75223637, b: 0, a: 0.105882354}
+    - _CausticsNormalTiling: {r: 2, g: 0.1, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MiddleColor: {r: 0, g: 0.76093936, b: 1, a: 0.54509807}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Vector0: {r: 2, g: 0.1, b: 0, a: 0}
+    - _WaterfallFoamColor: {r: 1, g: 1, b: 1, a: 0.3254902}
+    - _WaterfallNormalTiling: {r: 0.3, g: 0.03, b: 0, a: 0}
+    - _WaterfallTiling: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _WaterfallTiling1: {r: 1, g: 0.1, b: 0, a: 0}
+    - _WaveDirection: {r: 0, g: -1, b: 0, a: 0}
+  m_BuildTextureStacks: []

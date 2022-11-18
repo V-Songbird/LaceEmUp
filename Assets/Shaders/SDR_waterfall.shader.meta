@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 62c308943abb2f5479ce91d82481bfe6
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _WaterfallFoam: {fileID: 2800000, guid: 60907ba74f12f2844a516468e3dc42d4, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
