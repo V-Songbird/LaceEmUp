@@ -5,11 +5,11 @@ namespace LaceEmUp.Units
 {
     public class PlayerManager : Unit
     {
-        [SerializeField] private float attackDistance;
-        [SerializeField] private float attackCooldown;
-        [SerializeField] private float minDamage;
-        [SerializeField] private float maxDamage;
-        [SerializeField] private float knockbackForce;
+        [SerializeField] private float   attackDistance;
+        [SerializeField] private float   attackCooldown;
+        [SerializeField] private float   minDamage;
+        [SerializeField] private float   maxDamage;
+        [SerializeField] private Vector2 knockbackForce = new Vector2(5, 0.5f);
 
         private bool canAttack = true;
 
@@ -20,18 +20,12 @@ namespace LaceEmUp.Units
             attackLayerMask = LayerMask.GetMask("Enemy");
         }
 
-        private void onMouse0Callback()
+        public override void Attack()
         {
             if (canAttack)
             {
-                Attack();
+                StartCoroutine(doAttack());
             }
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-            StartCoroutine(doAttack());
         }
 
         private IEnumerator doAttack()
@@ -48,7 +42,7 @@ namespace LaceEmUp.Units
                     if (hits[i].collider.TryGetComponent(out EnemyManager value))
                     {
                         value.TakeDamage(Random.Range(minDamage, maxDamage));
-                        value.Knockback(knockbackForce, attackDirection, 0.5f);
+                        value.Knockback(attackDirection, knockbackForce);
                     }
                 }
             }
