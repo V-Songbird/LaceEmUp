@@ -26,8 +26,8 @@ namespace LaceEmUp.Units
         public    Rigidbody Rigidbody { get => _rigidbody; }
         protected Animator  Animator  { get => _animator; }
 
-        public float Health        { get => health;        protected set { health = value; OnHealthChanged?.Invoke(value);               } }
-        public float MaxHealth     { get => maxHealth;     protected set { maxHealth = value; OnMaxHealthChanged?.Invoke(value);         } }
+        public float Health        { get => health;        protected set { health        = value; OnHealthChanged?.Invoke(value);        } }
+        public float MaxHealth     { get => maxHealth;     protected set { maxHealth     = value; OnMaxHealthChanged?.Invoke(value);     } }
         public float MovementSpeed { get => movementSpeed; protected set { movementSpeed = value; OnMovementSpeedChanged?.Invoke(value); } }
 
         public bool IsDead  { get => isDead; }
@@ -79,14 +79,10 @@ namespace LaceEmUp.Units
             health += value;
         }
 
-        public void Knockback(float force, Vector2 direction, float offsetY = 0)
+        public void Knockback(Vector2 direction, Vector2 force)
         {
-            if (offsetY != 0)
-            {
-                direction = new Vector2(direction.x, offsetY);
-            }
-
-            _rigidbody.AddForce(force * direction, ForceMode.Impulse);
+            direction = new Vector2(direction.x * force.x,  direction.y + force.y);
+            _rigidbody.AddForce(direction, ForceMode.Impulse);
         }
 
         public void Resurrect(float healAmount)
