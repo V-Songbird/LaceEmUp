@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 6590765527869818733, guid: 24c065da016077245bd2d534a06b7a8e,
         type: 3}
       propertyPath: m_Name
-      value: medium_rock_1_2
+      value: Medium Rock 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24c065da016077245bd2d534a06b7a8e, type: 3}
@@ -174,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 6590765527869818733, guid: 24c065da016077245bd2d534a06b7a8e,
         type: 3}
       propertyPath: m_Name
-      value: medium_rock_1_1
+      value: Medium Rock 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24c065da016077245bd2d534a06b7a8e, type: 3}
@@ -249,7 +249,7 @@ PrefabInstance:
     - target: {fileID: 6590765527869818733, guid: 24c065da016077245bd2d534a06b7a8e,
         type: 3}
       propertyPath: m_Name
-      value: medium_rock_1_3
+      value: Medium Rock 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24c065da016077245bd2d534a06b7a8e, type: 3}

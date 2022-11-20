@@ -9,12 +9,14 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MAT_waterfall
   m_Shader: {fileID: 4800000, guid: 62c308943abb2f5479ce91d82481bfe6, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
+  m_InvalidKeywords:
+  - _RECEIVESHADOWS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -51,7 +53,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _CausticsNormalStrength: 0.3
+    - _CausticsNormalStrength: 0.382
     - _CausticsQuantity: 0.4
     - _CausticsRefractionStrength: 0.3
     - _CausticsScale: 0.9
@@ -70,10 +72,16 @@ Material:
     - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _RefractionStrength: 0.08
-    - _Smoothness: 0.723
+    - _Smoothness: 0.669
     - _SpecularHighlights: 1
+    - _TransAmbient: 0.1
+    - _TransDirect: 0.9
+    - _TransNormal: 0
+    - _TransScattering: 3
+    - _TransShadow: 0.5
+    - _TransStrength: 12
     - _WaterfallFoamPosterization: 156.06
     - _WaterfallFoamScale: 1
     - _WaterfallNormalSpeed: 0.4
@@ -85,7 +93,7 @@ Material:
     m_Colors:
     - _BottomColor: {r: 0, g: 0.72492695, b: 1, a: 0.14117648}
     - _CausticsColor: {r: 1, g: 0.75223637, b: 0, a: 0.105882354}
-    - _CausticsNormalTiling: {r: 2, g: 0.1, b: 0, a: 0}
+    - _CausticsNormalTiling: {r: 1, g: 0.1, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _MiddleColor: {r: 0, g: 0.76093936, b: 1, a: 0.54509807}

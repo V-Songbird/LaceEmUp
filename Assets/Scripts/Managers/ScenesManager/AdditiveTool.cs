@@ -12,7 +12,7 @@ public class AdditiveTool : EditorWindow
 {
     private List<Scene> sceneList = new List<Scene>();
     private string scenename = "";
-    private string[] terminations = new string[] { "_Logic.unity", "_Layout.unity", "_Decoration.unity" };
+    private string[] terminations = new string[] { "_Logic.unity", "_Layout.unity", "_Decoration.unity", "_Lighting.unity" };
 
     [MenuItem("JamOff Tools/Additive")]
     public static void ShowWindow() => GetWindow(typeof(AdditiveTool));

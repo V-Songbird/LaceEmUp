@@ -1,16 +1,12 @@
-// Made with Amplify Shader Editor v1.9.1
+// Made with Amplify Shader Editor v1.9.1.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "BackgroundFadeColor"
+Shader "Background Fade Color"
 {
 	Properties
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		[ASEBegin]_TopColor("TopColor", Color) = (0,1,0.6980392,0)
-		_MiddleColor("MiddleColor", Color) = (1,0.6980392,0,0.03529412)
-		_BottomColor("BottomColor", Color) = (0.6980392,0,1,0.03529412)
-		_Depth("Depth", Float) = 0.5
-		[ASEEnd]_MidPoint("Mid Point", Range( 0 , 1)) = 0.5
+		[ASEEnd][ASEBegin]_Depth("Depth", Float) = 0.5
 
 
 		[HideInInspector]_QueueOffset("_QueueOffset", Float) = 0
@@ -167,8 +163,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -198,6 +194,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceData.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -227,11 +224,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -246,6 +239,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			VertexOutput VertexFunction ( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -396,28 +412,17 @@ Shader "BackgroundFadeColor"
 					#endif
 				#endif
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord3;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
-				float3 Color = temp_output_117_21.rgb;
-				float Alpha = (temp_output_117_21).a;
+				float3 Color = SampleGradient( gradient275, distanceDepth18 ).rgb;
+				float Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -460,8 +465,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -474,6 +479,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -500,11 +506,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -519,6 +521,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -663,26 +688,15 @@ Shader "BackgroundFadeColor"
 					#endif
 				#endif
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord2;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 
-				float Alpha = (temp_output_117_21).a;
+				float Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -709,8 +723,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -730,6 +744,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -750,11 +765,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -769,6 +780,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			int _ObjectId;
 			int _PassValue;
 
@@ -898,26 +932,15 @@ Shader "BackgroundFadeColor"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 
-				surfaceDescription.Alpha = (temp_output_117_21).a;
+				surfaceDescription.Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -944,8 +967,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -965,6 +988,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -985,11 +1009,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1004,6 +1024,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			float4 _SelectionID;
 
 
@@ -1128,26 +1171,15 @@ Shader "BackgroundFadeColor"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 
-				surfaceDescription.Alpha = (temp_output_117_21).a;
+				surfaceDescription.Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1181,8 +1213,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -1204,6 +1236,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -1225,11 +1258,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1244,6 +1273,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -1372,26 +1424,15 @@ Shader "BackgroundFadeColor"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord1;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 
-				surfaceDescription.Alpha = (temp_output_117_21).a;
+				surfaceDescription.Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1423,8 +1464,8 @@ Shader "BackgroundFadeColor"
 			HLSLPROGRAM
 
 			#pragma multi_compile_instancing
-			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _RECEIVE_SHADOWS_OFF 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define ASE_SRP_VERSION 120107
 			#define REQUIRE_DEPTH_TEXTURE 1
 
@@ -1449,6 +1490,7 @@ Shader "BackgroundFadeColor"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
+			#include "Packages/com.unity.shadergraph/ShaderGraphLibrary/Functions.hlsl"
 			#define ASE_NEEDS_VERT_POSITION
 
 
@@ -1470,11 +1512,7 @@ Shader "BackgroundFadeColor"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _TopColor;
-			float4 _MiddleColor;
-			float4 _BottomColor;
 			float _Depth;
-			float _MidPoint;
 			#ifdef ASE_TESSELLATION
 				float _TessPhongStrength;
 				float _TessValue;
@@ -1488,6 +1526,29 @@ Shader "BackgroundFadeColor"
 
 
 			
+			float4 SampleGradient( Gradient gradient, float time )
+			{
+				float3 color = gradient.colors[0].rgb;
+				UNITY_UNROLL
+				for (int c = 1; c < 8; c++)
+				{
+				float colorPos = saturate((time - gradient.colors[c-1].w) / ( 0.00001 + (gradient.colors[c].w - gradient.colors[c-1].w)) * step(c, gradient.colorsLength-1));
+				color = lerp(color, gradient.colors[c].rgb, lerp(colorPos, step(0.01, colorPos), gradient.type));
+				}
+				#ifndef UNITY_COLORSPACE_GAMMA
+				color = SRGBToLinear(color);
+				#endif
+				float alpha = gradient.alphas[0].x;
+				UNITY_UNROLL
+				for (int a = 1; a < 8; a++)
+				{
+				float alphaPos = saturate((time - gradient.alphas[a-1].y) / ( 0.00001 + (gradient.alphas[a].y - gradient.alphas[a-1].y)) * step(a, gradient.alphasLength-1));
+				alpha = lerp(alpha, gradient.alphas[a].x, lerp(alphaPos, step(0.01, alphaPos), gradient.type));
+				}
+				return float4(color, alpha);
+			}
+			
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -1616,26 +1677,15 @@ Shader "BackgroundFadeColor"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 temp_output_3_0_g39 = _MiddleColor;
+				Gradient gradient275 = NewGradient( 0, 3, 2, float4( 0.099, 0.07958823, 0.06017647, 0 ), float4( 0.1037875, 0.08258823, 0.1764706, 0.5000076 ), float4( 0.018762, 0.062381, 0.106, 1 ), 0, 0, 0, 0, 0, float2( 0, 0 ), float2( 1, 1 ), 0, 0, 0, 0, 0, 0 );
 				float4 screenPos18 = IN.ase_texcoord1;
 				float4 ase_screenPosNorm18 = screenPos18 / screenPos18.w;
 				ase_screenPosNorm18.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm18.z : ase_screenPosNorm18.z * 0.5 + 0.5;
 				float screenDepth18 = LinearEyeDepth(SHADERGRAPH_SAMPLE_SCENE_DEPTH( ase_screenPosNorm18.xy ),_ZBufferParams);
 				float distanceDepth18 = abs( ( screenDepth18 - LinearEyeDepth( ase_screenPosNorm18.z,_ZBufferParams ) ) / ( _Depth ) );
-				float temp_output_6_0_g39 = distanceDepth18;
-				float temp_output_8_0_g39 = saturate( temp_output_6_0_g39 );
-				float temp_output_7_0_g39 = _MidPoint;
-				float temp_output_9_0_g39 = saturate( temp_output_7_0_g39 );
-				float temp_output_14_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - 0.0) * (1.0 - 0.0) / (temp_output_9_0_g39 - 0.0)) );
-				float4 lerpResult5_g39 = lerp( _TopColor , temp_output_3_0_g39 , temp_output_14_0_g39);
-				float temp_output_13_0_g39 = saturate( (0.0 + (temp_output_8_0_g39 - temp_output_9_0_g39) * (1.0 - 0.0) / (1.0 - temp_output_9_0_g39)) );
-				float4 lerpResult18_g39 = lerp( temp_output_3_0_g39 , _BottomColor , temp_output_13_0_g39);
-				float Step23_g39 = step( temp_output_7_0_g39 , temp_output_6_0_g39 );
-				float4 lerpResult19_g39 = lerp( lerpResult5_g39 , lerpResult18_g39 , Step23_g39);
-				float4 temp_output_117_21 = lerpResult19_g39;
 				
 
-				surfaceDescription.Alpha = (temp_output_117_21).a;
+				surfaceDescription.Alpha = SampleGradient( gradient275, distanceDepth18 ).a;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -1662,24 +1712,7 @@ Shader "BackgroundFadeColor"
 	Fallback "Hidden/InternalErrorShader"
 }
 /*ASEBEGIN
-Version=19100
-Node;AmplifyShaderEditor.CommentaryNode;169;-1190.465,683.8226;Inherit;False;1341.218;512.6237;;9;209;117;22;23;18;25;21;19;17;Albedo;1,1,1,1;0;0
-Node;AmplifyShaderEditor.PosVertexDataNode;17;-1114.479,936.741;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;19;-1072.899,1100.688;Inherit;False;Property;_Depth;Depth;3;0;Create;True;0;0;0;False;0;False;0.5;8.22;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;22;-858.0782,735.4188;Inherit;False;Property;_MiddleColor;MiddleColor;1;0;Create;True;0;0;0;False;0;False;1,0.6980392,0,0.03529412;0.5377358,0.3735849,0,0.03529412;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;23;-638.593,734.4293;Inherit;False;Property;_BottomColor;BottomColor;2;0;Create;True;0;0;0;False;0;False;0.6980392,0,1,0.03529412;0.3789458,0,1,0.03529412;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;21;-1075.491,733.8226;Inherit;False;Property;_TopColor;TopColor;0;0;Create;True;0;0;0;False;0;False;0,1,0.6980392,0;0,0.5943396,0.4148724,0.007843138;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.DepthFade;18;-891.8987,935.6875;Inherit;False;True;False;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;25;-684.5812,1052.087;Inherit;False;Property;_MidPoint;Mid Point;4;0;Create;True;0;0;0;False;0;False;0.5;0.577;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode;117;-379.9927,865.9235;Inherit;False;SDF_triple_color_lerp;-1;;39;00709f4aed5c81f4f979f28c4537071a;0;5;2;COLOR;0,1,0,1;False;3;COLOR;0,0,1,1;False;4;COLOR;0,1,0.1316679,0;False;6;FLOAT;0;False;7;FLOAT;0.5;False;4;COLOR;21;FLOAT;16;FLOAT;17;FLOAT;22
-Node;AmplifyShaderEditor.SamplerNode;243;-1144.378,1225.881;Inherit;True;Property;_TextureSample0;Texture Sample 0;5;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateShaderPropertyNode;242;-1345.68,1160.881;Inherit;False;0;0;_QueueOffset;Shader;False;0;5;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ScreenPosInputsNode;244;-1559.046,1222.973;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.DesaturateOpNode;246;-814.2125,1232.498;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;1;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.ComponentMaskNode;209;-56.03603,756.2831;Inherit;False;False;False;False;True;1;0;COLOR;0,0,0,0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ComponentMaskNode;247;-625.2126,1228.498;Inherit;False;True;False;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.DynamicAppendNode;245;-1340.646,1252.873;Inherit;False;FLOAT4;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT4;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;262;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Version=19102
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;264;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;266;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;268;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;SceneSelectionPass;0;6;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
@@ -1688,21 +1721,18 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;271;-172.6695,1405.526;Floa
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;265;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;267;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;269;-172.6695,1405.526;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ScenePickingPass;0;7;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;263;205.3054,873.2019;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;BackgroundFadeColor;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;5;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;23;Surface;1;638034138417259228;  Blend;0;638034139094120768;Two Sided;1;0;Forward Only;0;638034138962115979;Cast Shadows;0;638034138637848319;  Use Shadow Threshold;0;0;Receive Shadows;0;638034138670842730;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;0;DOTS Instancing;0;0;Meta Pass;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;0;10;False;True;False;True;False;False;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;262;-100.3158,1201.926;Float;False;False;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;1;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.DepthFade;18;-640,896;Inherit;False;True;False;True;2;1;FLOAT3;0,0,0;False;0;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;19;-896,1088;Inherit;False;Property;_Depth;Depth;0;0;Create;True;0;0;0;False;0;False;0.5;14.5;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.PosVertexDataNode;17;-896,896;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;263;370.9804,841.9949;Float;False;True;-1;2;UnityEditor.ShaderGraphUnlitGUI;0;13;Background Fade Color;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;5;True;12;all;0;False;True;2;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;True;0;False;;False;False;False;False;False;False;True;True;False;164;False;;133;False;;62;False;;6;False;;3;False;;7;False;;1;False;;7;False;;1;False;;1;False;;1;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;23;Surface;1;638048567111332207;  Blend;0;638048751248994227;Two Sided;1;638048745916282388;Forward Only;0;638034138962115979;Cast Shadows;0;638034138637848319;  Use Shadow Threshold;0;0;Receive Shadows;0;638034138670842730;GPU Instancing;1;0;LOD CrossFade;0;0;Built-in Fog;0;638048562360703959;DOTS Instancing;0;0;Meta Pass;0;638048513634883512;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;638048562424803067;0;10;False;True;False;True;False;False;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.GradientSampleNode;277;-184,781;Inherit;True;2;0;OBJECT;;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.GradientNode;275;-466,784;Inherit;False;0;3;2;0.099,0.07958823,0.06017647,0;0.1037875,0.08258823,0.1764706,0.5000076;0.018762,0.062381,0.106,1;0,0;1,1;0;1;OBJECT;0
 WireConnection;18;1;17;0
 WireConnection;18;0;19;0
-WireConnection;117;2;21;0
-WireConnection;117;3;22;0
-WireConnection;117;4;23;0
-WireConnection;117;6;18;0
-WireConnection;117;7;25;0
-WireConnection;243;1;245;0
-WireConnection;246;0;243;0
-WireConnection;209;0;117;21
-WireConnection;247;0;246;0
-WireConnection;245;0;244;1
-WireConnection;245;1;244;2
-WireConnection;263;2;117;21
-WireConnection;263;3;209;0
+WireConnection;263;2;277;0
+WireConnection;263;3;277;4
+WireConnection;277;0;275;0
+WireConnection;277;1;18;0
 ASEEND*/
-//CHKSM=ACAB47F56C7D120049322B8FE308C63E9860F716
+//CHKSM=BCAA7E02B3616E77094FA76F6D93C3AAC9DC8583

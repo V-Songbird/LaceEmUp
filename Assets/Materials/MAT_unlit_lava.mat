@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_unlit_lava
+  m_Shader: {fileID: 4800000, guid: ecd14972ef6e6574b9eef551f6bd8995, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _CausticsQuantit: 0.3
+    - _CausticsScale1: 4
+    - _CausticsSpeed1: 0.01
+    - _CausticsTiling: 1
+    - _Depth1: 0.22
+    - _FoamScale1: 20
+    - _FoamWidth1: 0.25
+    - _InvertCaustics: 0
+    - _MidPoint1: 0.384
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _WaveSpeed1: 8
+    - intensity: 3
+    m_Colors:
+    - _BottomColor: {r: 0.95283014, g: 0.31734177, b: 0, a: 1}
+    - _CausticsColor1: {r: 1, g: 0.62671614, b: 0, a: 0.68235296}
+    - _Color: {r: 0.9960785, g: 0.36078432, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor1: {r: 1, g: 0.4129078, b: 0.09803919, a: 0.70980394}
+    - _MiddleColor: {r: 1, g: 0.60941887, b: 0, a: 1}
+    - _TopColor: {r: 1, g: 0.8509804, b: 0, a: 1}
+    - _WaveDirection1: {r: 0, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []

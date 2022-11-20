@@ -10,10 +10,10 @@ Material:
   m_Name: MAT_cave_block_4x2x3_2
   m_Shader: {fileID: 4800000, guid: aac0a8f3ada54834799232a623740ad3, type: 3}
   m_ValidKeywords:
-  - _DETAILCHANNEL_RED
+  - _DETAILCHANNEL_BLUE
   m_InvalidKeywords:
   - _KEYWORD0_RED
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -61,7 +61,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _DetailChannel: 0
+    - _DetailChannel: 2
     - _DetailOpacity: 0.3
     - _EnvironmentReflections: 1
     - _Falloff: 0.5
