@@ -5,14 +5,17 @@ using DG.Tweening;
 public class Player_MovementController : MonoBehaviour
 {
     [SerializeField] private LaceEmUp.Units.Unit player;
+    [SerializeField] private int jumps;
     [SerializeField] float jumpForce;
-    float moveInput;
-    bool facingRight = true;
+
+    private float horizontalInput;
+    private Vector3 movementInput;
+    private bool facingRight = true;
 
     public bool isGrounded;
     public LayerMask whatIsGround;
-    [SerializeField] int jumps;
-    int resetJumps;
+    
+    private int resetJumps;
 
     private void Start()
     {
@@ -29,7 +32,6 @@ public class Player_MovementController : MonoBehaviour
                 MakeJump();
             }
 
-
         }
     }
 
@@ -37,10 +39,12 @@ public class Player_MovementController : MonoBehaviour
     {
         if (GamePlayManager.Instance.Player_CutActions.canMove)
         {
-            moveInput = Input.GetAxis("Horizontal");
-            player.Rigidbody.velocity = new Vector2(moveInput * player.MovementSpeed, player.Rigidbody.velocity.y);
+            horizontalInput = Input.GetAxis("Horizontal");
+            movementInput = new Vector3(horizontalInput, 0, 0);
 
-            if (moveInput != 0)
+            player.Rigidbody.MovePosition(transform.position + movementInput * Time.deltaTime * player.MovementSpeed);
+
+            if (horizontalInput != 0)
             {
                 GamePlayManager.Instance.Player_OtherActions.CancelAllActions();
             }
@@ -79,14 +83,15 @@ public class Player_MovementController : MonoBehaviour
     {
         player.GFX.DOComplete();
         player.GFX.DOPunchScale(new Vector3(0.3f, -0.3f), 0.20f);
+
         isGrounded = true;
-        jumps = resetJumps;
-        player.Rigidbody.mass = 1;
+        jumps      = resetJumps;
+        //player.Rigidbody.mass = 1;
     }
 
     bool needToFlip()
     {
-        if ((facingRight == false && moveInput > 0) || facingRight == true && moveInput < 0)
+        if ((facingRight == false && horizontalInput > 0) || facingRight == true && horizontalInput < 0)
         {
             return true;
         }

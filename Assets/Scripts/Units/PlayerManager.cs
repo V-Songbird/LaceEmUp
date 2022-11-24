@@ -34,12 +34,12 @@ namespace LaceEmUp.Units
 
             Vector2 attackDirection = new Vector2(GFX.localScale.x * attackDistance, 0);
             Debug.DrawRay(transform.position, attackDirection, Color.magenta, 2f);
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, attackDirection, attackDistance, attackLayerMask);
+            Collider[] hits = Physics.OverlapSphere((Vector2)transform.position + attackDirection, attackDistance, attackLayerMask);
             if (hits.Length > 0)
             {
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.TryGetComponent(out EnemyManager value))
+                    if (hits[i].TryGetComponent(out EnemyManager value))
                     {
                         value.TakeDamage(Random.Range(minDamage, maxDamage));
                         value.Knockback(attackDirection, knockbackForce);

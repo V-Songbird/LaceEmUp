@@ -1,7 +1,6 @@
-using LaceEmUp.Units;
 using UnityEngine;
 
-namespace Units
+namespace LaceEmUp.Units
 {
     public class EnemySlime : EnemyManager
     {
