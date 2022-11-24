@@ -22,9 +22,9 @@ namespace LaceEmUp.Units
         private bool isDead;
         private bool canMove = true;
 
-        public    Transform GFX       { get => _gfx; }
-        public    Rigidbody Rigidbody { get => _rigidbody; }
-        protected Animator  Animator  { get => _animator; }
+        public Transform GFX       { get => _gfx; }
+        public Rigidbody Rigidbody { get => _rigidbody; }
+        public Animator  Animator  { get => _animator; }
 
         public float Health        { get => health;        protected set { health        = value; OnHealthChanged?.Invoke(value);        } }
         public float MaxHealth     { get => maxHealth;     protected set { maxHealth     = value; OnMaxHealthChanged?.Invoke(value);     } }
@@ -39,9 +39,10 @@ namespace LaceEmUp.Units
         protected System.Action<bool>  OnCanMoveChanged;
         #endregion
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
-            transform.DOComplete();
+            transform.DOKill();
+            _gfx.DOKill();
         }
 
         public void TakeDamage(float value)
@@ -52,7 +53,7 @@ namespace LaceEmUp.Units
             }
 
             _gfx.transform.DOComplete();
-            _gfx.transform.DOPunchScale(-Vector3.one * 0.5f, 0.15f);
+            _gfx.transform.DOPunchScale(-Vector3.one * 0.3f, 0.2f);
 
             health -= value;
 

@@ -20,26 +20,33 @@ namespace LaceEmUp.Units
         [SerializeField] private float attackCooldown;
         [SerializeField] private float minDamage;
         [SerializeField] private float maxDamage;
-        [SerializeField] private float knockbackForce;
         [SerializeField] private float scanRadius;
         [SerializeField] private float outOfRangeDistance;
         [SerializeField] private int   spiritOrbs;
+        [SerializeField] private Vector2 knockbackForce;
         #endregion
+        private Vector3 spawnLocation;
 
         #region Encapsulation
         public AIDestinationSetter AIDestSetter    { get => aiDestSetter;    }
         public AIPath              AIPath          { get => aiPath;          }
         public Collider            TriggerCollider { get => triggerCollider; }
 
-        public float AttackRange        { get => attackRange;        }
-        public float AttackCooldown     { get => attackCooldown;     }
-        public float MinDamage          { get => minDamage;          }
-        public float MaxDamage          { get => maxDamage;          }
-        public float KnockbackForce     { get => knockbackForce;     }
-        public float ScanRadius         { get => scanRadius;         }
-        public float OutOfRangeDistance { get => outOfRangeDistance; }
-        public float SpiritOrbs         { get => spiritOrbs;         }
+        public float   AttackRange        { get => attackRange;        }
+        public float   AttackCooldown     { get => attackCooldown;     }
+        public float   MinDamage          { get => minDamage;          }
+        public float   MaxDamage          { get => maxDamage;          }
+        public float   ScanRadius         { get => scanRadius;         }
+        public float   OutOfRangeDistance { get => outOfRangeDistance; }
+        public float   SpiritOrbs         { get => spiritOrbs;         }
+        public Vector2 KnockbackForce     { get => knockbackForce;     }
+        public Vector3 SpawnLocation      { get => spawnLocation;      }
         #endregion
+
+        private void Awake()
+        {
+            spawnLocation = transform.position;
+        }
 
         #region Subscriptions
         private void OnEnable()
@@ -48,8 +55,9 @@ namespace LaceEmUp.Units
             OnCanMoveChanged       += OnCanMoveChangedCallback;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             OnMovementSpeedChanged -= OnMovementSpeedChangedCallback;
             OnCanMoveChanged       -= OnCanMoveChangedCallback;
         }
@@ -64,11 +72,6 @@ namespace LaceEmUp.Units
             aiPath.maxSpeed = value;
         }
         #endregion
-
-        private void Update()
-        {
-            Animator.SetFloat("movement_speed", Rigidbody.velocity.magnitude);
-        }
 
         protected override void Die()
         {

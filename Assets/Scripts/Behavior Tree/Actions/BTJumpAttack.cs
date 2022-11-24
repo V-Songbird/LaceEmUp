@@ -55,6 +55,7 @@ public class BTJumpAttack : Action
 
         yield return new WaitForSeconds(GetRandomJumpCooldown(offset: 1));
         actor.Value.TriggerCollider.enabled = true;
+
         canJump = true;
     }
 

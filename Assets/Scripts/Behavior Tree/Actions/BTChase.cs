@@ -9,8 +9,6 @@ namespace LaceEmUp.BehaviorDesigner
         [SerializeField] private SharedEnemyManager actor;
         [SerializeField] private float successRange;
 
-        
-
         public override TaskStatus OnUpdate()
         {
 

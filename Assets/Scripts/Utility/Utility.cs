@@ -23,9 +23,16 @@ public static class Utility
         return false;
     }
 
-    public static Vector2 GetDirection(Vector2 actor, Vector2 target)
+    public static Vector2 GetDirection(Vector2 actor, Vector2 target, bool normalized = true)
     {
-        return (target - actor).normalized;
+        if (normalized)
+        {
+            return (target - actor).normalized;
+        }
+        else
+        {
+            return (target - actor);
+        }
     }
 
 }
