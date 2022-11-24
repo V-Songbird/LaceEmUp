@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18229985, g: 0.22486821, b: 0.28911614, a: 1}
+  m_IndirectSpecularColor: {r: 0.02660643, g: 0.0315482, b: 0.051422346, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000004, guid: 9384a73b8beff09419995600f12ce678,
+    type: 2}
   m_LightingSettings: {fileID: 1652981286}
 --- !u!196 &4
 NavMeshSettings:
@@ -1172,6 +1173,305 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95e070dd3dee9946b540c2e125ff458, type: 3}
+--- !u!1 &2093224155
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093224157}
+  - component: {fileID: 2093224156}
+  m_Layer: 0
+  m_Name: '!ftraceLightmaps'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2093224156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093224155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fa80e7116296f4eb4f49ec1544ee22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderSettingsBounces: 5
+  renderSettingsGISamples: 16
+  renderSettingsGIBackFaceWeight: 0
+  renderSettingsTileSize: 512
+  renderSettingsPriority: 2
+  renderSettingsTexelsPerUnit: 20
+  renderSettingsForceRefresh: 1
+  renderSettingsForceRebuildGeometry: 1
+  renderSettingsPerformRendering: 1
+  renderSettingsUserRenderMode: 0
+  renderSettingsDistanceShadowmask: 0
+  renderSettingsSettingsMode: 0
+  renderSettingsFixSeams: 1
+  renderSettingsDenoise: 1
+  renderSettingsDenoise2x: 0
+  renderSettingsEncode: 1
+  renderSettingsEncodeMode: 0
+  renderSettingsOverwriteWarning: 0
+  renderSettingsAutoAtlas: 1
+  renderSettingsUnwrapUVs: 1
+  renderSettingsForceDisableUnwrapUVs: 0
+  renderSettingsMaxAutoResolution: 4096
+  renderSettingsMinAutoResolution: 16
+  renderSettingsUnloadScenes: 1
+  renderSettingsAdjustSamples: 1
+  renderSettingsGILODMode: 2
+  renderSettingsGILODModeEnabled: 0
+  renderSettingsCheckOverlaps: 0
+  renderSettingsSkipOutOfBoundsUVs: 1
+  renderSettingsHackEmissiveBoost: 1
+  renderSettingsHackIndirectBoost: 1
+  renderSettingsTempPath: 
+  renderSettingsOutPath: 
+  renderSettingsUseScenePath: 0
+  renderSettingsHackAOIntensity: 0
+  renderSettingsHackAOSamples: 16
+  renderSettingsHackAORadius: 1
+  renderSettingsShowAOSettings: 0
+  renderSettingsShowTasks: 1
+  renderSettingsShowTasks2: 0
+  renderSettingsShowPaths: 1
+  renderSettingsShowNet: 1
+  renderSettingsOcclusionProbes: 0
+  renderSettingsTexelsPerMap: 0
+  renderSettingsTexelsColor: 1
+  renderSettingsTexelsMask: 1
+  renderSettingsTexelsDir: 1
+  renderSettingsShowDirWarning: 1
+  renderSettingsRenderDirMode: 0
+  renderSettingsShowCheckerSettings: 0
+  renderSettingsSamplesWarning: 1
+  renderSettingsPrefabWarning: 1
+  renderSettingsSplitByScene: 0
+  renderSettingsUVPaddingMax: 0
+  renderSettingsPostPacking: 1
+  renderSettingsHoleFilling: 0
+  renderSettingsBeepOnFinish: 0
+  renderSettingsExportTerrainAsHeightmap: 1
+  renderSettingsRTXMode: 0
+  renderSettingsLightProbeMode: 1
+  renderSettingsClientMode: 0
+  renderSettingsServerAddress: 127.0.0.1
+  renderSettingsUnwrapper: 0
+  renderSettingsDenoiserType: 100
+  renderSettingsExportTerrainTrees: 0
+  renderSettingsShowPerf: 1
+  renderSettingsSampleDiv: 1
+  renderSettingsAtlasPacker: 1
+  renderSettingsBatchPoints: 1
+  renderSettingsCompressVolumes: 0
+  renderSettingsSector: {fileID: 0}
+  renderSettingsRTPVExport: 1
+  renderSettingsRTPVSceneView: 0
+  renderSettingsRTPVWidth: 640
+  renderSettingsRTPVHeight: 360
+  lastBakeTime: 0
+  enlightenWarningShown: 0
+  enlightenWarningShown2: 0
+  lightUIDs: 
+  lights: []
+  implicitGroups: []
+  implicitGroupedObjects: []
+  bounds:
+  - m_Center: {x: 11.973534, y: -9.206139, z: 8.710757}
+    m_Extent: {x: 49.312714, y: 30.461525, z: 18.823263}
+  - m_Center: {x: 19.49699, y: -7.142194, z: 10.424152}
+    m_Extent: {x: 24.270092, y: 14.491317, z: 16.239948}
+  - m_Center: {x: 20.733387, y: -3.1959076, z: 6.7654877}
+    m_Extent: {x: 37.95632, y: 24.164104, z: 18.654255}
+  - m_Center: {x: 8.124163, y: -17.490988, z: 7.794241}
+    m_Extent: {x: 37.99517, y: 22.002153, z: 14.0661125}
+  - m_Center: {x: 18.636845, y: -17.661295, z: 11.200158}
+    m_Extent: {x: 53.83501, y: 27.266825, z: 17.115175}
+  - m_Center: {x: 23.523289, y: -16.37416, z: 6.593505}
+    m_Extent: {x: 46.986305, y: 28.552895, z: 17.971506}
+  - m_Center: {x: 2.5677261, y: -2.7630444, z: 3.899621}
+    m_Extent: {x: 51.279526, y: 28.556522, z: 16.193249}
+  - m_Center: {x: 7.453953, y: -10.276806, z: 5.325815}
+    m_Extent: {x: 58.896435, y: 33.390938, z: 16.419443}
+  - m_Center: {x: 22.070568, y: -10.353342, z: 4.0662794}
+    m_Extent: {x: 55.061817, y: 30.964613, z: 11.760599}
+  - m_Center: {x: 36.990265, y: -13.930706, z: 2.760538}
+    m_Extent: {x: 30.32965, y: 25.131977, z: 10.45485}
+  - m_Center: {x: 9.557743, y: -13.797276, z: 2.0358915}
+    m_Extent: {x: 58.269543, y: 23.43113, z: 14.487627}
+  - m_Center: {x: 22.273327, y: -5.1477795, z: 7.318285}
+    m_Extent: {x: 48.515316, y: 29.236906, z: 16.47667}
+  - m_Center: {x: 19.739262, y: -13.353008, z: 8.797856}
+    m_Extent: {x: 58.851124, y: 23.780972, z: 21.091484}
+  - m_Center: {x: 15.968967, y: -23.116653, z: 17.477339}
+    m_Extent: {x: 55.667862, y: 32.05974, z: 28.881306}
+  - m_Center: {x: 18.657034, y: -14.672884, z: 16.43449}
+    m_Extent: {x: 49.903675, y: 26.76351, z: 25.878513}
+  - m_Center: {x: 13.63908, y: -11.325014, z: 0.42968655}
+    m_Extent: {x: 48.68818, y: 21.152636, z: 8.288507}
+  - m_Center: {x: 17.87537, y: -6.078268, z: 11.3375635}
+    m_Extent: {x: 53.05422, y: 26.556086, z: 17.072048}
+  - m_Center: {x: 32.438816, y: -15.7902155, z: 7.409159}
+    m_Extent: {x: 24.003117, y: 15.019788, z: 12.740259}
+  - m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5000, y: 5000, z: 5000}
+  hasEmissive: 010101010101010101010101010101010101
+  uvBuffOffsets: 
+  uvBuffLengths: 
+  uvSrcBuff: []
+  uvDestBuff: []
+  lmrIndicesOffsets: 
+  lmrIndicesLengths: 
+  lmrIndicesBuff: 
+  lmGroupLODResFlags: 
+  lmGroupMinLOD: 
+  lmGroupLODMatrix: 
+  serverGetFileList: []
+  lightmapHasColor: 01010101010101010101010101010101010101
+  lightmapHasMask: 01010101010101010101010101010101010101
+  lightmapHasDir: 00000000000000000000000000000000000000
+  lightmapHasRNM: 00000000000000000000000000000000000001
+  modifiedAssetPathList:
+  - Assets/Models/Interactive/pipe.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_1.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
+  - Assets/Models/Cave/cave_block_2x2x3.fbx
+  - Assets/Models/Cave/cave_block_1x4x3_1.fbx
+  - Assets/Models/Environment/danger_sign.fbx
+  - Assets/Models/Environment/bush01.fbx
+  - Assets/Models/Environment/bush02.fbx
+  modifiedAssets:
+  - meshName:
+    - pipe
+    padding: 28000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_floor_4x2x3_a
+    padding: 13000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_floor_4x2x3_b
+    padding: 14000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_block_2x2x3
+    padding: 30000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_block_1x4x3_1
+    padding: 14000000
+    unwrapper: 00000000
+  - meshName:
+    - danger_sign
+    padding: 6a000000
+    unwrapper: 00000000
+  - meshName:
+    - bush01
+    padding: 00010000
+    unwrapper: 00000000
+  - meshName:
+    - bush03
+    padding: 76000000
+    unwrapper: 00000000
+  maps:
+  - {fileID: 2800000, guid: 0fc695878d1d8254fb419a1e196d1a65, type: 3}
+  - {fileID: 2800000, guid: 7552ad78d61c9064c9594d296c22eb75, type: 3}
+  - {fileID: 2800000, guid: 1d177fb958d9dc041b4f4892536a2461, type: 3}
+  - {fileID: 2800000, guid: cb6bcde9f9fb29f4bb4e86d0ba245f77, type: 3}
+  - {fileID: 2800000, guid: 23d932842c2ad6342bb57e12ba0dce9b, type: 3}
+  - {fileID: 2800000, guid: 76cd00860617b014da61ecac1f6a8a04, type: 3}
+  - {fileID: 2800000, guid: 5e585eaa39ee3b74aad261e858c733d7, type: 3}
+  - {fileID: 2800000, guid: 95510f3bdcae6ba4cb9bec892a6913d0, type: 3}
+  - {fileID: 2800000, guid: 747bcbcc07bf91744ae2508d078d2260, type: 3}
+  - {fileID: 2800000, guid: 9b5698eb9437ac9429f9710aa223f403, type: 3}
+  - {fileID: 2800000, guid: 67d548e4d0bd1de418051e1b2679ae8e, type: 3}
+  - {fileID: 2800000, guid: e14ca160726bcb949b0b0f40a8f04efd, type: 3}
+  - {fileID: 2800000, guid: 8b0853c2690140e47985ee32fc5a8f1e, type: 3}
+  - {fileID: 2800000, guid: 605b942bce5ea9f4a902529dfba28551, type: 3}
+  - {fileID: 2800000, guid: ed279ade4f21ee74abdf36d42e4af68e, type: 3}
+  - {fileID: 2800000, guid: c6f77e2dcf8b978408b19de06edabedd, type: 3}
+  - {fileID: 2800000, guid: 940d56fcbeaa2684fbab16b9d34e0d97, type: 3}
+  masks:
+  - {fileID: 2800000, guid: 5ebc4d4daab494449bc57ca3545e2a1f, type: 3}
+  - {fileID: 2800000, guid: 10cb9f55d8c711449ae8c35976dac9b8, type: 3}
+  - {fileID: 2800000, guid: f808da169bd3cf84185fc90fafbe6c2e, type: 3}
+  - {fileID: 2800000, guid: 491bb41c362482841b5675ee18956863, type: 3}
+  - {fileID: 2800000, guid: 8f7ed7721ddcfa04e8354554a4396615, type: 3}
+  - {fileID: 2800000, guid: c1a85ff4817a05a49acad75d3b9d6a9c, type: 3}
+  - {fileID: 2800000, guid: 65d384fc186043648bbb2d0b1ddcdb80, type: 3}
+  - {fileID: 2800000, guid: 042da797a8f9a1c4380c63b5ae7701ea, type: 3}
+  - {fileID: 2800000, guid: 1c3944bb251eeda48a6ca1dfca6f2e70, type: 3}
+  - {fileID: 2800000, guid: d08c0d86814c876418182d5b74dd340d, type: 3}
+  - {fileID: 2800000, guid: a79746db5039a5b4f93b9d6c7e99b004, type: 3}
+  - {fileID: 2800000, guid: 6542356989c332b42a1c159f7cbd581b, type: 3}
+  - {fileID: 2800000, guid: 1bc45d4c9e017b64689790dc4212d619, type: 3}
+  - {fileID: 2800000, guid: d8e20c4bb0764c749a75b79d8f56e91c, type: 3}
+  - {fileID: 2800000, guid: f8085f54c624cad4eb1eb3765f7a1346, type: 3}
+  - {fileID: 2800000, guid: 2746ff6ef246f0f47b217cad4245416c, type: 3}
+  - {fileID: 2800000, guid: 0305fad1b9954ba43913e7d563e3d3a8, type: 3}
+  dirMaps: []
+  rnmMaps0: []
+  rnmMaps1: []
+  rnmMaps2: []
+  mapsMode: 
+  bakedRenderers: []
+  bakedIDs: 
+  bakedScaleOffset: []
+  bakedVertexOffset: 
+  bakedVertexColorMesh: []
+  nonBakedRenderers: []
+  bakedLights: []
+  bakedLightChannels: 
+  bakedRenderersTerrain: []
+  bakedIDsTerrain: 
+  bakedScaleOffsetTerrain: []
+  assetList: []
+  uvOverlapAssetList: 
+  idremap: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000
+  usesRealtimeGI: 0
+  emptyDirectionTex: {fileID: 0}
+  anyVolumes: 0
+  compressedVolumes: 0
+  sectors:
+  - name: $G
+    maps: []
+    masks: []
+    dirMaps: []
+    rnmMaps0: []
+    rnmMaps1: []
+    rnmMaps2: []
+    mapsMode: 
+    bakedRenderers: []
+    bakedRenderersTerrain: []
+    bakedIDs: 
+    bakedIDsTerrain: 
+    bakedScaleOffset: []
+    bakedScaleOffsetTerrain: []
+    bakedVertexColorMesh: []
+    nonBakedRenderers: []
+--- !u!4 &2093224157
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093224155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142358043
 GameObject:
   m_ObjectHideFlags: 3
@@ -1229,6 +1529,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1001 &887498054845243355
 PrefabInstance:
   m_ObjectHideFlags: 0
