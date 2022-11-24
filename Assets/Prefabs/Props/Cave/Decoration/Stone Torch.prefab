@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2823766028643231854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2306190007561356281}
+  - component: {fileID: 9121628781125354920}
+  m_Layer: 0
+  m_Name: Audio Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2306190007561356281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823766028643231854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.00008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5931064358861345514}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9121628781125354920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823766028643231854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c491fb4351d4146b68986bd178b4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sequences:
+  - {fileID: 11400000, guid: 17b765fac21592a4ea18ea8f08e74e0d, type: 2}
+  m_outputType: 0
+  m_outputPrefab: {fileID: 0}
+  m_outputDistance: {x: 0, y: 0}
+  m_outputVerticalAngle: {x: -180, y: 180}
+  m_outputHorizontalAngle: {x: -180, y: 180}
+  m_outputFollowPosition: 1
+  m_outputFollowRotation: 0
+  m_dimensions: 0
+  m_shape: 0
+  m_directon: 1
+  m_areaSize: {x: 10, y: 1, z: 7.5}
+  m_falloff: {x: 5, y: 4, z: 5}
+  m_displayColour: {r: 0, g: 1, b: 0, a: 0.078431375}
+  m_alwaysDisplayGizmo: 0
+  m_1D_GizmoSize: 20
 --- !u!1 &6180599917877387117
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +73,7 @@ GameObject:
   - component: {fileID: 6180599917877387115}
   - component: {fileID: 6180599917877387114}
   m_Layer: 3
-  m_Name: fire
+  m_Name: Fire Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4826,7 +4887,7 @@ GameObject:
   - component: {fileID: 6180599918291797899}
   - component: {fileID: 5175234476195529256}
   m_Layer: 0
-  m_Name: light
+  m_Name: Fire Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4858,7 +4919,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6396372, b: 0.042452812, a: 1}
   m_Intensity: 5
   m_Range: 6
   m_SpotAngle: 30
@@ -4898,12 +4959,12 @@ Light:
     serializedVersion: 2
     m_Bits: 2147483647
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
   m_ColorTemperature: 3349
-  m_UseColorTemperature: 1
+  m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 6.02807e-20, y: 33, z: 12, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -4923,7 +4984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 1
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -4961,8 +5022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UID: 1262508364
-  color: {r: 1, g: 1, b: 1, a: 1}
+  UID: -886803590
+  color: {r: 1, g: 0.6396372, b: 0.042452812, a: 1}
   intensity: 5
   shadowSpread: 0.05
   cutoff: 6
@@ -4977,7 +5038,7 @@ MonoBehaviour:
   bitmask: 1
   bakeToIndirect: 0
   shadowmask: 1
-  indirectIntensity: 1
+  indirectIntensity: 0
   falloffMinRadius: 0.01
   shadowmaskGroupID: 0
   directionMode: 0
@@ -5014,6 +5075,7 @@ Transform:
   - {fileID: 6180599917877387112}
   - {fileID: 6180599918291797898}
   - {fileID: 2188028568481215210}
+  - {fileID: 2306190007561356281}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5038,7 +5100,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -5079,7 +5141,7 @@ GameObject:
   - component: {fileID: 503986428280349816}
   - component: {fileID: 643766099044324302}
   m_Layer: 0
-  m_Name: fire_particles
+  m_Name: Ash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

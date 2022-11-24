@@ -12,15 +12,20 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ENABLETRANSPARENCY_ON
-  m_LightmapFlags: 0
+  - _INVERTCAUSTICS_ON
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 5930c4aec391f67429ef878b5d5e668b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 5930c4aec391f67429ef878b5d5e668b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -44,18 +49,31 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _CausticsNormalStrength: 0.099
+    - _CausticsQuantit: 0.976
     - _CausticsQuantity: 0.431
+    - _CausticsRefractionStrength: 1
     - _CausticsScale: 6.53
+    - _CausticsScale1: 2
     - _CausticsSpeed: 0.4
+    - _CausticsSpeed1: 0.5
+    - _CausticsTiling: 3.36
     - _Depth: 3.47
+    - _Depth1: 0.6
     - _EdgeLength: 15
     - _EnableTransparency: 1
     - _EnvironmentReflections: 1
     - _Float3: 4.04
     - _FoamQuantity: 0.5
     - _FoamScale: 77.88
+    - _FoamScale1: 10
     - _FoamWidth: 0.32
+    - _FoamWidth1: 0.2
+    - _InvertCaustics: 1
+    - _IsTransparent: 0
+    - _Metallic: 0
     - _MidPoint: 0.562
+    - _MidPoint1: 0.5
     - _NormalStrength: 0.143
     - _Opacity: 1
     - _QueueControl: 0
@@ -64,23 +82,43 @@ Material:
     - _RefractionIndex: 0.114
     - _RefractionStrenght: 2.08
     - _RefractionStrength: 1.5
-    - _Smoothness: 0
+    - _SidesNormalStrength: 0
+    - _Smoothness: 0.55
     - _SpecularHighlights: 1
     - _TessPhongStrength: 0.5
     - _TessValue: 15
     - _ToggleSwitch0: 0
+    - _TransAmbient: 0.03
+    - _TransDirect: 0.65
+    - _TransNormal: 0.28
+    - _TransScattering: 2
+    - _TransShadow: 0.75
+    - _TransStrength: 38
+    - _TransmissionShadow: 0
     - _WaterTiling: 0.25
     - _WaveIntensity: 0
     - _WaveSpeed: 100
+    - _WaveSpeed1: 0.7
+    - _WorldPositionTiling: 1
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0.8207547, g: 0.4761926, b: 0.6703121, a: 1}
+    - _BottomColor: {r: 0.44148272, g: 0.3019758, b: 0.5471698, a: 0.30588236}
+    - _BottomColor1: {r: 0.24597117, g: 0.14404586, b: 0.36792448, a: 1}
     - _CausticsColor: {r: 0.4196078, g: 0.62352943, b: 0.47656775, a: 0.3254902}
+    - _CausticsColor1: {r: 0, g: 1, b: 0.15463924, a: 0.36862746}
+    - _CausticsNormalTiling: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Emision: {r: 0, g: 0, b: 0, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamColor: {r: 0, g: 0.23584905, b: 0.022757392, a: 0.46666667}
+    - _FoamColor1: {r: 0.2220035, g: 0.5377358, b: 0.19023673, a: 0.14117648}
     - _MidColor: {r: 0.17866677, g: 0.22435117, b: 0.51886785, a: 1}
-    - _MiddleColor: {r: 0.33376536, g: 0.5566038, b: 0.30193132, a: 1}
-    - _TopColor: {r: 0.17880027, g: 0.9245283, b: 0.39947498, a: 1}
+    - _MiddleColor: {r: 0.42145783, g: 0.7264151, b: 0.47591448, a: 0.32156864}
+    - _MiddleColor1: {r: 0.17866677, g: 0.22435117, b: 0.51886785, a: 1}
+    - _SidesNormalTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TopColor: {r: 0.454495, g: 0.5943396, b: 0, a: 0}
+    - _TopColor1: {r: 1, g: 1, b: 1, a: 1}
     - _WaveDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _WaveDirection1: {r: 0.05, g: 0, b: 0, a: 0}
     - _WaveTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

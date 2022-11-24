@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BakeryProjectSettings
   m_EditorClassIdentifier: 
   mipmapLightmaps: 0
-  format8bit: 0
+  format8bit: 1
   texelPaddingForDefaultAtlasPacker: 3
   texelPaddingForXatlasAtlasPacker: 1
   alphaMetaPassResolutionMultiplier: 2

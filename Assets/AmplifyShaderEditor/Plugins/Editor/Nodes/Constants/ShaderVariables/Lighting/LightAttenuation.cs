@@ -100,9 +100,9 @@ namespace AmplifyShaderEditor
 							pragmas = URP10PragmaMultiCompiles;
 						}
 
-						for ( int i = 0; i < URP12PragmaMultiCompiles.Length; i++ )
+						for ( int i = 0; i < pragmas.Length; i++ )
 						{
-							dataCollector.AddToPragmas( UniqueId, URP12PragmaMultiCompiles[ i ] );
+							dataCollector.AddToPragmas( UniqueId, pragmas[ i ] );
 						}							
 
 						//string shadowCoords = dataCollector.TemplateDataCollectorInstance.GetShadowCoords( UniqueId/*, false, dataCollector.PortCategory*/ );

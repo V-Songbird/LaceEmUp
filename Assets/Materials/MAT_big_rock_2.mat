@@ -13,7 +13,7 @@ Material:
   - _DETAILCHANNEL_GREEN
   m_InvalidKeywords:
   - _KEYWORD0_GREEN
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -69,7 +69,7 @@ Material:
     - _Keyword0: 1
     - _Metallic: 0
     - _NoiseIntentisy: 0.75
-    - _NoiseTiling: 2
+    - _NoiseTiling: 10
     - _NormalIntensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -78,7 +78,7 @@ Material:
     - _SpecularHighlights: 1
     - _Tiling: 0.1
     m_Colors:
-    - _BackgroundColor: {r: 0.45490193, g: 0.4039215, b: 0.37254897, a: 1}
+    - _BackgroundColor: {r: 0.45490193, g: 0.40392148, b: 0.3725489, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ForegroundColor: {r: 0.5215686, g: 0.490196, b: 0.47843128, a: 1}
+    - _ForegroundColor: {r: 0.52156854, g: 0.490196, b: 0.47843128, a: 1}
   m_BuildTextureStacks: []

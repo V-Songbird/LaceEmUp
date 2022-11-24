@@ -9,12 +9,15 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MAT_water
   m_Shader: {fileID: 4800000, guid: 21ec47f2ba2f0d043ad030773a1361a2, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ISTRANSPARENT_ON
+  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - _ENABLETRANSPARENCY_ON
+  - _RECEIVESHADOWS_OFF
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -44,43 +47,71 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _CausticsNormalStrength: 0.169
+    - _CausticsQuantit: 0.433
     - _CausticsQuantity: 0.5
+    - _CausticsRefractionStrength: 0
     - _CausticsScale: 50
+    - _CausticsScale1: 2.79
     - _CausticsSpeed: 0.581
+    - _CausticsSpeed1: 1.06
+    - _CausticsTiling: 3.36
     - _Depth: 6.03
+    - _Depth1: 1
     - _EdgeLength: 15
     - _EnableTransparency: 1
     - _EnvironmentReflections: 1
     - _Float3: 4.04
     - _FoamQuantity: 0.5
     - _FoamScale: 100
+    - _FoamScale1: 7
     - _FoamWidth: 0.61
+    - _FoamWidth1: 0.39
+    - _InvertCaustics: 0
+    - _IsTransparent: 1
+    - _Metallic: 0
     - _MidPoint: 0.22
+    - _MidPoint1: 0.5
     - _NormalStrength: 0.111
     - _Opacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _RefractionIndex: 0.114
     - _RefractionStrenght: 2.08
     - _RefractionStrength: 1.5
-    - _Smoothness: 0.851
+    - _SidesNormalStrength: 0
+    - _Smoothness: 0.73
     - _SpecularHighlights: 1
     - _TessPhongStrength: 0.5
     - _TessValue: 15
     - _ToggleSwitch0: 0
+    - _TransAmbient: 0.1
+    - _TransDirect: 0.9
+    - _TransNormal: 0.5
+    - _TransScattering: 2
+    - _TransShadow: 0.5
+    - _TransStrength: 1
     - _WaterTiling: 0.05
     - _WaveIntensity: 0
     - _WaveSpeed: 100
+    - _WaveSpeed1: 15
+    - _WorldPositionTiling: 1
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0.10746703, g: 0.15141669, b: 0.19811317, a: 1}
+    - _BottomColor: {r: 0.14653791, g: 0.42951113, b: 0.8396226, a: 0.46666667}
     - _CausticsColor: {r: 0.4199893, g: 0.582111, b: 0.62264144, a: 1}
+    - _CausticsColor1: {r: 1, g: 1, b: 1, a: 0.40392157}
+    - _CausticsNormalTiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamColor: {r: 0.6269579, g: 0.6886792, b: 0.6821294, a: 0.45490196}
+    - _FoamColor1: {r: 1, g: 1, b: 1, a: 0.23529412}
     - _MidColor: {r: 0.17866677, g: 0.22435117, b: 0.51886785, a: 1}
-    - _MiddleColor: {r: 0.49603945, g: 0.6350569, b: 0.6698113, a: 1}
-    - _TopColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MiddleColor: {r: 0, g: 0.5882354, b: 1, a: 0.41960785}
+    - _SidesNormalTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 0.38431373}
     - _WaveDirection: {r: 1, g: 1, b: 0, a: 0}
+    - _WaveDirection1: {r: 0, g: -1, b: 0, a: 0}
     - _WaveTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

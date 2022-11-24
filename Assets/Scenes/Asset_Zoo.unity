@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 01cc280b8c9ad474b94765ff52fe5eca, type: 3}
   m_Sun: {fileID: 1087246891}
-  m_IndirectSpecularColor: {r: 0.06016866, g: 0.074543685, b: 0.1001856, a: 1}
+  m_IndirectSpecularColor: {r: 0.0752081, g: 0.093179815, b: 0.12522963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   bakedScaleOffsetTerrain: []
   assetList: []
   uvOverlapAssetList: 
-  idremap: 000000000100000002000000
+  idremap: 030000000400000005000000
   usesRealtimeGI: 0
   emptyDirectionTex: {fileID: 0}
   anyVolumes: 0

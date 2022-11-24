@@ -14,9 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
-  - Assets/Models/Environment/bush02.fbx
+  - Assets/Models/Cave/vase_1.fbx
+  - Assets/Models/Cave/vase_2.fbx
+  - Assets/Models/Cave/danger_sign.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_1.fbx
+  - Assets/Models/Cave/cave_block_2x2x3.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
+  - Assets/Models/Cave/big_rock_1.fbx
+  - Assets/Models/Cave/big_rock_2.fbx
+  - Assets/Models/Cave/medium_rock_1.fbx
+  - Assets/Models/Cave/cave_block_1x4x3_1.fbx
+  - Assets/Models/Interactive/pipe.fbx
+  - Assets/Models/Cave/rock_pillar.fbx
   - Assets/Models/Environment/bush01.fbx
-  modifiedAssetPaddingHash: aaf8cc2ea35031eeea37ed04
+  - Assets/Models/Environment/vase_1.fbx
+  - Assets/Models/Cave/stone_torch.fbx
+  - Assets/Models/Environment/bush02.fbx
+  - Assets/Models/Environment/vase_2.fbx
+  - Assets/Models/Cave/big_rock_3.fbx
+  - Assets/Models/Environment/danger_sign.fbx
+  modifiedAssetPaddingHash: aaf8cc2e9c50cf35c2d15080f427c115d7c2a693df4dfff0f1f23a064adc894b567e936319c2a693f1f23a06b7f23a063ec5d890ecc124917ac2a693be398033c44608c81c7e93631b3a8033f427c115
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -400,12 +417,80 @@ MonoBehaviour:
     padding: 2e000000460000002a000000110000000e0000000c0000000400000033000000330000003300000033000000330000003300000033000000330000000a00000007000000060000002b0000002b00000011000000140000001400000014000000140000002a0000001d000000320000003200000032000000320000002a000000080000000d0000000500000087000000fa00000087000000fa00000087000000fa00000087000000fa00000087000000fb00000087000000fb00000087000000fb00000087000000fb00000087000000fb00000051000000510000005100000051000000510000005100000051000000510000005100000051000000510000000c00000006000000060000002700000028000000390000002b000000150000002700000000010000ba0000009b0000009b000000b70000009d000000b7000000b7000000b70000009b000000b70000009d000000b7000000b7000000b70000009b0000009b0000009b00000083000000ba00000000010000ba0000009b0000009b000000b70000009d000000b7000000b7000000b70000009b000000b70000009d000000b7000000b7000000b70000009b0000009b0000009b00000083000000000100002700000006000000270000002700000027000000270000002d0000001000000010000000230000006a000000000100006a000000000100006a000000000100006a000000000100001e0000002c000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000210000005c000000000100005c000000000100005c000000000100005c000000000100001a00000026000000230000006a000000000100006a000000000100006a000000000100006a000000000100001e0000002c000000630000004300000000010000000100004300000000010000430000000001000043000000430000009400000094000000430000009400000043000000940000004300000024000000270000004600000030000000360000002d000000360000001d0000001d0000001d0000001d0000001d0000001d0000001d0000001d00000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad0000000001000000010000ad000000000100001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b0000001b000000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c00000000010000000100000001000000010000000100000001000000010000000100008c000000000100000001000000010000000100004600000046000000460000004900000049000000490000004900000024000000240000002400000024000000220000001800000004000000
     unwrapper: 
   - meshName:
-    - bush03
-    padding: 25000000
+    - vase_1
+    padding: c7000000
+    unwrapper: 00000000
+  - meshName:
+    - vase_2
+    padding: af000000
+    unwrapper: 00000000
+  - meshName:
+    - danger_sign
+    padding: 6a000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_floor_4x2x3_a
+    padding: 13000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_block_2x2x3
+    padding: 30000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_floor_4x2x3_b
+    padding: 14000000
+    unwrapper: 00000000
+  - meshName:
+    - rock01
+    padding: 10000000
+    unwrapper: 00000000
+  - meshName:
+    - rock02
+    padding: 17000000
+    unwrapper: 00000000
+  - meshName:
+    - rock03
+    padding: 4f000000
+    unwrapper: 00000000
+  - meshName:
+    - cave_block_1x4x3_1
+    padding: 14000000
+    unwrapper: 00000000
+  - meshName:
+    - pipe
+    padding: 28000000
+    unwrapper: 00000000
+  - meshName:
+    - rock_pillar
+    padding: 22000000
     unwrapper: 00000000
   - meshName:
     - bush01
-    padding: 7e000000
+    padding: 00010000
+    unwrapper: 00000000
+  - meshName:
+    - vase_1
+    padding: 31000000
+    unwrapper: 00000000
+  - meshName:
+    - stone_torch
+    padding: 2d000000
+    unwrapper: 00000000
+  - meshName:
+    - bush03
+    padding: 77000000
+    unwrapper: 00000000
+  - meshName:
+    - vase_2
+    padding: 2b000000
+    unwrapper: 00000000
+  - meshName:
+    - rockPillar
+    padding: 0f000000
+    unwrapper: 00000000
+  - meshName:
+    - danger_sign
+    padding: 6a000000
     unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
@@ -425,7 +510,46 @@ MonoBehaviour:
   - Assets/Models/Cave/cave_block_4x2x3_1.fbx
   - Assets/Models/Cave/cave_block_4x2x3_2.fbx
   - Assets/Models/Cave/cave_block_2x2x3.fbx
-  uvOverlapAssetList: 00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - Assets/Models/Cave/danger_sign.fbx
+  - Assets/Textures/small_props.fbx
+  - Assets/Models/Cave/vase_1.fbx
+  - Assets/Models/Cave/vase_2.fbx
+  - Assets/Models/Cave/cave_block_1x4x3_1.fbx
+  - Assets/Models/Interactive/pipe.fbx
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/axe.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/cloud1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/sign_text.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/treestump2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/forest_hut4.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/rock2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/bush.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/fallen_tree2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/cloud3.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/gazebo.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/forest_hut1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/forest_hut2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/forest_hut3.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/cloud4.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/tree2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/tree3.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/button.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/rock1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/lookout_ladder.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/pier.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/sign_button.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/fallen_tree1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/enemy.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/cloud2.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/treestump1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/tree1.obj
+  - Assets/Procedural Worlds/Ambient Sounds/Demo/Models/lookout.obj
+  - Assets/Models/Environment/Lava.obj
+  - Assets/Models/Environment/danger_sign.fbx
+  - Assets/Models/Environment/bush01.fbx
+  - Assets/Models/Environment/bush02.fbx
+  - Assets/Models/Environment/vase_1.fbx
+  - Assets/Models/Environment/vase_2.fbx
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010000010100000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3060
@@ -511,5 +635,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 7e000000
+  modifiedMeshPaddingArray: 77000000
   modifiedMeshUnwrapperArray: 00000000

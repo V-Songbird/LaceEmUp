@@ -16,4 +16,21 @@ MonoBehaviour:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
   - Assets/Models/Environment/bush02.fbx
   - Assets/Models/Environment/bush01.fbx
-  modifiedAssetPaddingHash: aaf8cc2ea35031eeea37ed04
+  - Assets/Models/Cave/vase_1.fbx
+  - Assets/Models/Cave/vase_2.fbx
+  - Assets/Models/Cave/cave_block_2x2x3.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_1.fbx
+  - Assets/Models/Cave/big_rock_1.fbx
+  - Assets/Models/Cave/big_rock_2.fbx
+  - Assets/Models/Cave/rock_pillar.fbx
+  - Assets/Models/Cave/danger_sign.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
+  - Assets/Models/Cave/medium_rock_1.fbx
+  - Assets/Models/Cave/big_rock_3.fbx
+  - Assets/Models/Cave/stone_torch.fbx
+  - Assets/Models/Environment/danger_sign.fbx
+  - Assets/Models/Environment/vase_2.fbx
+  - Assets/Models/Environment/vase_1.fbx
+  - Assets/Models/Interactive/pipe.fbx
+  - Assets/Models/Cave/cave_block_1x4x3_1.fbx
+  modifiedAssetPaddingHash: aaf8cc2ec44608c8ecc124919c50cf35c2d15080df4dfff0d7c2a6934adc894b567e93633ec5d890f427c115f1f23a0619c2a6931b3a8033be398033f427c1151c7e93637ac2a693b7f23a06f1f23a06

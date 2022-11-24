@@ -13,7 +13,7 @@ Material:
   - _DETAILCHANNEL_ALPHA
   m_InvalidKeywords:
   - _KEYWORD0_RED
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -69,7 +69,7 @@ Material:
     - _Keyword0: 0
     - _Metallic: 0
     - _NoiseIntentisy: 0.75
-    - _NoiseTiling: 2
+    - _NoiseTiling: 4
     - _NormalIntensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
