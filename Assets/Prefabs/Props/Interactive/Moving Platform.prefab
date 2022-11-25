@@ -179,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 7522372352413770863, guid: 44ef88e021f178d448b6894df898cddc,
         type: 3}
       propertyPath: m_Name
-      value: cave_block_2x2x3
+      value: Block 2x2x3 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522372352413770863, guid: 44ef88e021f178d448b6894df898cddc,
         type: 3}
@@ -233,15 +233,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4178753, y: 2.1169887, z: 3.4279957}
   m_Center: {x: 1.1080465, y: 1.0448034, z: 1.5415256}
---- !u!114 &165977737293360794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629725246526426864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a85effa687de744d98b87f4e69ad494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
