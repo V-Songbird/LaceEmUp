@@ -7477,7 +7477,7 @@ MonoBehaviour:
   uvOverlapAssetList: 
   idremap: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000
   usesRealtimeGI: 0
-  emptyDirectionTex: {fileID: 0}
+  emptyDirectionTex: {fileID: 2800000, guid: f4cfdfb13fd70db438e30c8b9e925ff6, type: 3}
   anyVolumes: 0
   compressedVolumes: 0
   sectors:
@@ -10164,7 +10164,7 @@ PrefabInstance:
     - target: {fileID: 2022418103879199883, guid: ec83b5511c2cf3041878e9bc4f3536ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.770004
+      value: -29.32
       objectReference: {fileID: 0}
     - target: {fileID: 2022418103879199883, guid: ec83b5511c2cf3041878e9bc4f3536ac,
         type: 3}
