@@ -33,7 +33,7 @@ MonoBehaviour:
   - Assets/Models/Environment/vase_2.fbx
   - Assets/Models/Cave/big_rock_3.fbx
   - Assets/Models/Environment/danger_sign.fbx
-  modifiedAssetPaddingHash: aaf8cc2e9c50cf35c2d15080f427c115d7c2a693df4dfff0f1f23a064adc894b567e936319c2a693f1f23a06b7f23a063ec5d890ecc124917ac2a693be398033ed37ed041c7e93631b3a8033f427c115
+  modifiedAssetPaddingHash: aaf8cc2e9c50cf35c2d15080f427c115d7c2a693df4dfff0f1f23a064adc894b567e936319c2a693f1f23a06b7f23a063ec5d8900cf43a067ac2a693be398033a35031ee1c7e93631b3a8033f427c115
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -466,7 +466,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - bush01
-    padding: 00010000
+    padding: 5a000000
     unwrapper: 00000000
   - meshName:
     - vase_1
@@ -478,7 +478,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - bush03
-    padding: 79000000
+    padding: 25000000
     unwrapper: 00000000
   - meshName:
     - vase_2
@@ -640,5 +640,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 79000000
+  modifiedMeshPaddingArray: 25000000
   modifiedMeshUnwrapperArray: 00000000
