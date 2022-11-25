@@ -59,7 +59,7 @@ Material:
     - _EnvironmentReflections: 1
     - _FluffyScale: 0.5
     - _NoiseScale: 0
-    - _NoiseSpeed: 0.0189
+    - _NoiseSpeed: 0.0399
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

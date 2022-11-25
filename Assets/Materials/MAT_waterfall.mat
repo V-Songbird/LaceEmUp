@@ -53,28 +53,28 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _CausticsNormalStrength: 0.382
-    - _CausticsQuantity: 0.4
-    - _CausticsRefractionStrength: 0.3
-    - _CausticsScale: 0.9
+    - _CausticsNormalStrength: 0.16
+    - _CausticsQuantity: 0.344
+    - _CausticsRefractionStrength: 0.316
+    - _CausticsScale: 1
     - _CausticsSpeed: 1
-    - _CausticsTiling: 0.84
+    - _CausticsTiling: 15
     - _Depth: 2
     - _EnvironmentReflections: 1
     - _Float3: 0.97
     - _Float4: 0.48
     - _Float5: 0
     - _Float6: 1
-    - _FoamScale: 4
-    - _FoamWidth: 0.72
+    - _FoamScale: 3
+    - _FoamWidth: 0.8
     - _Metallic: 0
-    - _MidPoint: 1
+    - _MidPoint: 0.5
     - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RefractionStrength: 0.08
-    - _Smoothness: 0.669
+    - _Smoothness: 0.625
     - _SpecularHighlights: 1
     - _TransAmbient: 0.1
     - _TransDirect: 0.9
@@ -84,22 +84,22 @@ Material:
     - _TransStrength: 12
     - _WaterfallFoamPosterization: 156.06
     - _WaterfallFoamScale: 1
-    - _WaterfallNormalSpeed: 0.4
+    - _WaterfallNormalSpeed: 0.25
     - _WaterfallNormalStrength: 0.122
-    - _WaterfallRefractionStrenght: 0.531
+    - _WaterfallRefractionStrenght: 0.406
     - _WaterfallRefractionStrength: 0.5
     - _WaterfallSpeed: 1
     - _WaveSpeed: 0.3
     m_Colors:
-    - _BottomColor: {r: 0, g: 0.72492695, b: 1, a: 0.14117648}
+    - _BottomColor: {r: 0.36445352, g: 0.5094183, b: 0.735849, a: 0.39607844}
     - _CausticsColor: {r: 1, g: 0.75223637, b: 0, a: 0.105882354}
-    - _CausticsNormalTiling: {r: 1, g: 0.1, b: 0, a: 0}
+    - _CausticsNormalTiling: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MiddleColor: {r: 0, g: 0.76093936, b: 1, a: 0.54509807}
-    - _TopColor: {r: 1, g: 1, b: 1, a: 0}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 0.24705882}
+    - _MiddleColor: {r: 1, g: 0.9126912, b: 0.37254906, a: 0.36862746}
+    - _TopColor: {r: 0.113474526, g: 0.13118297, b: 0.32075468, a: 0.53333336}
     - _Vector0: {r: 2, g: 0.1, b: 0, a: 0}
-    - _WaterfallFoamColor: {r: 1, g: 1, b: 1, a: 0.3254902}
+    - _WaterfallFoamColor: {r: 0.8820755, g: 0.92338556, b: 1, a: 0.3254902}
     - _WaterfallNormalTiling: {r: 0.3, g: 0.03, b: 0, a: 0}
     - _WaterfallTiling: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _WaterfallTiling1: {r: 1, g: 0.1, b: 0, a: 0}
