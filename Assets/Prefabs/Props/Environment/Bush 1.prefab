@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1177050445106321916}
   - component: {fileID: 2880723428187838041}
   - component: {fileID: 8609142010339987}
-  - component: {fileID: -3122413575916688457}
   m_Layer: 0
   m_Name: Bush 1
   m_TagString: Untagged
@@ -53,7 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -84,18 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3122413575916688457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954115321798804294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a747f33c53bd3042af4ac90fc2a1fd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lmgroupAsset: {fileID: 11400000, guid: e8ecc6bc51e883845a0d81563fcf0be2, type: 2}
-  instanceResolutionOverride: 0
-  instanceResolution: 256

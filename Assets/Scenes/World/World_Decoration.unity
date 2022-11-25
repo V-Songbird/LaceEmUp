@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -1098,30 +1098,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.47718412
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255773
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099497
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.68253934
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -1177,11 +1157,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -1443,30 +1418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.76854664
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425577
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099497
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.56949884
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -1522,11 +1477,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -2647,7 +2597,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -3930,64 +3880,64 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1921791377}
-  - {fileID: 1929734906}
-  - {fileID: 1125536010}
-  - {fileID: 414995415}
-  - {fileID: 1494819149}
-  - {fileID: 1692928159}
-  - {fileID: 514899800}
-  - {fileID: 1884786948}
-  - {fileID: 1379785399}
-  - {fileID: 493951654}
-  - {fileID: 1948131117}
-  - {fileID: 1583756630}
-  - {fileID: 1972837390}
-  - {fileID: 2014036187}
-  - {fileID: 448305725}
-  - {fileID: 566711672}
-  - {fileID: 1638373622}
   - {fileID: 74148854}
-  - {fileID: 1154286364}
-  - {fileID: 328979218}
-  - {fileID: 1404864040}
-  - {fileID: 782831932}
   - {fileID: 93684443}
-  - {fileID: 2071602098}
-  - {fileID: 1450098470}
-  - {fileID: 999939580}
-  - {fileID: 1831985967}
-  - {fileID: 952413481}
-  - {fileID: 1469474467}
-  - {fileID: 1415004931}
-  - {fileID: 969709562}
-  - {fileID: 1656399656}
-  - {fileID: 338762713}
-  - {fileID: 587471967}
-  - {fileID: 390700219}
-  - {fileID: 1539396745}
-  - {fileID: 643039133}
-  - {fileID: 1296543355}
-  - {fileID: 1741426042}
-  - {fileID: 1925252339}
   - {fileID: 284195127}
-  - {fileID: 445940955}
-  - {fileID: 1812994565}
-  - {fileID: 897719431}
-  - {fileID: 470597730}
-  - {fileID: 1285881949}
-  - {fileID: 1856091619}
   - {fileID: 312173036}
   - {fileID: 320412164}
-  - {fileID: 1409238486}
-  - {fileID: 1424026391}
+  - {fileID: 328979218}
+  - {fileID: 338762713}
+  - {fileID: 390700219}
+  - {fileID: 414995415}
+  - {fileID: 445940955}
+  - {fileID: 448305725}
+  - {fileID: 470597730}
+  - {fileID: 493951654}
+  - {fileID: 514899800}
+  - {fileID: 566711672}
+  - {fileID: 587471967}
+  - {fileID: 643039133}
+  - {fileID: 652072950}
+  - {fileID: 782831932}
+  - {fileID: 897719431}
+  - {fileID: 952413481}
+  - {fileID: 969709562}
+  - {fileID: 999939580}
+  - {fileID: 1035700449}
   - {fileID: 1087650555}
   - {fileID: 1096230659}
   - {fileID: 1100642124}
-  - {fileID: 1507145899}
-  - {fileID: 652072950}
-  - {fileID: 1035700449}
+  - {fileID: 1125536010}
+  - {fileID: 1154286364}
   - {fileID: 1161444257}
+  - {fileID: 1285881949}
+  - {fileID: 1296543355}
+  - {fileID: 1379785399}
+  - {fileID: 1404864040}
+  - {fileID: 1409238486}
+  - {fileID: 1415004931}
+  - {fileID: 1424026391}
+  - {fileID: 1450098470}
+  - {fileID: 1469474467}
+  - {fileID: 1494819149}
+  - {fileID: 1507145899}
+  - {fileID: 1539396745}
+  - {fileID: 1583756630}
+  - {fileID: 1638373622}
+  - {fileID: 1656399656}
+  - {fileID: 1692928159}
+  - {fileID: 1741426042}
+  - {fileID: 1812994565}
+  - {fileID: 1831985967}
+  - {fileID: 1856091619}
+  - {fileID: 1884786948}
+  - {fileID: 1921791377}
+  - {fileID: 1925252339}
+  - {fileID: 1929734906}
+  - {fileID: 1948131117}
+  - {fileID: 1972837390}
+  - {fileID: 2014036187}
+  - {fileID: 2071602098}
   m_Father: {fileID: 152376392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4644,45 +4594,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.62286544
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255778
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099505
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.34341773
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -4738,11 +4653,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -4979,30 +4889,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.47718412
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099502
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.45645827
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -5058,11 +4948,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -5141,30 +5026,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.7685467
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255773
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099497
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.45645827
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 48
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -5220,11 +5085,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -5361,45 +5221,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.14697266
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198861
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380027
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.6811181
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -5586,45 +5416,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.53803885
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988516
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379945
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.92146695
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -5715,7 +5515,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -6072,30 +5872,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.18582144
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425578
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099506
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.79557985
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -6151,11 +5931,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -6285,7 +6060,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -6341,11 +6116,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -6847,45 +6617,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: -0.009332108
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.17074731
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.16913874
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.19284014
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -6967,45 +6707,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.94013387
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380003
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.29801777
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -7253,30 +6963,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.76854676
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099503
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.34341773
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 44
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -7498,45 +7188,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.2868112
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988576
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.03038
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.92146695
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -7966,7 +7626,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -8160,7 +7820,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -8231,11 +7891,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -8747,30 +8402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.18582144
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425578
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099506
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.34341773
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -8957,45 +8592,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.92827266
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198853
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379955
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.46930492
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -9582,30 +9187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: -0.012755102
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.19945452
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.20789179
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.51281905
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -9677,11 +9262,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
 --- !u!4 &643039133 stripped
@@ -9702,15 +9282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 55
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -10682,30 +10257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.58791643
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425578
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099506
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.18342023
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -10761,11 +10316,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -11790,7 +11340,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -12027,20 +11577,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
+    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -12863,45 +12418,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.008012733
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988595
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380018
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.9654276
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -13328,45 +12853,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.13858315
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198859
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.9264513
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -14218,30 +13713,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.47718412
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255773
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099497
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.79557985
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -14297,11 +13772,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -14655,7 +14125,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 56
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -14726,11 +14196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -14893,45 +14358,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.9282728
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198854
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.03037997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.35626438
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 51
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -15161,7 +14596,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -15231,7 +14666,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -15666,7 +15101,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -15722,11 +15157,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -15978,45 +15408,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.43916768
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198853
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379955
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.92146695
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -16286,7 +15686,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 57
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -16826,7 +16226,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -17241,7 +16641,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -17747,45 +17147,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.7747318
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.09486447
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.09325589
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.7892774
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -17987,45 +17357,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.8700783
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.09052884
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.088920265
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.7898193
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -18971,30 +18311,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3315028
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099502
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.68253934
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -19050,11 +18370,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -19271,15 +18586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -19346,45 +18656,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.05482287
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198859
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.9654276
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -19606,45 +18886,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.92827266
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198852
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379951
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.51868176
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -19836,30 +19086,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3315028
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099502
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.56949884
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 50
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -19915,11 +19145,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -20306,30 +19531,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.18582144
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425578
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099506
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.68253934
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -20386,11 +19591,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
 --- !u!4 &1450098470 stripped
@@ -20406,45 +19606,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.9282726
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198847
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379897
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.5823454
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -20514,7 +19684,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -20600,16 +19770,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 350124874}
-  - {fileID: 1472286890}
-  - {fileID: 2127665133}
-  - {fileID: 1513200071}
+  - {fileID: 7818213}
   - {fileID: 174360699}
+  - {fileID: 350124874}
   - {fileID: 504089538}
   - {fileID: 877528516}
-  - {fileID: 7818213}
-  - {fileID: 1247571521}
   - {fileID: 1210038670}
+  - {fileID: 1247571521}
+  - {fileID: 1472286890}
+  - {fileID: 1513200071}
+  - {fileID: 2127665133}
   m_Father: {fileID: 1056300438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20869,15 +20039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -20964,15 +20129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -21062,7 +20222,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -21269,30 +20429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.6228654
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099502
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.45645827
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -21348,11 +20488,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -21599,30 +20734,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3315028
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255778
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099505
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.34341773
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -21678,11 +20793,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -21974,45 +21084,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.8933238
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198859
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.29801777
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -22179,45 +21259,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.49122882
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988516
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030379945
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.92146695
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -22517,7 +21567,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -22573,11 +21623,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -22819,60 +21864,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.13858315
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.03198859
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.030380009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.82769763
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -23394,30 +22394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.47718412
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255778
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099505
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.34341773
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -23473,11 +22453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -23614,30 +22589,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.8490049
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255781
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099509
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: -0.0050349752
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -23694,11 +22649,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
 --- !u!4 &1831985967 stripped
@@ -23714,60 +22664,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.9282728
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.03037996
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.40564123
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -24084,15 +22989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -24212,15 +23112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -24392,45 +23287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3315028
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099502
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.79557985
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -24487,11 +23347,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
 --- !u!4 &1925252339 stripped
@@ -24510,7 +23365,7 @@ PrefabInstance:
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -24566,11 +23421,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -24942,45 +23792,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3455475
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.031988535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.03037996
-      objectReference: {fileID: 0}
-    - target: {fileID: 1090441295211041011, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.92146695
-      objectReference: {fileID: 0}
     - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_Name
       value: Bush 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1450997889673670950, guid: 65aad8345e2e45e40bd51b8953cd218a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -25167,30 +23987,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.3315028
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.14255776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099503
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.45645827
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -25246,11 +24046,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -25637,30 +24432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.73359776
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425578
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099506
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.18342023
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -25987,30 +24762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244791780}
     m_Modifications:
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.w
-      value: 0.6228654
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.x
-      value: 0.1425577
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.y
-      value: 0.15099496
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609142010339987, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
-      propertyPath: m_LightmapTilingOffset.z
-      value: 0.68253934
-      objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 1177050445106321916, guid: c99d5c1b104b71e419014bdcd3db7a32,
         type: 3}
@@ -26066,11 +24821,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1954115321798804294, guid: c99d5c1b104b71e419014bdcd3db7a32,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c99d5c1b104b71e419014bdcd3db7a32, type: 3}
@@ -26465,7 +25215,7 @@ PrefabInstance:
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2263386776681278364, guid: 65aad8345e2e45e40bd51b8953cd218a,
         type: 3}
@@ -27034,7 +25784,7 @@ PrefabInstance:
     - target: {fileID: 8207831240074283385, guid: 9f48e8197c8d31c43b826502d7cf42d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5040641
+      value: -0.552
       objectReference: {fileID: 0}
     - target: {fileID: 8207831240074283385, guid: 9f48e8197c8d31c43b826502d7cf42d2,
         type: 3}
