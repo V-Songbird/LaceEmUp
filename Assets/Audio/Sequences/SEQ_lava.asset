@@ -21,7 +21,7 @@ MonoBehaviour:
   - m_clip: {fileID: 8300000, guid: 2a3868bb72b7e7e4da49165a60374ddc, type: 3}
     m_volume: 1
   m_clips: []
-  m_volume: 0.25
+  m_volume: 0.3
   m_playbackSpeed: 1
   m_randomizeOrder: 0
   m_crossFade: 0

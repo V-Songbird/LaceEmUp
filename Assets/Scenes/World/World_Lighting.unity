@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000006, guid: e465c0813b1752d42b81f11ce90aa021,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b647c398c3178f34989338e398320046,
     type: 2}
 --- !u!196 &4
@@ -196,6 +195,47 @@ Transform:
   m_Father: {fileID: 69807228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343330008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0b4dd729a12d046982652f834580a2, type: 3}
+  m_Name: probes
+  m_EditorClassIdentifier: 
+  resolution: 16
+  bitmask: 1
+  id: 21
+  sortingID: 0
+  isImplicit: 1
+  area: 0
+  totalVertexCount: 300
+  vertexCounter: 0
+  sceneLodLevel: -1
+  sceneName: 
+  containsTerrains: 0
+  probes: 1
+  mode: 2
+  renderMode: 1000
+  renderDirMode: 5
+  atlasPacker: 1000
+  computeSSS: 0
+  sssSamples: 16
+  sssDensity: 10
+  sssColor: {r: 1, g: 1, b: 1, a: 1}
+  sssScale: 1
+  fakeShadowBias: 0
+  transparentSelfShadow: 0
+  flipNormal: 0
+  parentName: 
+  overridePath: 
+  fixPos3D: 0
+  voxelSize: {x: 1, y: 1, z: 1}
+  passedFilter: 0
 --- !u!1 &458305553
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +712,7 @@ MonoBehaviour:
   renderSettingsBounces: 5
   renderSettingsGISamples: 32
   renderSettingsGIBackFaceWeight: 0
-  renderSettingsTileSize: 1024
+  renderSettingsTileSize: 2048
   renderSettingsPriority: 2
   renderSettingsTexelsPerUnit: 20
   renderSettingsForceRefresh: 1
@@ -694,7 +734,7 @@ MonoBehaviour:
   renderSettingsMinAutoResolution: 16
   renderSettingsUnloadScenes: 1
   renderSettingsAdjustSamples: 1
-  renderSettingsGILODMode: 2
+  renderSettingsGILODMode: 0
   renderSettingsGILODModeEnabled: 0
   renderSettingsCheckOverlaps: 0
   renderSettingsSkipOutOfBoundsUVs: 1
@@ -703,10 +743,10 @@ MonoBehaviour:
   renderSettingsTempPath: 
   renderSettingsOutPath: BakeryLightmaps
   renderSettingsUseScenePath: 0
-  renderSettingsHackAOIntensity: 0
+  renderSettingsHackAOIntensity: 1
   renderSettingsHackAOSamples: 16
   renderSettingsHackAORadius: 1
-  renderSettingsShowAOSettings: 0
+  renderSettingsShowAOSettings: 1
   renderSettingsShowTasks: 1
   renderSettingsShowTasks2: 0
   renderSettingsShowPaths: 1
@@ -717,7 +757,7 @@ MonoBehaviour:
   renderSettingsTexelsMask: 1
   renderSettingsTexelsDir: 1
   renderSettingsShowDirWarning: 1
-  renderSettingsRenderDirMode: 2
+  renderSettingsRenderDirMode: 0
   renderSettingsShowCheckerSettings: 0
   renderSettingsSamplesWarning: 1
   renderSettingsPrefabWarning: 1
@@ -744,251 +784,11 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  lastBakeTime: 958
+  lastBakeTime: 644
   enlightenWarningShown: 1
   enlightenWarningShown2: 0
-  lightUIDs: f190f065ef8f5befce28b714c8c166dc582208bd4189a03c704e9b1a7991e7cff8ce3587a1d0270b
+  lightUIDs: f8ce3587a1d0270b
   lights:
-  - tform:
-      e00: 0.999982
-      e01: 0.0012460812
-      e02: 0.005870284
-      e03: 47.80429
-      e10: -0.000012981356
-      e11: 0.9786516
-      e12: -0.20552638
-      e13: -17.241064
-      e20: -0.006001065
-      e21: 0.2055226
-      e22: 0.978634
-      e23: -0.5764601
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 15
-    range: 8
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 0.999982
-      e01: 0.0012460812
-      e02: 0.005870284
-      e03: 42.564293
-      e10: -0.000012981356
-      e11: 0.9786516
-      e12: -0.20552638
-      e13: -20.241064
-      e20: -0.006001065
-      e21: 0.2055226
-      e22: 0.978634
-      e23: -3.24646
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 3
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 30
-      e01: 0
-      e02: 0
-      e03: 54.774292
-      e10: 0
-      e11: -0.0000035762787
-      e12: 30.000004
-      e13: -17.031065
-      e20: 0
-      e21: -30.000004
-      e22: -0.0000035762787
-      e23: 5.0035396
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 20
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 0.999982
-      e01: 0.0012460812
-      e02: 0.005870284
-      e03: 59.66429
-      e10: -0.000012981356
-      e11: 0.9786516
-      e12: -0.20552638
-      e13: -18.711065
-      e20: -0.006001065
-      e21: 0.2055226
-      e22: 0.978634
-      e23: -4.36646
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 3
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 0.999982
-      e01: 0.0012460812
-      e02: 0.005870284
-      e03: 54.73429
-      e10: -0.000012981356
-      e11: 0.9786516
-      e12: -0.20552638
-      e13: -18.731066
-      e20: -0.006001065
-      e21: 0.2055226
-      e22: 0.978634
-      e23: -3.07646
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 3
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 30
-      e01: 0
-      e02: 0
-      e03: 48.454292
-      e10: 0
-      e11: -0.0000035762787
-      e12: 30.000004
-      e13: -17.031065
-      e20: 0
-      e21: -30.000004
-      e22: -0.0000035762787
-      e23: 2.92354
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 20
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 0.999982
-      e01: 0.0012460812
-      e02: 0.005870284
-      e03: 63.307293
-      e10: -0.000012981356
-      e11: 0.9786516
-      e12: -0.20552638
-      e13: -15.445064
-      e20: -0.006001065
-      e21: 0.2055226
-      e22: 0.978634
-      e23: -4.35246
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.7264151, g: 0.52714735, b: 0.22957456, a: 1}
-    intensity: 3
-    range: 10
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
-  - tform:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: -3.0257084
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 1.2189358
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: -4.5964603
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    color: {r: 0.9843138, g: 0.8470589, b: 0.7137255, a: 1}
-    intensity: 15
-    range: 30
-    radius: 0.05
-    samples: 8
-    samples2: 0
-    bitmask: 0
-    bakeToIndirect: 1
-    selfShadow: 0
-    realisticFalloff: 1
-    projMode: 0
-    cookie: {fileID: 0}
-    angle: 30
   - tform:
       e00: 1
       e01: 0
@@ -1050,44 +850,44 @@ MonoBehaviour:
     cookie: {fileID: 0}
     angle: 30
   implicitGroups:
-  - {fileID: 1201818925}
+  - {fileID: 343330008}
   implicitGroupedObjects:
   - {fileID: 0}
   bounds:
-  - m_Center: {x: 9.710831, y: -16.740341, z: 8.9592}
-    m_Extent: {x: 56.93956, y: 26.927399, z: 15.60581}
-  - m_Center: {x: 32.097538, y: -0.46427536, z: 7.683648}
-    m_Extent: {x: 34.026077, y: 21.16866, z: 15.718085}
-  - m_Center: {x: 14.96949, y: -15.189381, z: 9.573936}
-    m_Extent: {x: 43.720222, y: 24.303764, z: 15.845808}
-  - m_Center: {x: 7.3734493, y: -1.1430664, z: 5.40419}
-    m_Extent: {x: 24.596384, y: 22.111263, z: 17.292957}
-  - m_Center: {x: 14.939297, y: -2.4231586, z: 8.057992}
-    m_Extent: {x: 63.651096, y: 26.512283, z: 20.35162}
+  - m_Center: {x: 12.9425125, y: -11.312864, z: 6.841222}
+    m_Extent: {x: 50.281693, y: 22.084814, z: 16.953728}
+  - m_Center: {x: 32.097538, y: -0.06478119, z: 7.683648}
+    m_Extent: {x: 34.026077, y: 20.769165, z: 15.718085}
+  - m_Center: {x: 12.4915695, y: -0.33236885, z: 5.40419}
+    m_Extent: {x: 41.242302, y: 21.300566, z: 17.292957}
+  - m_Center: {x: 14.409353, y: -19.17603, z: 9.573936}
+    m_Extent: {x: 44.280357, y: 20.317116, z: 15.845808}
+  - m_Center: {x: 14.939293, y: -4.344837, z: 8.057992}
+    m_Extent: {x: 63.651093, y: 24.822659, z: 20.35162}
   - m_Center: {x: 16.324219, y: -5.7174644, z: 5.323447}
     m_Extent: {x: 51.503067, y: 31.51094, z: 17.775183}
-  - m_Center: {x: 8.777481, y: -12.296118, z: 11.04691}
-    m_Extent: {x: 43.489815, y: 27.371546, z: 16.487114}
-  - m_Center: {x: 20.37057, y: -7.2030945, z: 3.2992916}
-    m_Extent: {x: 45.97982, y: 30.31723, z: 14.39292}
-  - m_Center: {x: 6.917656, y: -17.66127, z: 8.814883}
-    m_Extent: {x: 58.360138, y: 27.266853, z: 19.608463}
-  - m_Center: {x: 7.2562027, y: -10.917042, z: 5.6948576}
-    m_Extent: {x: 55.968002, y: 21.688992, z: 17.988485}
+  - m_Center: {x: 15.819027, y: -8.427174, z: 3.464963}
+    m_Extent: {x: 50.53136, y: 31.24049, z: 14.558591}
+  - m_Center: {x: 14.818623, y: -6.276745, z: 9.64986}
+    m_Extent: {x: 44.53091, y: 29.39088, z: 18.773487}
+  - m_Center: {x: 8.282997, y: -17.66127, z: 7.0510073}
+    m_Extent: {x: 56.994797, y: 27.266853, z: 19.344635}
+  - m_Center: {x: 7.6039543, y: -17.031105, z: 6.8857145}
+    m_Extent: {x: 59.046436, y: 26.636635, z: 17.679295}
   - m_Center: {x: 52.285522, y: 2.9179363, z: -0.17645979}
     m_Extent: {x: 24.846863, y: 17.693336, z: 7.517862}
-  - m_Center: {x: 20.597372, y: -17.249548, z: 9.279171}
-    m_Extent: {x: 51.87448, y: 27.677507, z: 15.925781}
-  - m_Center: {x: 15.044037, y: -7.9675255, z: 8.468667}
-    m_Extent: {x: 50.242203, y: 32.63953, z: 19.846668}
-  - m_Center: {x: 14.087246, y: -13.750069, z: 11.183}
-    m_Extent: {x: 53.19911, y: 23.383911, z: 18.70634}
-  - m_Center: {x: 15.000309, y: -11.500256, z: 12.584615}
-    m_Extent: {x: 50.285946, y: 21.134098, z: 18.40041}
-  - m_Center: {x: 15.000305, y: -19.77337, z: 21.837845}
-    m_Extent: {x: 46.285946, y: 29.407225, z: 27.623177}
-  - m_Center: {x: 19.75576, y: -15.804386, z: 16.577312}
-    m_Extent: {x: 51.032875, y: 25.632011, z: 25.735699}
+  - m_Center: {x: 20.597372, y: -15.089548, z: 9.279171}
+    m_Extent: {x: 51.87448, y: 25.517508, z: 15.925781}
+  - m_Center: {x: 17.655712, y: -10.127525, z: 8.468667}
+    m_Extent: {x: 52.853878, y: 34.79953, z: 19.846668}
+  - m_Center: {x: 14.087246, y: -13.750069, z: 11.1830015}
+    m_Extent: {x: 53.19911, y: 23.383911, z: 18.706343}
+  - m_Center: {x: 15.11858, y: -11.500256, z: 12.379301}
+    m_Extent: {x: 50.167675, y: 21.134098, z: 18.60572}
+  - m_Center: {x: 13.000305, y: -19.77337, z: 21.837847}
+    m_Extent: {x: 48.285942, y: 29.407225, z: 27.623177}
+  - m_Center: {x: 19.75576, y: -15.804388, z: 16.577312}
+    m_Extent: {x: 51.032875, y: 25.63201, z: 25.735699}
   - m_Center: {x: 20.488, y: -24.115189, z: 17.733664}
     m_Extent: {x: 51.148815, y: 34.751198, z: 29.13763}
   - m_Center: {x: 14.430904, y: -21.542885, z: 17.943455}
@@ -1112,29 +912,25 @@ MonoBehaviour:
   serverGetFileList: []
   lightmapHasColor: 01010101010101010101010101010101010101010101
   lightmapHasMask: 01010101010101010101010101010101010101010101
-  lightmapHasDir: 01010101010101010101010101010101010101010100
+  lightmapHasDir: 00000000000000000000000000000000000000000000
   lightmapHasRNM: 00000000000000000000000000000000000000000001
   modifiedAssetPathList:
-  - Assets/Models/Environment/danger_sign.fbx
-  - Assets/Models/Environment/bush01.fbx
-  - Assets/Models/Environment/bush02.fbx
-  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
-  - Assets/Models/Cave/cave_block_2x2x3.fbx
   - Assets/Models/Interactive/pipe.fbx
   - Assets/Models/Cave/cave_block_4x2x3_1.fbx
+  - Assets/Models/Cave/cave_block_4x2x3_2.fbx
+  - Assets/Models/Cave/cave_block_2x2x3.fbx
   - Assets/Models/Cave/cave_block_1x4x3_1.fbx
+  - Assets/Models/Environment/bush02.fbx
+  - Assets/Models/Environment/bush01.fbx
+  - Assets/Models/Environment/danger_sign.fbx
   modifiedAssets:
   - meshName:
-    - danger_sign
-    padding: 6a000000
+    - pipe
+    padding: 28000000
     unwrapper: 00000000
   - meshName:
-    - bush01
-    padding: 5a000000
-    unwrapper: 00000000
-  - meshName:
-    - bush03
-    padding: 25000000
+    - cave_floor_4x2x3_a
+    padding: 13000000
     unwrapper: 00000000
   - meshName:
     - cave_floor_4x2x3_b
@@ -1145,16 +941,20 @@ MonoBehaviour:
     padding: 30000000
     unwrapper: 00000000
   - meshName:
-    - pipe
-    padding: 28000000
-    unwrapper: 00000000
-  - meshName:
-    - cave_floor_4x2x3_a
-    padding: 13000000
-    unwrapper: 00000000
-  - meshName:
     - cave_block_1x4x3_1
     padding: 14000000
+    unwrapper: 00000000
+  - meshName:
+    - bush03
+    padding: 25000000
+    unwrapper: 00000000
+  - meshName:
+    - bush01
+    padding: 5a000000
+    unwrapper: 00000000
+  - meshName:
+    - danger_sign
+    padding: 6a000000
     unwrapper: 00000000
   maps:
   - {fileID: 2800000, guid: cc568e2c19b86964f827c7056fe2911c, type: 3}
@@ -1175,7 +975,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f1a3b3dadce25ad4cbc297a0515f1af5, type: 3}
   - {fileID: 2800000, guid: b200483ec06d5f041951467466867bc6, type: 3}
   - {fileID: 2800000, guid: ffcd9e6aacaeae947b4982abbedfe466, type: 3}
-  - {fileID: 2800000, guid: 01cfd0240171b5a41a9596e1f26c532c, type: 3}
+  - {fileID: 2800000, guid: be2fc1c383b9a594aacba54e77526ca9, type: 3}
   - {fileID: 2800000, guid: 5d19ac9f540f9ec4da91def0a612cb4b, type: 3}
   masks:
   - {fileID: 2800000, guid: 696751a89bfb14e418053944da06095e, type: 3}
@@ -1196,29 +996,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 2fc46a29e9792f141a49a35444868aa6, type: 3}
   - {fileID: 2800000, guid: e75e829efbbf8e2428c94a158fbe3419, type: 3}
   - {fileID: 2800000, guid: d78ec12cd1723ff49a2c0b02bc0d325b, type: 3}
-  - {fileID: 2800000, guid: 846fd7f1dee4369488290645290aa4fc, type: 3}
+  - {fileID: 2800000, guid: ce7142434f2d9a84fb57f8f40ad9c18d, type: 3}
   - {fileID: 2800000, guid: 62fd6681b2a8fc447a651c386e1ba5ec, type: 3}
-  dirMaps:
-  - {fileID: 2800000, guid: 2446fdc5d03fd8c4c9785d011d094ea4, type: 3}
-  - {fileID: 2800000, guid: 52b7093dec2a8a14a9e8d028bb1ef633, type: 3}
-  - {fileID: 2800000, guid: 2e029f1700de1394d90f0bb58ae14927, type: 3}
-  - {fileID: 2800000, guid: dc1ebc9d76a97704f9b2d4a4359fb6d7, type: 3}
-  - {fileID: 2800000, guid: 43b6119e44ea1c94585cac43bb132575, type: 3}
-  - {fileID: 2800000, guid: 07f37cba7865aa04fb46ba500e610e5a, type: 3}
-  - {fileID: 2800000, guid: 04ad594a2c6a3b44e915a91c0963bc91, type: 3}
-  - {fileID: 2800000, guid: d5b6f18fc45a71b4ab3e67cf9f3f4b59, type: 3}
-  - {fileID: 2800000, guid: d1c57ec9327051d4392b4636fda7bb7b, type: 3}
-  - {fileID: 2800000, guid: 77f76175cfa2dbc4cb867c7a72f04f15, type: 3}
-  - {fileID: 2800000, guid: 863dbfe7e11a42c40a2ce6066e52acb9, type: 3}
-  - {fileID: 2800000, guid: e5a24e586791f15489a9b98d77c8aa2b, type: 3}
-  - {fileID: 2800000, guid: 0ff257c740f8d904ab9557a8dad43093, type: 3}
-  - {fileID: 2800000, guid: 2bd415ac7d048b845a767a51623634c5, type: 3}
-  - {fileID: 2800000, guid: 9a28a5ab2ab2dc14297e8ecade764131, type: 3}
-  - {fileID: 2800000, guid: 572f19ddb01763e4181e553e6e4580c1, type: 3}
-  - {fileID: 2800000, guid: a4bb35a87eccc1a4597a231890df6009, type: 3}
-  - {fileID: 2800000, guid: c1beebbe084b10d4688e71e48835af50, type: 3}
-  - {fileID: 2800000, guid: e11d420245b5c3a4c9dd9c1f994970fa, type: 3}
-  - {fileID: 2800000, guid: f52f44ab02b1944408f1dec3e3a622ca, type: 3}
+  dirMaps: []
   rnmMaps0: []
   rnmMaps1: []
   rnmMaps2: []
@@ -1229,16 +1009,8 @@ MonoBehaviour:
   bakedVertexOffset: 
   bakedVertexColorMesh: []
   nonBakedRenderers: []
-  bakedLights:
-  - {fileID: 458305556}
-  - {fileID: 477025567}
-  - {fileID: 497103451}
-  - {fileID: 1052254205}
-  - {fileID: 1588944219}
-  - {fileID: 1604400946}
-  - {fileID: 1854517742}
-  - {fileID: 2087891233}
-  bakedLightChannels: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  bakedLights: []
+  bakedLightChannels: 
   bakedRenderersTerrain: []
   bakedIDsTerrain: 
   bakedScaleOffsetTerrain: []
@@ -1246,48 +1018,74 @@ MonoBehaviour:
   uvOverlapAssetList: 
   idremap: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000
   usesRealtimeGI: 0
-  emptyDirectionTex: {fileID: 0}
+  emptyDirectionTex: {fileID: 2800000, guid: f4cfdfb13fd70db438e30c8b9e925ff6, type: 3}
   anyVolumes: 0
   compressedVolumes: 0
   sectors:
   - name: $G
     maps:
-    - {fileID: 2800000, guid: 21c5d7458040ad64ba23571e1ba6adb4, type: 3}
-    - {fileID: 2800000, guid: 18d42a2f3ec8d7a44a08a3aa5a62637a, type: 3}
-    - {fileID: 2800000, guid: 6f8572084cd584d4d9e62e9090d66a7c, type: 3}
-    - {fileID: 2800000, guid: cb6bcde9f9fb29f4bb4e86d0ba245f77, type: 3}
-    - {fileID: 2800000, guid: 23d932842c2ad6342bb57e12ba0dce9b, type: 3}
-    - {fileID: 2800000, guid: 76cd00860617b014da61ecac1f6a8a04, type: 3}
-    - {fileID: 2800000, guid: 5e585eaa39ee3b74aad261e858c733d7, type: 3}
-    - {fileID: 2800000, guid: f1f9a0944d9ef6c448cca77713d86fed, type: 3}
-    - {fileID: 2800000, guid: 747bcbcc07bf91744ae2508d078d2260, type: 3}
-    - {fileID: 2800000, guid: 9b5698eb9437ac9429f9710aa223f403, type: 3}
-    - {fileID: 2800000, guid: aadaa264f83a35144aa1d7f6fba1c5a0, type: 3}
-    - {fileID: 2800000, guid: f3f00150c259ec04ca7a8f66105c0ae4, type: 3}
-    - {fileID: 2800000, guid: 8b0853c2690140e47985ee32fc5a8f1e, type: 3}
-    - {fileID: 2800000, guid: 605b942bce5ea9f4a902529dfba28551, type: 3}
-    - {fileID: 2800000, guid: ed279ade4f21ee74abdf36d42e4af68e, type: 3}
-    - {fileID: 2800000, guid: c6f77e2dcf8b978408b19de06edabedd, type: 3}
-    - {fileID: 2800000, guid: 940d56fcbeaa2684fbab16b9d34e0d97, type: 3}
+    - {fileID: 2800000, guid: cc568e2c19b86964f827c7056fe2911c, type: 3}
+    - {fileID: 2800000, guid: 6db4ab0695b1ee24e85fcb36a28ab2e2, type: 3}
+    - {fileID: 2800000, guid: c521ff6069b345d44b4625f292ed1844, type: 3}
+    - {fileID: 2800000, guid: 626b8e495515b3b498fd15ea01275032, type: 3}
+    - {fileID: 2800000, guid: 8ccacdddf8c35f0409317ba0c088eb3a, type: 3}
+    - {fileID: 2800000, guid: aa985851755f0554690f80fe46307dae, type: 3}
+    - {fileID: 2800000, guid: 6552b5b79ec9ad8448a575baeb1ebc79, type: 3}
+    - {fileID: 2800000, guid: 01c0d73a354b5474cad75edb24584675, type: 3}
+    - {fileID: 2800000, guid: f2b8a7084bc0d46469b02aad316f3dd3, type: 3}
+    - {fileID: 2800000, guid: 9e969c79720298a438646ca9f2262afc, type: 3}
+    - {fileID: 2800000, guid: 1e2204f6c3637814b897c6ecee2bbc67, type: 3}
+    - {fileID: 2800000, guid: 126a7ffc928d8b04a94d4577919cb749, type: 3}
+    - {fileID: 2800000, guid: 16c6d3f158c8aa8499d1ec1c36128f12, type: 3}
+    - {fileID: 2800000, guid: d2d0acb07c7eac04d8f36c02c6b227f7, type: 3}
+    - {fileID: 2800000, guid: d796a9beff626324da25fe06c30d4890, type: 3}
+    - {fileID: 2800000, guid: f1a3b3dadce25ad4cbc297a0515f1af5, type: 3}
+    - {fileID: 2800000, guid: b200483ec06d5f041951467466867bc6, type: 3}
+    - {fileID: 2800000, guid: ffcd9e6aacaeae947b4982abbedfe466, type: 3}
+    - {fileID: 2800000, guid: 01cfd0240171b5a41a9596e1f26c532c, type: 3}
+    - {fileID: 2800000, guid: 5d19ac9f540f9ec4da91def0a612cb4b, type: 3}
     masks:
-    - {fileID: 2800000, guid: 9a1cb88472c145649b3700f1943784d0, type: 3}
-    - {fileID: 2800000, guid: 1d6d743cd2b06604f92154cec654c8ac, type: 3}
-    - {fileID: 2800000, guid: bc750bb11b2a89742a886e5028f35228, type: 3}
-    - {fileID: 2800000, guid: 491bb41c362482841b5675ee18956863, type: 3}
-    - {fileID: 2800000, guid: 8f7ed7721ddcfa04e8354554a4396615, type: 3}
-    - {fileID: 2800000, guid: c1a85ff4817a05a49acad75d3b9d6a9c, type: 3}
-    - {fileID: 2800000, guid: 65d384fc186043648bbb2d0b1ddcdb80, type: 3}
-    - {fileID: 2800000, guid: ec4cd57b13473154b9cd0d77364702bb, type: 3}
-    - {fileID: 2800000, guid: 1c3944bb251eeda48a6ca1dfca6f2e70, type: 3}
-    - {fileID: 2800000, guid: d08c0d86814c876418182d5b74dd340d, type: 3}
-    - {fileID: 2800000, guid: e86b859ae056fa347aebbf68d3366004, type: 3}
-    - {fileID: 2800000, guid: 52d1608b0bc7c5a4ab6f3f7b58c6119a, type: 3}
-    - {fileID: 2800000, guid: 1bc45d4c9e017b64689790dc4212d619, type: 3}
-    - {fileID: 2800000, guid: d8e20c4bb0764c749a75b79d8f56e91c, type: 3}
-    - {fileID: 2800000, guid: f8085f54c624cad4eb1eb3765f7a1346, type: 3}
-    - {fileID: 2800000, guid: 2746ff6ef246f0f47b217cad4245416c, type: 3}
-    - {fileID: 2800000, guid: 0305fad1b9954ba43913e7d563e3d3a8, type: 3}
-    dirMaps: []
+    - {fileID: 2800000, guid: 696751a89bfb14e418053944da06095e, type: 3}
+    - {fileID: 2800000, guid: d51390f4fe92efd48a02d170367f60d4, type: 3}
+    - {fileID: 2800000, guid: 8ed530c0ffa663f43b659a4806a23394, type: 3}
+    - {fileID: 2800000, guid: 49a70f371b5167a43afa06e7d15cca7d, type: 3}
+    - {fileID: 2800000, guid: f20bcc9297860e54d815f4c8c81c82fc, type: 3}
+    - {fileID: 2800000, guid: 88cd4a64110ebcd4bac85eab2100ee8e, type: 3}
+    - {fileID: 2800000, guid: b4451834aebdbee4ca4fa49955ed41fc, type: 3}
+    - {fileID: 2800000, guid: 3a66caa27b324a8499e4c3359ffe56c4, type: 3}
+    - {fileID: 2800000, guid: 3e989f8f8003c71419907938a4796187, type: 3}
+    - {fileID: 2800000, guid: 5d336cb1e8961f44b9dbb71bc314a52b, type: 3}
+    - {fileID: 2800000, guid: 529c618b608119a4dbc674928c3f640c, type: 3}
+    - {fileID: 2800000, guid: 20fe405c1ab9d7c488e47062a4af80ec, type: 3}
+    - {fileID: 2800000, guid: b4a19cfd50c2f1f408f2e6d9b7d8ed9c, type: 3}
+    - {fileID: 2800000, guid: 80eda65c8d79db14ba130ec811ffb7f8, type: 3}
+    - {fileID: 2800000, guid: a79601236ad5bc6419a558c752549680, type: 3}
+    - {fileID: 2800000, guid: 2fc46a29e9792f141a49a35444868aa6, type: 3}
+    - {fileID: 2800000, guid: e75e829efbbf8e2428c94a158fbe3419, type: 3}
+    - {fileID: 2800000, guid: d78ec12cd1723ff49a2c0b02bc0d325b, type: 3}
+    - {fileID: 2800000, guid: 846fd7f1dee4369488290645290aa4fc, type: 3}
+    - {fileID: 2800000, guid: 62fd6681b2a8fc447a651c386e1ba5ec, type: 3}
+    dirMaps:
+    - {fileID: 2800000, guid: 2446fdc5d03fd8c4c9785d011d094ea4, type: 3}
+    - {fileID: 2800000, guid: 52b7093dec2a8a14a9e8d028bb1ef633, type: 3}
+    - {fileID: 2800000, guid: 2e029f1700de1394d90f0bb58ae14927, type: 3}
+    - {fileID: 2800000, guid: dc1ebc9d76a97704f9b2d4a4359fb6d7, type: 3}
+    - {fileID: 2800000, guid: 43b6119e44ea1c94585cac43bb132575, type: 3}
+    - {fileID: 2800000, guid: 07f37cba7865aa04fb46ba500e610e5a, type: 3}
+    - {fileID: 2800000, guid: 04ad594a2c6a3b44e915a91c0963bc91, type: 3}
+    - {fileID: 2800000, guid: d5b6f18fc45a71b4ab3e67cf9f3f4b59, type: 3}
+    - {fileID: 2800000, guid: d1c57ec9327051d4392b4636fda7bb7b, type: 3}
+    - {fileID: 2800000, guid: 77f76175cfa2dbc4cb867c7a72f04f15, type: 3}
+    - {fileID: 2800000, guid: 863dbfe7e11a42c40a2ce6066e52acb9, type: 3}
+    - {fileID: 2800000, guid: e5a24e586791f15489a9b98d77c8aa2b, type: 3}
+    - {fileID: 2800000, guid: 0ff257c740f8d904ab9557a8dad43093, type: 3}
+    - {fileID: 2800000, guid: 2bd415ac7d048b845a767a51623634c5, type: 3}
+    - {fileID: 2800000, guid: 9a28a5ab2ab2dc14297e8ecade764131, type: 3}
+    - {fileID: 2800000, guid: 572f19ddb01763e4181e553e6e4580c1, type: 3}
+    - {fileID: 2800000, guid: a4bb35a87eccc1a4597a231890df6009, type: 3}
+    - {fileID: 2800000, guid: c1beebbe084b10d4688e71e48835af50, type: 3}
+    - {fileID: 2800000, guid: e11d420245b5c3a4c9dd9c1f994970fa, type: 3}
+    - {fileID: 2800000, guid: f52f44ab02b1944408f1dec3e3a622ca, type: 3}
     rnmMaps0: []
     rnmMaps1: []
     rnmMaps2: []
@@ -1464,47 +1262,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1201818925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0b4dd729a12d046982652f834580a2, type: 3}
-  m_Name: probes
-  m_EditorClassIdentifier: 
-  resolution: 16
-  bitmask: 1
-  id: 21
-  sortingID: 0
-  isImplicit: 1
-  area: 0
-  totalVertexCount: 300
-  vertexCounter: 0
-  sceneLodLevel: -1
-  sceneName: 
-  containsTerrains: 0
-  probes: 1
-  mode: 2
-  renderMode: 1000
-  renderDirMode: 5
-  atlasPacker: 1000
-  computeSSS: 0
-  sssSamples: 16
-  sssDensity: 10
-  sssColor: {r: 1, g: 1, b: 1, a: 1}
-  sssScale: 1
-  fakeShadowBias: 0
-  transparentSelfShadow: 0
-  flipNormal: 0
-  parentName: 
-  overridePath: 
-  fixPos3D: 0
-  voxelSize: {x: 1, y: 1, z: 1}
-  passedFilter: 0
 --- !u!1 &1265277995
 GameObject:
   m_ObjectHideFlags: 0

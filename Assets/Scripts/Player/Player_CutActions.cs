@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using JamOff.Scripts.Managers;
+using UnityEngine;
 
 public class Player_CutActions : MonoBehaviour
 {
@@ -21,13 +19,14 @@ public class Player_CutActions : MonoBehaviour
     public void DisablePhysicsAndMovements()
     {
         BlockMovement();
-        GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = false;
+        GamePlayManager.Instance.Player.GetComponent<Collider>().enabled = false;
         GamePlayManager.Instance.PlayerManager.Rigidbody.useGravity = false;
     }
+
     public void GetBackPhysicsAndMovement()
     {
         GetBackMovement();
-        GamePlayManager.Instance.Player.GetComponent<CapsuleCollider>().enabled = true;
+        GamePlayManager.Instance.Player.GetComponent<Collider>().enabled = true;
         GamePlayManager.Instance.PlayerManager.Rigidbody.useGravity = true;
     }
 }

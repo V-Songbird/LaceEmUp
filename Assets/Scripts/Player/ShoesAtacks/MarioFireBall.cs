@@ -1,45 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using JamOff.Scripts.Managers;
+using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MarioFireBall : ObjPooled
 {
-    Rigidbody myRigibody;
-
-    int maxJumps = 4;
-
+    public float aliveTime = 3f;
+        
+    private int maxJumps = 4;
+    private Rigidbody myRigibody;
+    private AudioSource thisAudioSource;
+    
     private void OnEnable()
     {
-        if (myRigibody == null)
-        {
-            myRigibody = GetComponent<Rigidbody>();
-        }
+        // Get player
+        var player = GamePlayManager.Instance.Player;
 
-        float dir = GamePlayManager.Instance.Player.transform.localScale.x;
-        myRigibody.AddForce(Vector3.right * 10 * dir, ForceMode.Impulse);
+        // Ignore player collider
+        Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>());
+
+        // Add force to fireball
+        if (myRigibody == null) myRigibody = GetComponent<Rigidbody>();
+        var dir = player.transform.Find("GFX").localScale.x;
+        myRigibody.AddForce(Vector3.right * 5 * dir, ForceMode.Impulse);
+        
+        // Play sound
+        GetComponent<AudioSource>().Play();
+        
+        // Remove after X seconds
+        Invoke("TerminateImmediatelyAndSilently", aliveTime);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (GamePlayManager.Instance.Player_MovementController.whatIsGround == (GamePlayManager.Instance.Player_MovementController.whatIsGround | (1 << other.gameObject.layer)))
+        // If collides with enemy then trigger action and disable
+        if (other.gameObject.CompareTag("Enemy"))
         {
+            // TODO: Add function to hurt enemy
+            TerminateImmediatelyAndSilently();
+            return;
+        }
+
+        // If collides with terrain then bounce
+        if (GamePlayManager.Instance.Player_MovementController.whatIsGround ==
+            (GamePlayManager.Instance.Player_MovementController.whatIsGround | (1 << other.gameObject.layer)))
             CheckForDisable();
-        }
         else
-        {
             Debug.Log(other.gameObject.layer);
-        }
     }
 
-    void CheckForDisable()
+    private void CheckForDisable()
     {
         maxJumps--;
 
-        if (maxJumps == 0)
-        {
-            TerminateImmediatelyAndSilently();
-        }
+        if (maxJumps == 0) TerminateImmediatelyAndSilently();
     }
 
     public override void TerminateImmediatelyAndSilently()
